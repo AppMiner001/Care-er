@@ -1,0 +1,42 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ServicePage } from "@/components/ServicePage";
+
+export const Route = createFileRoute("/tjanster/bemanning")({
+  head: () => ({
+    meta: [
+      { title: "Bemanning — care-er" },
+      {
+        name: "description",
+        content:
+          "Rätt människor när behov uppstår. Kompetens som fungerar från dag ett — bemanning byggd för kundmötet.",
+      },
+      { property: "og:title", content: "Bemanning — care-er" },
+      {
+        property: "og:description",
+        content:
+          "Bemanning från care-er — människor som lyfter varumärket från första passet.",
+      },
+    ],
+  }),
+  component: () => (
+    <ServicePage
+      eyebrow="Tjänst 01"
+      title="Bemanning som syns i kundmötet — från dag ett."
+      lede="Rätt människor när behovet uppstår. Vi bemannar med kompetens som fungerar direkt och beteenden som matchar ert varumärke."
+      intro="Vi ser bemanning som en del av kundupplevelsen, inte en bemanningsrad i ett schema. Varje person vi placerar är förberedd, briefad och kalibrerad mot ert varumärke — så att skiftet blir en förstärkning, inte en risk."
+      pillars={[
+        { title: "Snabb tillgång", body: "Kvalificerade konsulter på plats när behovet uppstår — utan att tumma på matchningen." },
+        { title: "Förberedda från dag ett", body: "Varje konsult kommer briefad om er kultur, tonalitet och servicestandard." },
+        { title: "Kvalitet i mötet", body: "Vi följer upp i drift — inte bara i timrapporter — och justerar tillsammans." },
+        { title: "Flexibel skala", body: "Från enstaka pass till långa uppdrag och hela team i tillväxtfaser." },
+      ]}
+      approach={[
+        { step: "Steg 01", title: "Brief", body: "Vi förstår behovet, kulturen och vad ett bra möte betyder hos er." },
+        { step: "Steg 02", title: "Matchning", body: "Vi väljer personer på beteende och rätt erfarenhet — inte bara CV." },
+        { step: "Steg 03", title: "Onboarding", body: "Kort, skarp förberedelse innan första passet." },
+        { step: "Steg 04", title: "Uppföljning", body: "Vi mäter, lyssnar och förbättrar löpande tillsammans med er." },
+      ]}
+      next={{ label: "Rekrytering", to: "/tjanster/rekrytering" }}
+    />
+  ),
+});
