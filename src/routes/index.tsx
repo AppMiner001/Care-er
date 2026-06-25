@@ -2,28 +2,26 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Hero } from "@/components/Hero";
-import { Proof } from "@/components/Proof";
 import { Services } from "@/components/Services";
-import { BrandStatement, WhyCareEr } from "@/components/WhySections";
-import { ChainSection } from "@/components/ChainSection";
+import { MarqueeStrip } from "@/components/MarqueeStrip";
+import { ModelSection } from "@/components/ModelSection";
+import { StatementSection } from "@/components/StatementSection";
 import { Contact } from "@/components/Contact";
-import { PageProvider } from "@/context/PageContext";
-import { PageSpine } from "@/components/PageSpine";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "care-er — Människor, beteenden och strukturer i kundmötet" },
+      { title: "care-er — Service är strategi" },
       {
         name: "description",
         content:
-          "care-er är ett nordiskt kompetenshus inom bemanning, rekrytering, utbildning och förändring. Vi bygger det som händer i mötet mellan människa och varumärke.",
+          "care-er är ett nordiskt kompetenshus inom bemanning, rekrytering, utbildning och förändring. Vi bygger kompetensen, beteendena och strukturerna som gör service till konkurrensfördel.",
       },
-      { property: "og:title", content: "care-er" },
+      { property: "og:title", content: "care-er — Service är strategi" },
       {
         property: "og:description",
         content:
-          "Bemanning, rekrytering, utbildning och change — byggt för det ögonblick där ett varumärke förtjänas eller förloras.",
+          "Kompetensen, beteendena och strukturerna som gör varje kundmöte till en konkurrensfördel — inte en slump.",
       },
     ],
   }),
@@ -32,19 +30,28 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <PageProvider>
+    <>
       <SiteHeader />
-      <PageSpine />
       <main>
+        {/* 1. Immediate clarity: what they do and why it matters */}
         <Hero />
-        <ChainSection />
-        <WhyCareEr />
+
+        {/* 2. What they sell — early, outcome-framed */}
         <Services />
-        <Proof />
-        <BrandStatement />
+
+        {/* Transition ribbon — philosophy in motion */}
+        <MarqueeStrip />
+
+        {/* 3. Why it works — the behavioral model */}
+        <ModelSection />
+
+        {/* 4. The statement — the moment that makes the site unforgettable */}
+        <StatementSection />
+
+        {/* 5. Invitation */}
         <Contact />
       </main>
       <SiteFooter />
-    </PageProvider>
+    </>
   );
 }
