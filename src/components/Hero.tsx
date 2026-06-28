@@ -1,53 +1,108 @@
+import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { useMagnetic } from "@/hooks/use-magnetic";
 
 export function Hero() {
   const magneticRef = useMagnetic<HTMLDivElement>();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const vid = videoRef.current;
+    if (!vid) return;
+
+    const apply = (reduced: boolean) => {
+      if (reduced) {
+        vid.pause();
+      } else {
+        vid.play().catch(() => {});
+      }
+    };
+
+    apply(mq.matches);
+    const handler = (e: MediaQueryListEvent) => apply(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
-    <section className="relative min-h-[96svh] flex flex-col justify-between pt-28 md:pt-36 pb-0">
+    <section className="relative min-h-[96svh] flex flex-col justify-between pt-28 md:pt-36 pb-0 overflow-hidden">
 
-      {/* Decorative layer */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* ── Video background ─────────────────────────────────────────────── */}
+      <video
+        ref={videoRef}
+        data-hero-video
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/hero-poster.svg"
+        aria-hidden
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* ── Gradient overlays (layered for full readability) ─────────────── */}
+      <div aria-hidden className="absolute inset-0 pointer-events-none">
+        {/* Base dark veil — ensures minimum contrast everywhere */}
         <div
           className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(oklch(0.13 0.04 271 / 0.055) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
+          style={{ background: "oklch(0.08 0.028 271 / 0.58)" }}
         />
+        {/* Left column accent — reinforces text area */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 8% 92%, oklch(0.75 0.055 265 / 0.12) 0%, transparent 68%)",
-            animation: "ambient-breathe 11s ease-in-out infinite",
+              "linear-gradient(100deg, oklch(0.07 0.025 271 / 0.55) 0%, oklch(0.07 0.025 271 / 0.20) 45%, transparent 70%)",
           }}
         />
+        {/* Top fade — header legibility */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 55% 50% at 92% 8%, oklch(0.78 0.040 280 / 0.08) 0%, transparent 65%)",
-            animation: "ambient-breathe 14s ease-in-out infinite reverse",
+              "linear-gradient(to bottom, oklch(0.07 0.025 271 / 0.45) 0%, transparent 28%)",
+          }}
+        />
+        {/* Bottom fade — CTA area */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, oklch(0.07 0.025 271 / 0.55) 0%, transparent 35%)",
           }}
         />
       </div>
 
-      {/* Main content */}
+      {/* ── Subtle dot grid (very faint over video) ─────────────────────── */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(oklch(0.982 0.003 82 / 0.04) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      {/* ── Main content ─────────────────────────────────────────────────── */}
       <div className="container-care relative z-10 flex-1">
 
         <p
-          className="eyebrow text-[var(--color-ink)]/35 mb-10 animate-fade-in"
+          className="eyebrow text-[var(--color-background)]/48 mb-10 animate-fade-in"
           style={{ animationDelay: "80ms" }}
         >
           Nordiskt kompetenshus · Stockholm
         </p>
 
-        {/* Staircase headline */}
-        <h1 className="text-[var(--color-ink)]" aria-label="Service är strategi. Vi bygger den.">
-
+        {/* Staircase headline — white on dark video */}
+        <h1
+          className="text-[var(--color-background)]"
+          aria-label="Service är strategi. Vi bygger den."
+        >
           <span
             className="block animate-fade-up"
             style={{
@@ -91,15 +146,16 @@ export function Hero() {
         {/* Divider */}
         <div
           aria-hidden
-          className="mt-10 md:mt-12 h-px bg-[var(--color-ink)]/12 max-w-2xl"
+          className="mt-10 md:mt-12 h-px max-w-2xl"
           style={{
+            background: "oklch(0.982 0.003 82 / 0.18)",
             animation: "draw-line 900ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both",
           }}
         />
 
         {/* Value proposition */}
         <p
-          className="lead text-[var(--color-ink)]/50 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
+          className="lead text-[var(--color-background)]/65 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
           style={{ animationDelay: "500ms", lineHeight: 1.65 }}
         >
           Kompetensen, beteendena och strukturerna som gör varje kundmöte
@@ -108,7 +164,7 @@ export function Hero() {
 
         {/* Disciplines */}
         <p
-          className="eyebrow text-[var(--color-ink)]/28 mt-7 tracking-[0.20em] animate-fade-in"
+          className="eyebrow text-[var(--color-background)]/32 mt-7 tracking-[0.20em] animate-fade-in"
           style={{ animationDelay: "640ms" }}
         >
           Bemanning · Rekrytering · Utbildning · Transformation
@@ -119,16 +175,57 @@ export function Hero() {
           className="mt-10 flex flex-wrap items-center gap-7 animate-fade-in"
           style={{ animationDelay: "750ms" }}
         >
+          {/* Primary CTA — light button on dark video */}
           <div ref={magneticRef} style={{ display: "inline-flex" }}>
-            <Link to="/" hash="kontakt" className="btn-primary">
+            <Link
+              to="/"
+              hash="kontakt"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "oklch(0.982 0.003 82)",
+                color: "oklch(0.13 0.04 271)",
+                padding: "0.875rem 1.75rem",
+                borderRadius: "9999px",
+                fontSize: "0.9rem",
+                fontWeight: 500,
+                letterSpacing: "-0.01em",
+                willChange: "transform",
+                transition:
+                  "opacity 250ms ease, transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms ease",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.opacity = "0.92";
+                el.style.transform = "translateY(-1px)";
+                el.style.boxShadow = "0 8px 28px oklch(0.982 0.003 82 / 0.22)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.opacity = "1";
+                el.style.transform = "";
+                el.style.boxShadow = "";
+              }}
+              onMouseDown={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.transition = "transform 80ms ease";
+              }}
+              onMouseUp={(e) => {
+                e.currentTarget.style.transform = "translateY(-1px)";
+                e.currentTarget.style.transition =
+                  "transform 320ms cubic-bezier(0.16,1,0.3,1)";
+              }}
+            >
               Prata med oss
             </Link>
           </div>
 
+          {/* Secondary CTA */}
           <Link
             to="/"
             hash="tjanster"
-            className="group text-[var(--color-ink)]/48 text-sm font-medium hover:text-[var(--color-ink)] transition-colors duration-200 flex items-center gap-2"
+            className="group text-[var(--color-background)]/52 text-sm font-medium hover:text-[var(--color-background)]/90 transition-colors duration-200 flex items-center gap-2"
           >
             Se tjänster
             <span className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5">
@@ -138,26 +235,26 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Scroll indicator ─────────────────────────────────────────────── */}
       <div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-fade-in hidden md:flex"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-3 animate-fade-in hidden md:flex"
         style={{ animationDelay: "1400ms" }}
         aria-hidden
       >
         <span
-          className="eyebrow text-[var(--color-ink)]/18"
+          className="eyebrow text-[var(--color-background)]/22"
           style={{ letterSpacing: "0.28em", fontSize: "0.58rem" }}
         >
           Scroll
         </span>
         <div
           className="w-px h-14 relative overflow-hidden"
-          style={{ background: "oklch(0.13 0.04 271 / 0.07)" }}
+          style={{ background: "oklch(0.982 0.003 82 / 0.12)" }}
         >
           <div
             className="absolute top-0 left-0 w-full h-5 rounded-full"
             style={{
-              background: "oklch(0.13 0.04 271 / 0.32)",
+              background: "oklch(0.982 0.003 82 / 0.50)",
               animation: "scroll-down 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
             }}
           />
