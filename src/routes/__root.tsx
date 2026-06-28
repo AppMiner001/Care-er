@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "care-er — Människor, beteenden och strukturer i kundmötet" },
-      { name: "description", content: "Bemanning, rekrytering, utbildning och change — byggt för det ögonblick där ett varumärke förtjänas eller förloras." },
+      { name: "description", content: "Bemanning, rekrytering, utbildning och transformation — byggt för det ögonblick där ett varumärke förtjänas eller förloras." },
       { name: "author", content: "care-er" },
       { property: "og:title", content: "care-er" },
       { property: "og:description", content: "Vi bygger det som händer i mötet mellan människa och varumärke." },

@@ -21,8 +21,9 @@ function Phrase() {
             key={i}
             style={{
               color: bright
-                ? "oklch(0.13 0.04 271 / 0.68)"
+                ? "oklch(0.13 0.04 271 / 0.72)"
                 : "oklch(0.13 0.04 271 / 0.18)",
+              transition: "color 300ms ease",
             }}
           >
             {token}
@@ -36,15 +37,15 @@ function Phrase() {
 export function MarqueeStrip() {
   return (
     <div
-      className="overflow-hidden border-y border-[var(--color-ink)]/[0.07]"
+      className="marquee-wrap overflow-hidden border-y border-[var(--color-ink)]/[0.06]"
       aria-hidden
     >
       <div
         className="marquee-track py-5 select-none"
         style={{
           fontFamily: "var(--font-sans)",
-          fontSize: "clamp(0.8rem, 1.3vw, 1rem)",
-          letterSpacing: "0.05em",
+          fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)",
+          letterSpacing: "0.06em",
           fontWeight: 500,
         }}
       >

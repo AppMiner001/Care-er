@@ -21,7 +21,7 @@ export function StatementSection() {
       className="relative min-h-screen flex items-center"
       style={{ background: "oklch(0.075 0.030 271)" }}
     >
-      {/* Orbs in their own overflow-hidden shell so they never clip text */}
+      {/* Orbs */}
       <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute inset-0"
@@ -43,42 +43,43 @@ export function StatementSection() {
 
       <div className="container-care relative z-10 py-32 text-center">
 
-        {/* Line 1 — the anxiety; wipes in from left */}
+        {/* Line 1 — wipes from left */}
         <p
-          className="text-[var(--color-background)]/45 leading-[0.92] tracking-[-0.04em]"
+          className="text-[var(--color-background)]/42 leading-[0.91] tracking-[-0.042em]"
           style={{
             fontSize: "clamp(3.25rem, 9.5vw, 8.5rem)",
             fontWeight: 300,
             clipPath: visible ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
             transition: visible
-              ? "clip-path 1050ms cubic-bezier(0.16, 1, 0.3, 1) 150ms"
+              ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 150ms"
               : "none",
           }}
         >
           I möten ni aldrig ser
         </p>
 
-        {/* Line 2 — the consequence; wipes in 450ms after line 1 */}
+        {/* Line 2 — wipes 480ms after line 1 */}
         <p
-          className="text-[var(--color-background)] leading-[0.92] tracking-[-0.04em]"
+          className="text-[var(--color-background)] leading-[0.91] tracking-[-0.042em]"
           style={{
             fontSize: "clamp(3.25rem, 9.5vw, 8.5rem)",
             fontWeight: 700,
             clipPath: visible ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
             transition: visible
-              ? "clip-path 1050ms cubic-bezier(0.16, 1, 0.3, 1) 600ms"
+              ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 630ms"
               : "none",
           }}
         >
           avgörs allt.
         </p>
 
-        {/* Brand signature — fades in last */}
+        {/* Brand signature */}
         <p
-          className="mt-14 eyebrow text-[var(--color-background)]/18"
+          className="mt-16 eyebrow text-[var(--color-background)]/16"
           style={{
             opacity: visible ? 1 : 0,
-            transition: visible ? "opacity 700ms ease 1350ms" : "none",
+            transition: visible ? "opacity 800ms ease 1400ms" : "none",
+            letterSpacing: "0.28em",
           }}
         >
           care-er

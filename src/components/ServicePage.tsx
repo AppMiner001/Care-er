@@ -61,7 +61,7 @@ function ServiceHero({
       className="relative min-h-[100svh] flex flex-col justify-center pt-24"
       style={{ background: HERO_BG }}
     >
-      {/* Decorative layer — own overflow-hidden so text is never clipped */}
+      {/* Decorative layer */}
       <div aria-hidden className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
           className="absolute inset-0"
@@ -81,7 +81,7 @@ function ServiceHero({
         />
       </div>
 
-      {/* Ghost service number — enormous watermark, bottom-right */}
+      {/* Ghost service number — enormous watermark */}
       <span
         aria-hidden
         className="absolute right-0 bottom-0 font-bold leading-none select-none pointer-events-none"
@@ -89,9 +89,9 @@ function ServiceHero({
           fontSize: "clamp(14rem, 42vw, 40rem)",
           letterSpacing: "-0.06em",
           lineHeight: 0.78,
-          color: "oklch(0.982 0.003 82 / 0.04)",
+          color: "oklch(0.982 0.003 82 / 0.035)",
           opacity: ready ? 1 : 0,
-          transition: "opacity 1600ms ease 500ms",
+          transition: "opacity 1800ms ease 400ms",
         }}
       >
         {num}
@@ -101,34 +101,36 @@ function ServiceHero({
         {/* Back link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm animate-fade-in"
+          className="inline-flex items-center gap-2 text-sm animate-fade-in group transition-opacity hover:opacity-100"
           style={{
-            color: "oklch(0.982 0.003 82 / 0.32)",
+            color: "oklch(0.982 0.003 82 / 0.28)",
             animationDelay: "80ms",
           }}
         >
-          ← Hem
+          <span className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-1">←</span>
+          <span>Hem</span>
         </Link>
 
         {/* Eyebrow */}
         <p
-          className="eyebrow mt-12 animate-fade-in"
+          className="eyebrow mt-14 animate-fade-in"
           style={{
-            color: "oklch(0.982 0.003 82 / 0.28)",
+            color: "oklch(0.982 0.003 82 / 0.25)",
             animationDelay: "180ms",
+            letterSpacing: "0.24em",
           }}
         >
           {eyebrow}
         </p>
 
-        {/* Title — wipes in from left */}
+        {/* Title */}
         <h1
           className="mt-6 text-balance"
           style={{
             fontSize: "clamp(2.75rem, 7vw, 6.5rem)",
             fontWeight: 700,
-            lineHeight: 0.94,
-            letterSpacing: "-0.04em",
+            lineHeight: 0.93,
+            letterSpacing: "-0.042em",
             color: "oklch(0.982 0.003 82)",
             clipPath: ready ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
             transition: ready
@@ -144,7 +146,7 @@ function ServiceHero({
           aria-hidden
           className="mt-10 md:mt-12 h-px max-w-2xl"
           style={{
-            background: "oklch(0.982 0.003 82 / 0.12)",
+            background: "oklch(0.982 0.003 82 / 0.10)",
             animation: "draw-line 900ms cubic-bezier(0.16, 1, 0.3, 1) 900ms both",
           }}
         />
@@ -153,11 +155,11 @@ function ServiceHero({
         <p
           className="mt-8 max-w-2xl text-pretty"
           style={{
-            fontSize: "clamp(1.2rem, 2.5vw, 1.75rem)",
+            fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)",
             fontWeight: 300,
-            lineHeight: 1.55,
+            lineHeight: 1.6,
             fontStyle: "italic",
-            color: "oklch(0.982 0.003 82 / 0.58)",
+            color: "oklch(0.982 0.003 82 / 0.55)",
             opacity: ready ? 1 : 0,
             transition: ready ? "opacity 900ms ease 1050ms" : "none",
           }}
@@ -172,26 +174,27 @@ function ServiceHero({
 /* ── 2. Editorial intro ───────────────────────────────────────────────────── */
 
 function IntroSection({ intro }: { intro: string }) {
-  const ref = useReveal<HTMLParagraphElement>(0.2);
+  const ref = useReveal<HTMLParagraphElement>(0.18);
 
   return (
-    <section className="py-28 md:py-44">
+    <section className="py-28 md:py-48">
       <div className="container-care">
         <p
-          className="eyebrow text-[var(--color-ink)]/30 mb-16"
-          style={{ letterSpacing: "0.22em" }}
+          className="eyebrow text-[var(--color-ink)]/28 mb-16"
+          style={{ letterSpacing: "0.24em" }}
         >
           Vad vi gör
         </p>
         <p
           ref={ref}
           data-reveal
-          className="text-[var(--color-ink)] text-pretty leading-snug"
+          className="text-[var(--color-ink)] text-pretty"
           style={{
             fontSize: "clamp(1.6rem, 3.5vw, 3rem)",
             fontWeight: 300,
-            letterSpacing: "-0.02em",
+            letterSpacing: "-0.022em",
             maxWidth: "28ch",
+            lineHeight: 1.25,
           }}
         >
           {intro}
@@ -208,17 +211,17 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-28 md:py-40 border-t border-[var(--color-ink)]/[0.08]">
+    <section className="py-28 md:py-44 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-28">
-          <p className="eyebrow text-[var(--color-ink)]/38 mb-5">Vad du får</p>
+        <div ref={headingRef} data-reveal className="mb-20 md:mb-32">
+          <p className="eyebrow text-[var(--color-ink)]/35 mb-6">Vad du får</p>
           <h2
             className="text-[var(--color-ink)]"
             style={{
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 700,
               lineHeight: 0.95,
-              letterSpacing: "-0.035em",
+              letterSpacing: "-0.038em",
             }}
           >
             Fyra löften.
@@ -228,8 +231,8 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 300,
               lineHeight: 1.0,
-              letterSpacing: "-0.035em",
-              color: "oklch(0.13 0.04 271 / 0.32)",
+              letterSpacing: "-0.038em",
+              color: "oklch(0.13 0.04 271 / 0.28)",
             }}
           >
             Alla mätbara.
@@ -256,7 +259,7 @@ function PillarRow({
   pillar,
   index,
   dimmed,
-  isActive,
+  isActive: _isActive,
   onHover,
   onLeave,
 }: {
@@ -278,16 +281,16 @@ function PillarRow({
           ? (String(index * 100) as "100" | "200" | "300")
           : undefined
       }
-      className="group grid md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-10 md:gap-x-16 py-10 md:py-14 border-t border-[var(--color-ink)]/[0.08]"
+      className="group grid md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-10 md:gap-x-16 py-10 md:py-14 border-t border-[var(--color-ink)]/[0.07]"
       style={{
-        opacity: dimmed ? 0.38 : 1,
-        transition: "opacity 350ms ease",
+        opacity: dimmed ? 0.30 : 1,
+        transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       <span
-        className="hidden md:block font-bold leading-none pt-1 text-[var(--color-ink)]/[0.08] group-hover:text-[var(--color-ink)]/[0.20] transition-colors duration-400"
+        className="hidden md:block font-bold leading-none pt-1.5 text-[var(--color-ink)]/[0.07] group-hover:text-[var(--color-ink)]/[0.22] transition-colors duration-500 tabular-nums"
         style={{
           fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
           letterSpacing: "-0.04em",
@@ -296,18 +299,18 @@ function PillarRow({
         0{index + 1}
       </span>
       <h3
-        className="text-[var(--color-ink)]/75 group-hover:text-[var(--color-ink)] transition-colors duration-300"
+        className="text-[var(--color-ink)]/68 group-hover:text-[var(--color-ink)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
         style={{
           fontSize: "clamp(1.5rem, 2.8vw, 2.5rem)",
           fontWeight: 600,
           lineHeight: 1.1,
-          letterSpacing: "-0.022em",
+          letterSpacing: "-0.025em",
         }}
       >
         {pillar.title}
       </h3>
       <p
-        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/60 group-hover:text-[var(--color-ink)]/80 transition-colors duration-300"
+        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/58 group-hover:text-[var(--color-ink)]/78 transition-colors duration-350"
         style={{ fontWeight: 300 }}
       >
         {pillar.body}
@@ -316,7 +319,7 @@ function PillarRow({
   );
 }
 
-/* ── 4. Approach — dark, cinematic ───────────────────────────────────────── */
+/* ── 4. Approach ─────────────────────────────────────────────────────────── */
 
 function ApproachSection({
   approach,
@@ -326,10 +329,10 @@ function ApproachSection({
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-28 md:py-48 border-t border-[var(--color-ink)]/[0.08]">
+    <section className="py-28 md:py-52 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-32">
-          <p className="eyebrow text-[var(--color-ink)]/30 mb-6">
+        <div ref={headingRef} data-reveal className="mb-20 md:mb-36">
+          <p className="eyebrow text-[var(--color-ink)]/28 mb-7">
             Så arbetar vi
           </p>
           <h2
@@ -338,7 +341,7 @@ function ApproachSection({
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 700,
               lineHeight: 0.95,
-              letterSpacing: "-0.035em",
+              letterSpacing: "-0.038em",
             }}
           >
             Fyra steg.
@@ -348,8 +351,8 @@ function ApproachSection({
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 300,
               lineHeight: 1.0,
-              letterSpacing: "-0.035em",
-              color: "oklch(0.13 0.04 271 / 0.32)",
+              letterSpacing: "-0.038em",
+              color: "oklch(0.13 0.04 271 / 0.28)",
             }}
           >
             Inga genvägar.
@@ -371,7 +374,7 @@ function ApproachStep({
   item: { step: string; title: string; body: string };
   index: number;
 }) {
-  const ref = useReveal<HTMLDivElement>(0.2);
+  const ref = useReveal<HTMLDivElement>(0.18);
 
   return (
     <div
@@ -382,16 +385,16 @@ function ApproachStep({
           ? (String(index * 100) as "100" | "200" | "300")
           : undefined
       }
-      className="relative py-10 md:py-14 border-t border-[var(--color-ink)]/[0.07] overflow-hidden"
+      className="relative py-10 md:py-14 border-t border-[var(--color-ink)]/[0.06] overflow-hidden"
     >
-      {/* Ghost step number */}
+      {/* Ghost step number — aligned left so 0 sits above small 0 */}
       <span
         aria-hidden
         className="absolute left-0 top-1/2 -translate-y-1/2 font-bold leading-none pointer-events-none select-none"
         style={{
           fontSize: "clamp(6rem, 18vw, 16rem)",
           letterSpacing: "-0.05em",
-          color: "oklch(0.13 0.04 271 / 0.04)",
+          color: "oklch(0.13 0.04 271 / 0.035)",
         }}
       >
         0{index + 1}
@@ -399,8 +402,8 @@ function ApproachStep({
 
       <div className="relative grid grid-cols-[3rem_1fr] gap-x-8 md:gap-x-12 items-start">
         <span
-          className="text-[var(--color-ink)]/18 font-semibold leading-none mt-2"
-          style={{ fontSize: "0.8rem", letterSpacing: "0.04em" }}
+          className="text-[var(--color-ink)]/20 font-semibold leading-none mt-2 tabular-nums"
+          style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
         >
           0{index + 1}
         </span>
@@ -416,16 +419,17 @@ function ApproachStep({
             style={{
               fontSize: "clamp(2.25rem, 5.5vw, 4.5rem)",
               fontWeight: 700,
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.035em",
             }}
           >
             {item.title}
           </h3>
           <p
-            className="mt-5 text-[var(--color-ink)]/45 leading-relaxed"
+            className="mt-5 md:mt-6 text-[var(--color-ink)]/55 leading-relaxed"
             style={{
               fontSize: "clamp(1rem, 1.5vw, 1.2rem)",
               fontWeight: 300,
+              maxWidth: "44ch",
             }}
           >
             {item.body}
@@ -452,29 +456,28 @@ function NextService({
   const ref = useReveal<HTMLDivElement>();
 
   return (
-    <section className="border-t border-[var(--color-ink)]/[0.08]">
+    <section className="border-t border-[var(--color-ink)]/[0.07]">
       <div ref={ref} data-reveal>
         <Link
           to={to}
           className="group block container-care py-16 md:py-24"
         >
-          <p className="eyebrow text-[var(--color-ink)]/30 mb-6 group-hover:text-[var(--color-ink)]/50 transition-colors duration-300">
+          <p className="eyebrow text-[var(--color-ink)]/28 mb-7 group-hover:text-[var(--color-ink)]/50 transition-colors duration-300">
             Nästa tjänst
           </p>
           <div className="flex items-end justify-between gap-6">
             <span
-              className="text-[var(--color-ink)]/55 group-hover:text-[var(--color-ink)] transition-colors duration-400"
+              className="text-[var(--color-ink)]/50 group-hover:text-[var(--color-ink)] transition-colors duration-400 leading-none"
               style={{
                 fontSize: "clamp(3rem, 10vw, 9rem)",
                 fontWeight: 700,
-                lineHeight: 0.88,
-                letterSpacing: "-0.04em",
+                letterSpacing: "-0.042em",
               }}
             >
               {label}
             </span>
             <span
-              className="text-4xl md:text-6xl shrink-0 mb-2 text-[var(--color-ink)]/18 group-hover:text-[var(--color-ink)]/60 inline-block transition-all duration-400 group-hover:translate-x-2 group-hover:-translate-y-1"
+              className="text-4xl md:text-6xl shrink-0 mb-2 text-[var(--color-ink)]/16 group-hover:text-[var(--color-ink)]/65 inline-block transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 group-hover:-translate-y-1.5"
             >
               →
             </span>

@@ -12,38 +12,38 @@ export function Contact() {
       id="kontakt"
       className="scroll-mt-24 bg-[var(--color-ink)] text-[var(--color-background)]"
     >
-      <div className="container-care py-28 md:py-44">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-32 items-start">
+      <div className="container-care py-28 md:py-48">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-36 items-start">
 
           {/* Left — framing */}
           <div ref={headingRef} data-reveal>
             <p className="eyebrow text-[var(--color-background)]/55 mb-8">Kontakt</p>
             <h2
               className="display-xl text-[var(--color-background)] text-balance"
-              style={{ fontWeight: 300 }}
+              style={{ fontWeight: 300, letterSpacing: "-0.038em" }}
             >
               Låt oss börja
               <br />
               <span style={{ fontWeight: 700 }}>med ett samtal.</span>
             </h2>
-            <p className="mt-8 lead text-[var(--color-background)]/50 max-w-sm text-pretty">
+            <p className="mt-8 lead text-[var(--color-background)]/52 max-w-sm text-pretty" style={{ lineHeight: 1.65 }}>
               Berätta var ni är. Vi berättar hur vi kan hjälpa. Vi återkommer inom 24 timmar.
             </p>
 
             {/* Direct contact */}
-            <div className="mt-12 space-y-3 text-[var(--color-background)]/60 text-sm">
+            <div className="mt-12 space-y-3">
               <a
                 href="mailto:hej@care-er.se"
-                className="block hover:text-[var(--color-background)]/80 transition-colors"
+                className="block text-sm text-[var(--color-background)]/60 hover:text-[var(--color-background)]/90 transition-colors duration-200"
               >
                 hej@care-er.se
               </a>
-              <p>Stockholm, Sverige</p>
+              <p className="text-sm text-[var(--color-background)]/40">Stockholm, Sverige</p>
             </div>
 
             {/* Context nudges */}
             <div className="mt-14 space-y-3">
-              <p className="text-xs text-[var(--color-background)]/45 tracking-[0.16em] uppercase mb-4">
+              <p className="text-[0.65rem] text-[var(--color-background)]/45 tracking-[0.20em] uppercase mb-5">
                 Vanliga startpunkter
               </p>
               {[
@@ -55,6 +55,7 @@ export function Contact() {
                 <p
                   key={nudge}
                   className="text-sm text-[var(--color-background)]/50 pl-3 border-l border-[var(--color-background)]/[0.14]"
+                  style={{ fontWeight: 300, lineHeight: 1.55 }}
                 >
                   {nudge}
                 </p>
@@ -110,7 +111,7 @@ function ContactForm({
       data-reveal
       data-delay="200"
       onSubmit={onSubmit}
-      className="space-y-8"
+      className="space-y-9"
     >
       {(
         [
@@ -119,10 +120,10 @@ function ContactForm({
           { name: "epost",   label: "E-post",     type: "email", placeholder: "er@foretag.se" },
         ] as const
       ).map((f) => (
-        <div key={f.name} className="group">
+        <div key={f.name} className="group/field">
           <label
             htmlFor={f.name}
-            className="block eyebrow text-[var(--color-background)]/55 mb-3"
+            className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/55 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/80"
           >
             {f.label}
           </label>
@@ -132,15 +133,15 @@ function ContactForm({
             type={f.type}
             required
             placeholder={f.placeholder}
-            className="w-full bg-transparent border-b border-white/[0.20] focus:border-white/60 pb-3 text-[var(--color-background)] text-lg outline-none transition-colors placeholder:text-white/[0.30]"
+            className="w-full bg-transparent border-b border-white/[0.18] focus:border-white/55 pb-3 text-[var(--color-background)] text-lg outline-none transition-all duration-300 placeholder:text-white/[0.25] placeholder:font-light"
           />
         </div>
       ))}
 
-      <div>
+      <div className="group/field">
         <label
           htmlFor="meddelande"
-          className="block eyebrow text-[var(--color-background)]/55 mb-3"
+          className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/55 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/80"
         >
           Vad vill ni åstadkomma?
         </label>
@@ -150,17 +151,17 @@ function ContactForm({
           rows={4}
           required
           placeholder="Beskriv utmaningen eller behovet…"
-          className="w-full bg-transparent border-b border-white/[0.20] focus:border-white/60 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-colors placeholder:text-white/[0.30]"
+          className="w-full bg-transparent border-b border-white/[0.18] focus:border-white/55 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-all duration-300 placeholder:text-white/[0.25] placeholder:font-light"
         />
       </div>
 
-      <div className="pt-4">
+      <div className="pt-3">
         {sent ? (
           <div className="animate-fade-in">
-            <p className="text-lg text-[var(--color-background)]/80" style={{ fontWeight: 300 }}>
+            <p className="text-lg text-[var(--color-background)]/85" style={{ fontWeight: 300 }}>
               Tack — vi hör av oss.
             </p>
-            <p className="mt-2 text-sm text-[var(--color-background)]/40">
+            <p className="mt-2 text-sm text-[var(--color-background)]/42">
               Inom 24 timmar.
             </p>
           </div>
@@ -169,21 +170,22 @@ function ContactForm({
             <button
               type="submit"
               disabled={loading}
-              className="group flex items-center gap-3 text-sm text-[var(--color-background)]/50 hover:text-[var(--color-background)] transition-colors duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="group/btn flex items-center gap-3 text-sm text-[var(--color-background)]/48 hover:text-[var(--color-background)] transition-colors duration-250 disabled:opacity-35 disabled:cursor-not-allowed"
             >
-              <span className="tracking-[0.08em] uppercase">
+              <span className="relative tracking-[0.10em] uppercase">
                 {loading ? "Skickar…" : "Skicka"}
+                <span className="absolute -bottom-px left-0 w-0 h-px bg-current transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:w-full" />
               </span>
               {!loading && (
-                <span className="transition-transform duration-300 group-hover:translate-x-2 text-base">
+                <span className="transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-x-1.5 group-hover/btn:-translate-y-0.5 text-base">
                   →
                 </span>
               )}
             </button>
             {error && (
-              <p className="mt-4 text-sm text-red-400/80">
+              <p className="mt-5 text-sm text-red-400/80">
                 Något gick fel — mejla oss på{" "}
-                <a href="mailto:hej@care-er.se" className="underline">
+                <a href="mailto:hej@care-er.se" className="underline underline-offset-2">
                   hej@care-er.se
                 </a>
               </p>

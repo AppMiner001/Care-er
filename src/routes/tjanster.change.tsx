@@ -4,7 +4,7 @@ import { ServicePage } from "@/components/ServicePage";
 export const Route = createFileRoute("/tjanster/change")({
   head: () => ({
     meta: [
-      { title: "Change — care-er" },
+      { title: "Transformation — care-er" },
       {
         name: "description",
         content:

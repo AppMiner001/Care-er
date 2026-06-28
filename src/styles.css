@@ -38,12 +38,12 @@
   --color-surface: var(--surface);
   --color-ink: var(--ink);
 
-  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-fade-in: fade-in 0.7s ease-out both;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade-in: fade-in 0.75s ease-out both;
 }
 
 @keyframes fade-up {
-  0%   { opacity: 0; transform: translateY(20px); }
+  0%   { opacity: 0; transform: translateY(14px); }
   100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes fade-in {
@@ -53,9 +53,9 @@
 
 /* ModelSection word crystallisation — blur sharpens to crisp */
 @keyframes word-emerge {
-  0%   { opacity: 0;   filter: blur(10px); }
-  60%  { opacity: 0.9; filter: blur(1.5px); }
-  100% { opacity: 1;   filter: blur(0); }
+  0%   { opacity: 0;   filter: blur(12px); transform: translateY(4px); }
+  60%  { opacity: 0.9; filter: blur(1px);  transform: translateY(0); }
+  100% { opacity: 1;   filter: blur(0);    transform: translateY(0); }
 }
 
 /* Hero divider — draws from left */
@@ -87,9 +87,10 @@
 /* Reveal system — triggered by IntersectionObserver adding [data-revealed] */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
-              transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(12px);
+  transition: opacity 860ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 860ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
   position: relative;
   z-index: 1;
 }
@@ -151,11 +152,22 @@
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   ::selection {
     background-color: var(--color-ink);
     color: var(--color-background);
+  }
+  /* Refined focus-visible: keyboard only, no mouse outline */
+  :focus-visible {
+    outline: 2px solid oklch(0.13 0.04 271 / 0.6);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: none;
   }
 }
 
@@ -182,29 +194,29 @@
   .display-xl {
     font-size: clamp(2.75rem, 6vw, 5.5rem);
     line-height: 1.0;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.038em;
     font-weight: 700;
   }
   .display-lg {
     font-size: clamp(2rem, 4.5vw, 4rem);
     line-height: 1.04;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.032em;
     font-weight: 700;
   }
   .display-md {
     font-size: clamp(1.5rem, 2.8vw, 2.5rem);
     line-height: 1.12;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.025em;
     font-weight: 600;
   }
   .lead {
     font-size: clamp(1.125rem, 2vw, 1.375rem);
-    line-height: 1.6;
+    line-height: 1.65;
     font-weight: 300;
   }
   .eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 500;
   }
@@ -218,18 +230,22 @@
   .service-row {
     --service-wght: 600;
     background-color: transparent;
-    transition: background-color 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: inset 2px 0 0 transparent;
+    transition:
+      background-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
   .service-row:hover {
     --service-wght: 750;
-    background-color: oklch(0.13 0.04 271 / 0.032);
+    background-color: oklch(0.13 0.04 271 / 0.038);
+    box-shadow: inset 2px 0 0 oklch(0.13 0.04 271 / 0.45);
   }
   .service-name {
     font-variation-settings: "wght" var(--service-wght);
     transition: --service-wght 300ms ease, color 300ms ease;
   }
   .service-outcome {
-    color: oklch(0.13 0.04 271 / 0.55);
+    color: oklch(0.13 0.04 271 / 0.58);
     transition: color 350ms ease;
   }
   .service-row:hover .service-outcome {
@@ -237,9 +253,8 @@
   }
 
   /* ── ModelSection word crystallisation ──────────── */
-  /* Fires when parent [data-reveal] receives [data-revealed] */
   [data-reveal][data-revealed] [data-emerge] {
-    animation: word-emerge 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: word-emerge 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
   [data-reveal][data-revealed] [data-emerge][data-emerge-delay="120"] { animation-delay: 120ms; }
   [data-reveal][data-revealed] [data-emerge][data-emerge-delay="240"] { animation-delay: 240ms; }
@@ -249,9 +264,27 @@
   .marquee-track {
     display: flex;
     width: max-content;
-    animation: marquee 32s linear infinite;
+    animation: marquee 36s linear infinite;
   }
   .marquee-track:hover { animation-play-state: paused; }
+
+  /* Fade edges of the marquee */
+  .marquee-wrap {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 7%,
+      black 93%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 7%,
+      black 93%,
+      transparent 100%
+    );
+  }
 
   /* ── Reduced motion ─────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
@@ -263,17 +296,14 @@
       transition-duration: 0.01ms !important;
       transition-delay: 0ms !important;
     }
-    /* Show reveal elements immediately — no waiting for scroll */
     [data-reveal] {
       opacity: 1 !important;
       transform: none !important;
     }
-    /* Stop the marquee loop */
     .marquee-track {
       animation: none !important;
       white-space: nowrap;
     }
-    /* Stop scroll indicator bounce */
     html { scroll-behavior: auto !important; }
   }
 
@@ -288,9 +318,24 @@
     border-radius: 9999px;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: opacity 200ms ease;
+    letter-spacing: -0.01em;
+    will-change: transform;
+    transition:
+      opacity 250ms ease,
+      transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 320ms ease;
   }
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px oklch(0.13 0.04 271 / 0.22);
+  }
+  .btn-primary:active {
+    transform: translateY(0px);
+    box-shadow: none;
+    opacity: 1;
+    transition-duration: 80ms;
+  }
 
   .btn-ghost {
     display: inline-flex;
@@ -301,7 +346,7 @@
     font-size: 0.9rem;
     font-weight: 500;
     border-bottom: 1px solid oklch(0.13 0.04 271 / 0.18);
-    transition: border-color 200ms ease, opacity 200ms ease;
+    transition: border-color 250ms ease, opacity 250ms ease;
   }
   .btn-ghost:hover { border-color: oklch(0.13 0.04 271 / 0.7); }
 }

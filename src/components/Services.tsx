@@ -26,7 +26,7 @@ const services = [
   },
   {
     to: "/tjanster/change" as const,
-    title: "Change",
+    title: "Transformation",
     outcome: "Kultur är vad folk gör när chefen inte ser.",
     body: "Vi bygger strukturer och beteenden som håller när projektet är slut och vi har lämnat. Det är det enda som räknas.",
     index: "04",
@@ -38,15 +38,15 @@ export function Services() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="tjanster" className="py-28 md:py-40 scroll-mt-24">
+    <section id="tjanster" className="py-28 md:py-44 scroll-mt-24">
       <div className="container-care">
 
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-28 max-w-2xl">
-          <p className="eyebrow text-[var(--color-ink)]/45 mb-6">Tjänster</p>
+        <div ref={headingRef} data-reveal className="mb-20 md:mb-32 max-w-2xl">
+          <p className="eyebrow text-[var(--color-ink)]/40 mb-7">Tjänster</p>
           <h2 className="display-xl text-[var(--color-ink)]">
             <span style={{ fontWeight: 700 }}>Fyra discipliner.</span>
             <br />
-            <span className="text-[var(--color-ink)]/35" style={{ fontWeight: 300 }}>
+            <span className="text-[var(--color-ink)]/32" style={{ fontWeight: 300 }}>
               En gemensam modell.
             </span>
           </h2>
@@ -58,7 +58,7 @@ export function Services() {
             className="absolute hidden md:block top-0 bottom-0 w-px left-0"
             style={{
               background:
-                "linear-gradient(to bottom, transparent 0%, oklch(0.13 0.04 271 / 0.10) 8%, oklch(0.13 0.04 271 / 0.10) 92%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, oklch(0.13 0.04 271 / 0.08) 6%, oklch(0.13 0.04 271 / 0.08) 94%, transparent 100%)",
             }}
           />
           {services.map((s, i) => (
@@ -83,7 +83,7 @@ function ServiceRow({
   service,
   delay,
   dimmed,
-  isActive,
+  isActive: _isActive,
   onHover,
   onLeave,
 }: {
@@ -102,24 +102,26 @@ function ServiceRow({
       to={service.to}
       data-reveal
       data-delay={delay > 0 ? (String(delay) as "100" | "200" | "300") : undefined}
-      className="service-row group grid md:grid-cols-[5rem_1fr_auto] items-start gap-x-8 md:gap-x-14 py-12 md:py-16 border-t border-[var(--color-ink)]/[0.08] last:border-b last:border-[var(--color-ink)]/[0.08]"
+      className="service-row group grid md:grid-cols-[5rem_1fr_auto] items-start gap-x-8 md:gap-x-14 py-12 md:py-16 border-t border-[var(--color-ink)]/[0.07] last:border-b last:border-[var(--color-ink)]/[0.07]"
       style={{
-        opacity: dimmed ? 0.38 : 1,
-        transition: "opacity 350ms ease",
+        opacity: dimmed ? 0.32 : 1,
+        transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
+      {/* Index number */}
       <span
         aria-hidden
-        className="hidden md:block font-semibold leading-none text-[var(--color-ink)]/[0.08] group-hover:text-[var(--color-ink)]/[0.22] transition-colors duration-500 pt-1"
+        className="hidden md:block font-semibold leading-none text-[var(--color-ink)]/[0.09] group-hover:text-[var(--color-ink)]/[0.28] transition-colors duration-500 pt-1"
         style={{ fontSize: "clamp(1.75rem, 3vw, 2.75rem)", letterSpacing: "-0.04em" }}
       >
         {service.index}
       </span>
 
+      {/* Content */}
       <div>
-        <h3 className="service-name display-md text-[var(--color-ink)]/75 group-hover:text-[var(--color-ink)]">
+        <h3 className="service-name display-md text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)] transition-all duration-300 group-hover:translate-x-0.5">
           {service.title}
         </h3>
         <p
@@ -128,14 +130,18 @@ function ServiceRow({
         >
           {service.outcome}
         </p>
-        <p className="mt-3 text-sm md:text-base text-[var(--color-ink)]/38 max-w-xl text-pretty leading-relaxed">
+        <p
+          className="mt-3 text-sm md:text-base text-[var(--color-ink)]/45 group-hover:text-[var(--color-ink)]/62 max-w-xl text-pretty leading-relaxed transition-colors duration-400"
+          style={{ fontWeight: 300 }}
+        >
           {service.body}
         </p>
       </div>
 
+      {/* Arrow */}
       <span
         aria-hidden
-        className="self-start pt-1.5 text-lg text-[var(--color-ink)]/[0.18] group-hover:text-[var(--color-ink)]/55 group-hover:translate-x-2 transition-all duration-300"
+        className="self-start pt-1.5 text-lg text-[var(--color-ink)]/[0.18] group-hover:text-[var(--color-ink)]/60 group-hover:translate-x-1.5 group-hover:-translate-y-0.5 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"
       >
         →
       </span>

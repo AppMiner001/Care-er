@@ -36,7 +36,7 @@ export const Route = createFileRoute("/tjanster/utbildning")({
         { step: "Steg 03", title: "Träning", body: "Korta, intensiva pass som ger direkt övning." },
         { step: "Steg 04", title: "Förankring", body: "Vi följer upp i vardagen tills de nya beteendena blivit det naturliga sättet att möta kunder." },
       ]}
-      next={{ label: "Change", to: "/tjanster/change" }}
+      next={{ label: "Transformation", to: "/tjanster/change" }}
     />
   ),
 });
