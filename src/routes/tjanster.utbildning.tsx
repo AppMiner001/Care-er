@@ -22,19 +22,19 @@ export const Route = createFileRoute("/tjanster/utbildning")({
     <ServicePage
       eyebrow="Tjänst 03"
       title="Utbildning som syns i nästa kundkontakt."
-      lede="Service, beteende och utveckling som stärker mötet med kunden. Praktisk träning — inte föreläsningar utan eftermäle."
-      intro="Vi bygger utbildningar som faktiskt förändrar hur människor agerar i mötet. Korta, intensiva format kombinerat med uppföljning i drift gör att beteendet sätter sig på riktigt."
+      lede="Service, beteenden och ledarskap som stärker varje kundmöte. Praktisk träning som förändrar beteenden – inte bara kunskap."
+      intro="Vi bygger utbildningar som förändrar hur människor agerar i kundmötet. Korta, intensiva format kombinerat med uppföljning i vardagen gör att nya beteenden blir bestående – och får fler kunder att vilja komma tillbaka."
       pillars={[
         { title: "Skarpa format", body: "Workshops, träning och coachning byggda kring era verkliga kundmöten." },
-        { title: "Mätbart resultat", body: "Vi sätter beteendemål och följer upp — inte bara utvärderar känsla." },
-        { title: "Ledarstöd", body: "Cheferna får verktyg att bära utbildningen vidare i vardagen." },
-        { title: "Skalbart", body: "Från enskilda team till hela organisationer — samma kvalitet." },
+        { title: "Mätbart resultat", body: "Vi mäter förändrade beteenden – inte bara hur utbildningen upplevdes." },
+        { title: "Ledarstöd", body: "Cheferna får verktyg som gör att beteendet lever vidare efter utbildningen." },
+        { title: "Bestående effekt", body: "Från enskilda team till hela organisationer — samma kvalitet." },
       ]}
       approach={[
         { step: "Steg 01", title: "Nulägesanalys", body: "Vi observerar, lyssnar och kartlägger vad som faktiskt händer i mötet idag." },
-        { step: "Steg 02", title: "Design", body: "Utbildning byggd kring era kunder, ert språk och era situationer." },
+        { step: "Steg 02", title: "Utformning", body: "Utbildning byggd kring era kunder, ert språk och era situationer." },
         { step: "Steg 03", title: "Träning", body: "Korta, intensiva pass som ger direkt övning." },
-        { step: "Steg 04", title: "Förankring", body: "Coaching i drift så att beteendet håller över tid." },
+        { step: "Steg 04", title: "Förankring", body: "Vi följer upp i vardagen tills de nya beteendena blivit det naturliga sättet att möta kunder." },
       ]}
       next={{ label: "Change", to: "/tjanster/change" }}
     />

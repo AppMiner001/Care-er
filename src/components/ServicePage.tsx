@@ -307,7 +307,7 @@ function PillarRow({
         {pillar.title}
       </h3>
       <p
-        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/45 group-hover:text-[var(--color-ink)]/70 transition-colors duration-300"
+        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/60 group-hover:text-[var(--color-ink)]/80 transition-colors duration-300"
         style={{ fontWeight: 300 }}
       >
         {pillar.body}
@@ -352,7 +352,7 @@ function ApproachSection({
               color: "oklch(0.13 0.04 271 / 0.32)",
             }}
           >
-            Ingen genväg.
+            Inga genvägar.
           </h2>
         </div>
 
@@ -387,7 +387,7 @@ function ApproachStep({
       {/* Ghost step number */}
       <span
         aria-hidden
-        className="absolute right-0 top-1/2 -translate-y-1/2 font-bold leading-none pointer-events-none select-none"
+        className="absolute left-0 top-1/2 -translate-y-1/2 font-bold leading-none pointer-events-none select-none"
         style={{
           fontSize: "clamp(6rem, 18vw, 16rem)",
           letterSpacing: "-0.05em",

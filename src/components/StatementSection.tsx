@@ -41,11 +41,11 @@ export function StatementSection() {
         />
       </div>
 
-      <div className="container-care relative z-10 py-32">
+      <div className="container-care relative z-10 py-32 text-center">
 
         {/* Line 1 — the anxiety; wipes in from left */}
         <p
-          className="text-[var(--color-background)]/45 leading-[0.92] tracking-[-0.04em] text-balance"
+          className="text-[var(--color-background)]/45 leading-[0.92] tracking-[-0.04em]"
           style={{
             fontSize: "clamp(3.25rem, 9.5vw, 8.5rem)",
             fontWeight: 300,

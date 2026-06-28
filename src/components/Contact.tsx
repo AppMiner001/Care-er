@@ -13,11 +13,11 @@ export function Contact() {
       className="scroll-mt-24 bg-[var(--color-ink)] text-[var(--color-background)]"
     >
       <div className="container-care py-28 md:py-44">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-32 items-start">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-32 items-start">
 
           {/* Left — framing */}
           <div ref={headingRef} data-reveal>
-            <p className="eyebrow text-[var(--color-background)]/35 mb-8">Kontakt</p>
+            <p className="eyebrow text-[var(--color-background)]/55 mb-8">Kontakt</p>
             <h2
               className="display-xl text-[var(--color-background)] text-balance"
               style={{ fontWeight: 300 }}
@@ -31,7 +31,7 @@ export function Contact() {
             </p>
 
             {/* Direct contact */}
-            <div className="mt-12 space-y-3 text-[var(--color-background)]/45 text-sm">
+            <div className="mt-12 space-y-3 text-[var(--color-background)]/60 text-sm">
               <a
                 href="mailto:hej@care-er.se"
                 className="block hover:text-[var(--color-background)]/80 transition-colors"
@@ -43,7 +43,7 @@ export function Contact() {
 
             {/* Context nudges */}
             <div className="mt-14 space-y-3">
-              <p className="text-xs text-[var(--color-background)]/25 tracking-[0.16em] uppercase mb-4">
+              <p className="text-xs text-[var(--color-background)]/45 tracking-[0.16em] uppercase mb-4">
                 Vanliga startpunkter
               </p>
               {[
@@ -54,7 +54,7 @@ export function Contact() {
               ].map((nudge) => (
                 <p
                   key={nudge}
-                  className="text-sm text-[var(--color-background)]/32 pl-3 border-l border-[var(--color-background)]/[0.08]"
+                  className="text-sm text-[var(--color-background)]/50 pl-3 border-l border-[var(--color-background)]/[0.14]"
                 >
                   {nudge}
                 </p>
@@ -122,7 +122,7 @@ function ContactForm({
         <div key={f.name} className="group">
           <label
             htmlFor={f.name}
-            className="block eyebrow text-[var(--color-background)]/32 mb-3"
+            className="block eyebrow text-[var(--color-background)]/55 mb-3"
           >
             {f.label}
           </label>
@@ -132,7 +132,7 @@ function ContactForm({
             type={f.type}
             required
             placeholder={f.placeholder}
-            className="w-full bg-transparent border-b border-white/[0.12] focus:border-white/50 pb-3 text-[var(--color-background)] text-lg outline-none transition-colors placeholder:text-white/[0.18]"
+            className="w-full bg-transparent border-b border-white/[0.20] focus:border-white/60 pb-3 text-[var(--color-background)] text-lg outline-none transition-colors placeholder:text-white/[0.30]"
           />
         </div>
       ))}
@@ -140,7 +140,7 @@ function ContactForm({
       <div>
         <label
           htmlFor="meddelande"
-          className="block eyebrow text-[var(--color-background)]/32 mb-3"
+          className="block eyebrow text-[var(--color-background)]/55 mb-3"
         >
           Vad vill ni åstadkomma?
         </label>
@@ -150,7 +150,7 @@ function ContactForm({
           rows={4}
           required
           placeholder="Beskriv utmaningen eller behovet…"
-          className="w-full bg-transparent border-b border-white/[0.12] focus:border-white/50 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-colors placeholder:text-white/[0.18]"
+          className="w-full bg-transparent border-b border-white/[0.20] focus:border-white/60 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-colors placeholder:text-white/[0.30]"
         />
       </div>
 
