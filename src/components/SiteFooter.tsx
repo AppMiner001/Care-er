@@ -77,7 +77,7 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/search/results/all/?keywords=care-er&origin=RICH_QUERY_SUGGESTION&heroEntityKey=urn%3Ali%3Aorganization%3A115801362&position=0"
+                  href="https://www.linkedin.com/company/115801362/admin/dashboard/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200 inline-flex items-center gap-1.5 group"
