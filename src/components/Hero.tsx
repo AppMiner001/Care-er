@@ -26,7 +26,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-[96svh] flex flex-col justify-between pt-28 md:pt-36 pb-0 overflow-hidden">
+    <section className="relative min-h-[100svh] flex flex-col justify-between pt-20 md:pt-24 pb-0 overflow-hidden">
 
       {/* ── Video background ─────────────────────────────────────────────── */}
       <video
@@ -122,7 +122,7 @@ export function Hero() {
           </span>
 
           <span
-            className="block animate-fade-up mt-5 md:mt-6"
+            className="block animate-fade-up mt-2"
             style={{
               fontWeight: 700,
               fontSize: "clamp(1.125rem, 2.4vw, 2.5rem)",

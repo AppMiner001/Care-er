@@ -131,7 +131,7 @@ function ServiceRow({
           {service.outcome}
         </p>
         <p
-          className="mt-3 text-sm md:text-base text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)]/85 max-w-xl text-pretty leading-relaxed transition-colors duration-400"
+          className="mt-3 text-sm md:text-base text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)]/85 max-w-2xl text-pretty leading-relaxed transition-colors duration-400"
           style={{ fontWeight: 300 }}
         >
           {service.body}

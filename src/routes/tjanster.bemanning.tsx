@@ -31,10 +31,10 @@ export const Route = createFileRoute("/tjanster/bemanning")({
         { title: "Växer med er", body: "Från enstaka pass till långa uppdrag och hela team i tillväxtfaser." },
       ]}
       approach={[
-        { step: "Steg 01", title: "Brief", body: "Vi förstår behovet, kulturen och vad ett bra möte betyder hos er." },
-        { step: "Steg 02", title: "Matchning", body: "Vi väljer personer på beteende och rätt erfarenhet — inte bara CV." },
-        { step: "Steg 03", title: "Onboarding", body: "Kort, skarp förberedelse innan första passet." },
-        { step: "Steg 04", title: "Uppföljning", body: "Vi mäter, lyssnar och förbättrar löpande tillsammans med er." },
+        { step: "Steg 01", title: "Förstå", body: "Vi förstår behovet, kulturen och vad ett bra möte betyder hos er." },
+        { step: "Steg 02", title: "Matcha", body: "Vi väljer personer på beteende och rätt erfarenhet — inte bara CV." },
+        { step: "Steg 03", title: "Förbereda", body: "Kort och skarp förberedelse som sätter standarden redan innan första passet." },
+        { step: "Steg 04", title: "Följa upp", body: "Vi mäter, lyssnar och förbättrar löpande tillsammans med er." },
       ]}
       next={{ label: "Rekrytering", to: "/tjanster/rekrytering" }}
     />

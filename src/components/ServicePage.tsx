@@ -310,8 +310,8 @@ function PillarRow({
         {pillar.title}
       </h3>
       <p
-        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
-        style={{ fontWeight: 300 }}
+        className="mt-4 md:mt-0 leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
+        style={{ fontSize: "clamp(1.35rem, 2.2vw, 2rem)", fontWeight: 300 }}
       >
         {pillar.body}
       </p>
@@ -430,7 +430,7 @@ function ApproachStep({
             style={{
               fontSize: "clamp(1rem, 1.5vw, 1.2rem)",
               fontWeight: 300,
-              maxWidth: "44ch",
+              maxWidth: "36ch",
             }}
           >
             {item.body}

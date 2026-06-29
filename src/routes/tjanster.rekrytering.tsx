@@ -32,8 +32,8 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
       ]}
       approach={[
         { step: "Steg 01", title: "Förstå", body: "Vi sätter rollprofilen tillsammans — krav, kontext och kultur." },
-        { step: "Steg 02", title: "Hitta", body: "Aktiv search i rätt nätverk, inte bara annonsering." },
-        { step: "Steg 03", title: "Välja", body: "Strukturerade intervjuer, case och referenstagning." },
+        { step: "Steg 02", title: "Hitta", body: "Vi söker aktivt i rätt nätverk och kanaler — inte bara via bred annonsering." },
+        { step: "Steg 03", title: "Välja", body: "Strukturerade intervjuer, relevanta case och noggrann referenstagning." },
         { step: "Steg 04", title: "Lyckas", body: "Vi följer onboarding och check-ins under första halvåret." },
       ]}
       next={{ label: "Utbildning", to: "/tjanster/utbildning" }}

@@ -62,10 +62,10 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
                   : "text-[var(--color-ink)]/65 hover:text-[var(--color-ink)]"
               }`}
               activeProps={{
-                className: `text-sm tracking-[0.01em] font-medium ${
+                className: `text-sm tracking-[0.01em] font-bold underline underline-offset-4 decoration-[0.5px] ${
                   useDark
-                    ? "text-white"
-                    : "text-[var(--color-ink)]"
+                    ? "text-white decoration-white/50"
+                    : "text-[var(--color-ink)] decoration-[var(--color-ink)]/40"
                 }`,
               }}
             >

@@ -64,7 +64,7 @@ export function ModelSection() {
                 Så byggs kundlojalitet.
               </h2>
               <p
-                className="mt-12 text-[var(--color-background)]/72 leading-relaxed max-w-[22ch] text-pretty"
+                className="mt-6 text-[var(--color-background)]/72 leading-relaxed max-w-[22ch] text-pretty"
                 style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.25rem)", fontWeight: 300, lineHeight: 1.7 }}
               >
                 Beteenden skapar känslor. Känslor bygger förtroende. Förtroende skapar lojalitet.

@@ -3,8 +3,16 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
+const NUDGES = [
+  "Vi behöver kompetens inom kundservice nu",
+  "Vi vill rekrytera rätt person för lång sikt",
+  "Vi vill höja servicestandarden i hela teamet",
+  "Vi genomgår en organisationsförändring",
+];
+
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [message, setMessage] = useState("");
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
@@ -38,7 +46,13 @@ export function Contact() {
               >
                 hej@care-er.se
               </a>
-              <p className="text-sm text-[var(--color-background)]/65">Stockholm, Sverige</p>
+              <p className="text-sm text-[var(--color-background)]/65">Föreningsgatan 14, 411 27 Göteborg</p>
+              <a
+                href="tel:+46317610800"
+                className="block text-sm text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
+              >
+                031-761 08 00
+              </a>
             </div>
 
             {/* Context nudges */}
@@ -46,25 +60,22 @@ export function Contact() {
               <p className="text-[0.65rem] text-[var(--color-background)]/65 tracking-[0.20em] uppercase mb-5">
                 Vanliga startpunkter
               </p>
-              {[
-                "Vi behöver kompetens inom kundservice nu",
-                "Vi vill rekrytera rätt person för lång sikt",
-                "Vi vill höja servicestandarden i hela teamet",
-                "Vi genomgår en organisationsförändring",
-              ].map((nudge) => (
-                <p
+              {NUDGES.map((nudge) => (
+                <button
                   key={nudge}
-                  className="text-sm text-[var(--color-background)]/70 pl-3 border-l border-[var(--color-background)]/[0.25]"
+                  type="button"
+                  onClick={() => setMessage((prev) => prev ? prev + "\n" + nudge : nudge)}
+                  className="block w-full text-left text-sm text-[var(--color-background)]/70 hover:text-[var(--color-background)] pl-3 border-l border-[var(--color-background)]/[0.25] hover:border-[var(--color-background)]/60 transition-all duration-200 min-h-[44px] flex items-center"
                   style={{ fontWeight: 300, lineHeight: 1.55 }}
                 >
                   {nudge}
-                </p>
+                </button>
               ))}
             </div>
           </div>
 
           {/* Right — form */}
-          <ContactForm sent={sent} setSent={setSent} />
+          <ContactForm sent={sent} setSent={setSent} message={message} setMessage={setMessage} />
 
         </div>
       </div>
@@ -75,9 +86,13 @@ export function Contact() {
 function ContactForm({
   sent,
   setSent,
+  message,
+  setMessage,
 }: {
   sent: boolean;
   setSent: (v: boolean) => void;
+  message: string;
+  setMessage: (v: string) => void;
 }) {
   const ref = useReveal<HTMLFormElement>();
   const [loading, setLoading] = useState(false);
@@ -150,6 +165,8 @@ function ContactForm({
           name="meddelande"
           rows={4}
           required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Beskriv utmaningen eller behovet…"
           className="w-full bg-transparent border-b border-white/[0.18] focus:border-white/55 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-all duration-300 placeholder:text-white/[0.25] placeholder:font-light"
         />

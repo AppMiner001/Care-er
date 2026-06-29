@@ -1,5 +1,5 @@
 const PHRASE =
-  "Service är strategi · Beteende skapar känsla · Känsla skapar förtroende · Förtroende skapar lojalitet · Lojalitet bygger varumärket · ";
+  "Vi bygger kundlojalitet. · Beteende skapar känsla · Känsla skapar förtroende · Förtroende skapar lojalitet · Lojalitet bygger varumärket · ";
 
 const HIGHLIGHTED = new Set([
   "strategi",

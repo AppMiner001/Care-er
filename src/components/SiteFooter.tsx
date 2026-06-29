@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import logoSrc from "@/assets/care-er-logo.png";
 
 export function SiteFooter() {
   return (
@@ -22,7 +23,7 @@ export function SiteFooter() {
               </span>
             </p>
             <p className="mt-8 text-[0.65rem] text-[var(--color-background)]/22 tracking-[0.08em]">
-              care-er AB · Stockholm, Sverige
+              care-er AB
             </p>
           </div>
 
@@ -63,7 +64,16 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="text-[var(--color-background)]/60" style={{ fontWeight: 300 }}>
-                Stockholm, Sverige
+                Föreningsgatan 14, 411 27 Göteborg
+              </li>
+              <li>
+                <a
+                  href="tel:+46317610800"
+                  className="text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
+                  style={{ fontWeight: 300 }}
+                >
+                  031-761 08 00
+                </a>
               </li>
               <li>
                 <a
@@ -86,29 +96,31 @@ export function SiteFooter() {
         <div className="mt-16 pt-8 border-t border-white/[0.07] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.65rem] text-[var(--color-background)]/24 tracking-[0.04em]">
           <p className="text-[var(--color-background)]/50">© {new Date().getFullYear()} care-er AB · Alla rättigheter förbehållna.</p>
           <p className="font-medium tracking-[0.10em] text-[var(--color-background)]/60 uppercase" style={{ fontSize: "0.65rem" }}>
-            Service är strategi.
+            Vi bygger kundlojalitet.
           </p>
         </div>
 
       </div>
 
-      {/* Ghost wordmark */}
+      {/* Ghost wordmark — same logo image as header, scaled up */}
       <div
         aria-hidden
         className="w-full overflow-hidden border-t border-white/[0.035] select-none"
       >
-        <p
+        <img
+          src={logoSrc}
+          alt=""
+          draggable={false}
           style={{
-            fontSize: "clamp(5rem, 22vw, 20rem)",
-            fontWeight: 700,
-            letterSpacing: "-0.052em",
-            color: "oklch(0.982 0.003 82 / 0.045)",
-            lineHeight: 0.80,
+            height: "clamp(5rem, 22vw, 20rem)",
+            width: "auto",
+            opacity: 0.055,
+            filter: "brightness(0) invert(1)",
             paddingLeft: "clamp(1.5rem, 3rem, 5rem)",
+            lineHeight: 0.80,
+            display: "block",
           }}
-        >
-          care-er
-        </p>
+        />
       </div>
 
     </footer>

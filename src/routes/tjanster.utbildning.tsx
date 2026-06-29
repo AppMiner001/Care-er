@@ -31,10 +31,10 @@ export const Route = createFileRoute("/tjanster/utbildning")({
         { title: "Bestående effekt", body: "Från enskilda team till hela organisationer — samma kvalitet." },
       ]}
       approach={[
-        { step: "Steg 01", title: "Nulägesanalys", body: "Vi observerar, lyssnar och kartlägger vad som faktiskt händer i mötet idag." },
-        { step: "Steg 02", title: "Utformning", body: "Utbildning byggd kring era kunder, ert språk och era situationer." },
-        { step: "Steg 03", title: "Träning", body: "Korta, intensiva pass som ger direkt övning." },
-        { step: "Steg 04", title: "Förankring", body: "Vi följer upp i vardagen tills de nya beteendena blivit det naturliga sättet att möta kunder." },
+        { step: "Steg 01", title: "Förstå", body: "Vi observerar, lyssnar och kartlägger vad som faktiskt händer i mötet idag." },
+        { step: "Steg 02", title: "Träna", body: "Utbildning byggd kring era kunder, ert språk och era situationer." },
+        { step: "Steg 03", title: "Förankra", body: "Korta och intensiva träningspass med direkt övning i verkliga kundmöten." },
+        { step: "Steg 04", title: "Utveckla", body: "Vi följer upp i vardagen tills de nya beteendena blivit det naturliga sättet att möta kunder." },
       ]}
       next={{ label: "Transformation", to: "/tjanster/change" }}
     />

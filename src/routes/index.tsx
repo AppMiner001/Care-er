@@ -3,7 +3,6 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
-import { MarqueeStrip } from "@/components/MarqueeStrip";
 import { ModelSection } from "@/components/ModelSection";
 import { StatementSection } from "@/components/StatementSection";
 import { Contact } from "@/components/Contact";
@@ -11,13 +10,13 @@ import { Contact } from "@/components/Contact";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "care-er — Service är strategi" },
+      { title: "care-er — Vi bygger kundlojalitet." },
       {
         name: "description",
         content:
           "care-er är ett nordiskt kompetenshus inom bemanning, rekrytering, utbildning och förändring. Vi bygger kompetensen, beteendena och strukturerna som gör service till konkurrensfördel.",
       },
-      { property: "og:title", content: "care-er — Service är strategi" },
+      { property: "og:title", content: "care-er — Vi bygger kundlojalitet." },
       {
         property: "og:description",
         content:
@@ -38,9 +37,6 @@ function Index() {
 
         {/* 2. What they sell — early, outcome-framed */}
         <Services />
-
-        {/* Transition ribbon — philosophy in motion */}
-        <MarqueeStrip />
 
         {/* 3. Why it works — the behavioral model */}
         <ModelSection />
