@@ -1,17 +1,21 @@
 import { useEffect, useRef } from "react";
 
-/**
- * Attaches `data-revealed` to the element when it enters the viewport.
- * Pair with the `[data-reveal]` / `[data-revealed]` CSS rules in styles.css.
- */
 export function useReveal<T extends Element = HTMLElement>(
-  threshold = 0.12,
+  threshold = 0.05,
 ) {
   const ref = useRef<T>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Reveal immediately if already in viewport (e.g. top-of-page elements)
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.setAttribute("data-revealed", "");
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,7 +23,7 @@ export function useReveal<T extends Element = HTMLElement>(
           obs.disconnect();
         }
       },
-      { threshold },
+      { threshold, rootMargin: "0px 0px 60px 0px" },
     );
     obs.observe(el);
     return () => obs.disconnect();
