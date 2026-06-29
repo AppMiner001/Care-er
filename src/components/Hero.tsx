@@ -100,8 +100,8 @@ export function Hero() {
             className="block animate-fade-up"
             style={{
               fontWeight: 700,
-              fontSize: "clamp(3.75rem, 13vw, 12rem)",
-              lineHeight: 0.91,
+              fontSize: "clamp(2.5rem, 7vw, 7rem)",
+              lineHeight: 0.93,
               letterSpacing: "-0.042em",
               animationDelay: "120ms",
             }}
@@ -113,8 +113,8 @@ export function Hero() {
             className="block animate-fade-up"
             style={{
               fontWeight: 300,
-              fontSize: "clamp(3.75rem, 13vw, 12rem)",
-              lineHeight: 0.91,
+              fontSize: "clamp(2.5rem, 7vw, 7rem)",
+              lineHeight: 0.93,
               letterSpacing: "-0.042em",
               animationDelay: "200ms",
             }}
@@ -123,11 +123,11 @@ export function Hero() {
           </span>
 
           <span
-            className="block animate-fade-up mt-6 md:mt-8"
+            className="block animate-fade-up mt-5 md:mt-6"
             style={{
               fontWeight: 700,
-              fontSize: "clamp(1.5rem, 3.8vw, 3.5rem)",
-              lineHeight: 1.0,
+              fontSize: "clamp(1.125rem, 2.4vw, 2.5rem)",
+              lineHeight: 1.1,
               letterSpacing: "-0.028em",
               animationDelay: "310ms",
             }}
