@@ -49,7 +49,7 @@ export function ModelSection() {
           {/* Left — framing (sticky) */}
           <div className="lg:sticky lg:top-36">
             <div ref={headingRef} data-reveal>
-              <p className="eyebrow text-[var(--color-background)]/28 mb-10">
+              <p className="eyebrow text-[var(--color-background)]/55 mb-10">
                 Modellen
               </p>
               <h2

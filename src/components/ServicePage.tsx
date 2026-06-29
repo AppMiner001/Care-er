@@ -101,13 +101,13 @@ function ServiceHero({
         {/* Back link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm animate-fade-in group transition-opacity hover:opacity-100"
+          className="inline-flex items-center gap-2 text-sm animate-fade-in group transition-opacity hover:opacity-100 min-h-[44px]"
           style={{
-            color: "oklch(0.982 0.003 82 / 0.28)",
+            color: "oklch(0.982 0.003 82 / 0.60)",
             animationDelay: "80ms",
           }}
         >
-          <span className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-1">←</span>
+          <span aria-hidden className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-1">←</span>
           <span>Hem</span>
         </Link>
 
@@ -115,7 +115,7 @@ function ServiceHero({
         <p
           className="eyebrow mt-14 animate-fade-in"
           style={{
-            color: "oklch(0.982 0.003 82 / 0.25)",
+            color: "oklch(0.982 0.003 82 / 0.55)",
             animationDelay: "180ms",
             letterSpacing: "0.24em",
           }}
@@ -159,7 +159,7 @@ function ServiceHero({
             fontWeight: 300,
             lineHeight: 1.6,
             fontStyle: "italic",
-            color: "oklch(0.982 0.003 82 / 0.55)",
+            color: "oklch(0.982 0.003 82 / 0.72)",
             opacity: ready ? 1 : 0,
             transition: ready ? "opacity 900ms ease 1050ms" : "none",
           }}
@@ -180,7 +180,7 @@ function IntroSection({ intro }: { intro: string }) {
     <section className="py-28 md:py-48">
       <div className="container-care">
         <p
-          className="eyebrow text-[var(--color-ink)]/28 mb-16"
+          className="eyebrow text-[var(--color-ink)]/58 mb-16"
           style={{ letterSpacing: "0.24em" }}
         >
           Vad vi gör
@@ -214,7 +214,7 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
     <section className="py-28 md:py-44 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
         <div ref={headingRef} data-reveal className="mb-20 md:mb-32">
-          <p className="eyebrow text-[var(--color-ink)]/35 mb-6">Vad du får</p>
+          <p className="eyebrow text-[var(--color-ink)]/58 mb-6">Vad du får</p>
           <h2
             className="text-[var(--color-ink)]"
             style={{
@@ -226,17 +226,17 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
           >
             Fyra löften.
           </h2>
-          <h2
+          <p
             style={{
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 300,
               lineHeight: 1.0,
               letterSpacing: "-0.038em",
-              color: "oklch(0.13 0.04 271 / 0.28)",
+              color: "oklch(0.13 0.04 271 / 0.45)",
             }}
           >
             Alla mätbara.
-          </h2>
+          </p>
         </div>
 
         {pillars.map((pillar, i) => (
@@ -299,7 +299,7 @@ function PillarRow({
         0{index + 1}
       </span>
       <h3
-        className="text-[var(--color-ink)]/68 group-hover:text-[var(--color-ink)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
+        className="text-[var(--color-ink)]/80 group-hover:text-[var(--color-ink)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
         style={{
           fontSize: "clamp(1.5rem, 2.8vw, 2.5rem)",
           fontWeight: 600,
@@ -310,7 +310,7 @@ function PillarRow({
         {pillar.title}
       </h3>
       <p
-        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/58 group-hover:text-[var(--color-ink)]/78 transition-colors duration-350"
+        className="mt-4 md:mt-0 text-lg leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
         style={{ fontWeight: 300 }}
       >
         {pillar.body}
@@ -332,7 +332,7 @@ function ApproachSection({
     <section className="py-28 md:py-52 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
         <div ref={headingRef} data-reveal className="mb-20 md:mb-36">
-          <p className="eyebrow text-[var(--color-ink)]/28 mb-7">
+          <p className="eyebrow text-[var(--color-ink)]/58 mb-7">
             Så arbetar vi
           </p>
           <h2
@@ -346,17 +346,17 @@ function ApproachSection({
           >
             Fyra steg.
           </h2>
-          <h2
+          <p
             style={{
               fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
               fontWeight: 300,
               lineHeight: 1.0,
               letterSpacing: "-0.038em",
-              color: "oklch(0.13 0.04 271 / 0.28)",
+              color: "oklch(0.13 0.04 271 / 0.45)",
             }}
           >
             Inga genvägar.
-          </h2>
+          </p>
         </div>
 
         {approach.map((a, i) => (
@@ -402,7 +402,8 @@ function ApproachStep({
 
       <div className="relative grid grid-cols-[3rem_1fr] gap-x-8 md:gap-x-12 items-start">
         <span
-          className="text-[var(--color-ink)]/20 font-semibold leading-none mt-2 tabular-nums"
+          aria-hidden
+          className="text-[var(--color-ink)]/35 font-semibold leading-none mt-2 tabular-nums"
           style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
         >
           0{index + 1}
@@ -425,7 +426,7 @@ function ApproachStep({
             {item.title}
           </h3>
           <p
-            className="mt-5 md:mt-6 text-[var(--color-ink)]/55 leading-relaxed"
+            className="mt-5 md:mt-6 text-[var(--color-ink)]/70 leading-relaxed"
             style={{
               fontSize: "clamp(1rem, 1.5vw, 1.2rem)",
               fontWeight: 300,
@@ -462,12 +463,12 @@ function NextService({
           to={to}
           className="group block container-care py-16 md:py-24"
         >
-          <p className="eyebrow text-[var(--color-ink)]/28 mb-7 group-hover:text-[var(--color-ink)]/50 transition-colors duration-300">
+          <p className="eyebrow text-[var(--color-ink)]/58 mb-7 group-hover:text-[var(--color-ink)]/75 transition-colors duration-300">
             Nästa tjänst
           </p>
           <div className="flex items-end justify-between gap-6">
             <span
-              className="text-[var(--color-ink)]/50 group-hover:text-[var(--color-ink)] transition-colors duration-400 leading-none"
+              className="text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)] transition-colors duration-400 leading-none"
               style={{
                 fontSize: "clamp(3rem, 10vw, 9rem)",
                 fontWeight: 700,

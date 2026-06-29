@@ -56,8 +56,8 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
               to={n.to}
               className={`text-sm tracking-[0.01em] transition-colors duration-200 relative group/navlink ${
                 useDark
-                  ? "text-white/48 hover:text-white/95"
-                  : "text-[var(--color-ink)]/50 hover:text-[var(--color-ink)]"
+                  ? "text-white/70 hover:text-white"
+                  : "text-[var(--color-ink)]/65 hover:text-[var(--color-ink)]"
               }`}
               activeProps={{
                 className: `text-sm tracking-[0.01em] font-medium ${
@@ -118,9 +118,9 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
           </Link>
         </nav>
 
-        {/* Mobile toggle */}
+        {/* Mobile toggle — min 44×44px touch target */}
         <button
-          className="md:hidden p-2.5 -mr-2.5 transition-opacity hover:opacity-70"
+          className="md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center transition-opacity hover:opacity-70"
           style={{
             color: useDark
               ? "oklch(0.982 0.003 82 / 0.80)"
@@ -161,8 +161,9 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
             <Link
               key={n.to}
               to={n.to}
+              tabIndex={open ? 0 : -1}
               onClick={() => setOpen(false)}
-              className="text-xl tracking-[-0.01em] text-[var(--color-ink)]/65 hover:text-[var(--color-ink)] transition-colors duration-200"
+              className="text-xl tracking-[-0.01em] text-[var(--color-ink)]/80 hover:text-[var(--color-ink)] transition-colors duration-200 min-h-[44px] flex items-center"
               style={{
                 transitionDelay: open ? `${i * 40}ms` : "0ms",
               }}
@@ -174,6 +175,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
             <Link
               to="/"
               hash="kontakt"
+              tabIndex={open ? 0 : -1}
               onClick={() => setOpen(false)}
               className="btn-primary w-fit"
             >

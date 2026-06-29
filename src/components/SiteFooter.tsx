@@ -15,9 +15,11 @@ export function SiteFooter() {
               className="mt-6 text-sm text-[var(--color-background)]/42 max-w-xs leading-relaxed"
               style={{ fontWeight: 300, lineHeight: 1.7 }}
             >
-              Vi utvecklar människor, beteenden och arbetssätt inom bemanning,
-              rekrytering, utbildning och förändring — för organisationer som
-              vet att kundmötet är deras viktigaste tillgång.
+              <span className="text-[var(--color-background)]/65 leading-relaxed block" style={{ fontWeight: 300, lineHeight: 1.7 }}>
+                Vi utvecklar människor, beteenden och arbetssätt inom bemanning,
+                rekrytering, utbildning och förändring — för organisationer som
+                vet att kundmötet är deras viktigaste tillgång.
+              </span>
             </p>
             <p className="mt-8 text-[0.65rem] text-[var(--color-background)]/22 tracking-[0.08em]">
               care-er AB · Stockholm, Sverige
@@ -26,7 +28,7 @@ export function SiteFooter() {
 
           {/* Services */}
           <div>
-            <p className="eyebrow text-[var(--color-background)]/28 mb-6">Tjänster</p>
+            <p className="eyebrow text-[var(--color-background)]/55 mb-6">Tjänster</p>
             <ul className="space-y-3.5 text-sm">
               {[
                 { to: "/tjanster/bemanning",   label: "Bemanning"   },
@@ -37,7 +39,7 @@ export function SiteFooter() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-[var(--color-background)]/50 hover:text-[var(--color-background)]/88 transition-colors duration-200"
+                    className="text-[var(--color-background)]/70 hover:text-[var(--color-background)] transition-colors duration-200"
                     style={{ fontWeight: 300 }}
                   >
                     {item.label}
@@ -49,18 +51,18 @@ export function SiteFooter() {
 
           {/* Contact */}
           <div>
-            <p className="eyebrow text-[var(--color-background)]/28 mb-6">Kontakt</p>
+            <p className="eyebrow text-[var(--color-background)]/55 mb-6">Kontakt</p>
             <ul className="space-y-3.5 text-sm">
               <li>
                 <a
                   href="mailto:hej@care-er.se"
-                  className="text-[var(--color-background)]/50 hover:text-[var(--color-background)]/88 transition-colors duration-200"
+                  className="text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
                   style={{ fontWeight: 300 }}
                 >
                   hej@care-er.se
                 </a>
               </li>
-              <li className="text-[var(--color-background)]/32" style={{ fontWeight: 300 }}>
+              <li className="text-[var(--color-background)]/60" style={{ fontWeight: 300 }}>
                 Stockholm, Sverige
               </li>
               <li>
@@ -68,7 +70,7 @@ export function SiteFooter() {
                   href="https://www.linkedin.com/company/care-er"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[var(--color-background)]/50 hover:text-[var(--color-background)]/88 transition-colors duration-200 inline-flex items-center gap-1.5 group"
+                  className="text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   style={{ fontWeight: 300 }}
                 >
                   LinkedIn
@@ -82,8 +84,8 @@ export function SiteFooter() {
 
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/[0.07] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.65rem] text-[var(--color-background)]/24 tracking-[0.04em]">
-          <p>© {new Date().getFullYear()} care-er AB · Alla rättigheter förbehållna.</p>
-          <p className="font-medium tracking-[0.10em] text-[var(--color-background)]/40 uppercase" style={{ fontSize: "0.65rem" }}>
+          <p className="text-[var(--color-background)]/50">© {new Date().getFullYear()} care-er AB · Alla rättigheter förbehållna.</p>
+          <p className="font-medium tracking-[0.10em] text-[var(--color-background)]/60 uppercase" style={{ fontSize: "0.65rem" }}>
             Service är strategi.
           </p>
         </div>

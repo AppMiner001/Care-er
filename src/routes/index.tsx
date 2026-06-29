@@ -32,7 +32,7 @@ function Index() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main-content">
         {/* 1. Immediate clarity: what they do and why it matters */}
         <Hero />
 

@@ -42,11 +42,11 @@ export function Services() {
       <div className="container-care">
 
         <div ref={headingRef} data-reveal className="mb-20 md:mb-32 max-w-2xl">
-          <p className="eyebrow text-[var(--color-ink)]/40 mb-7">Tjänster</p>
+          <p className="eyebrow text-[var(--color-ink)]/60 mb-7">Tjänster</p>
           <h2 className="display-xl text-[var(--color-ink)]">
             <span style={{ fontWeight: 700 }}>Fyra discipliner.</span>
             <br />
-            <span className="text-[var(--color-ink)]/32" style={{ fontWeight: 300 }}>
+            <span className="text-[var(--color-ink)]/50" style={{ fontWeight: 300 }}>
               Ett syfte.
             </span>
           </h2>
@@ -131,7 +131,7 @@ function ServiceRow({
           {service.outcome}
         </p>
         <p
-          className="mt-3 text-sm md:text-base text-[var(--color-ink)]/45 group-hover:text-[var(--color-ink)]/62 max-w-xl text-pretty leading-relaxed transition-colors duration-400"
+          className="mt-3 text-sm md:text-base text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)]/85 max-w-xl text-pretty leading-relaxed transition-colors duration-400"
           style={{ fontWeight: 300 }}
         >
           {service.body}

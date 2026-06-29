@@ -245,11 +245,11 @@
     transition: --service-wght 300ms ease, color 300ms ease;
   }
   .service-outcome {
-    color: oklch(0.13 0.04 271 / 0.58);
+    color: oklch(0.13 0.04 271 / 0.72);
     transition: color 350ms ease;
   }
   .service-row:hover .service-outcome {
-    color: oklch(0.13 0.04 271 / 0.88);
+    color: oklch(0.13 0.04 271 / 0.92);
   }
 
   /* ── ModelSection word crystallisation ──────────── */
@@ -284,6 +284,26 @@
       black 93%,
       transparent 100%
     );
+  }
+
+  /* ── Skip link ──────────────────────────────────── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    background: oklch(0.982 0.003 82);
+    color: oklch(0.13 0.04 271);
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    box-shadow: 0 4px 16px oklch(0.13 0.04 271 / 0.18);
+    text-decoration: none;
+    transition: top 120ms ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
   }
 
   /* ── Reduced motion ─────────────────────────────── */

@@ -17,7 +17,7 @@ export function Contact() {
 
           {/* Left — framing */}
           <div ref={headingRef} data-reveal>
-            <p className="eyebrow text-[var(--color-background)]/55 mb-8">Kontakt</p>
+            <p className="eyebrow text-[var(--color-background)]/70 mb-8">Kontakt</p>
             <h2
               className="display-xl text-[var(--color-background)] text-balance"
               style={{ fontWeight: 300, letterSpacing: "-0.038em" }}
@@ -26,7 +26,7 @@ export function Contact() {
               <br />
               <span style={{ fontWeight: 700 }}>med ett samtal.</span>
             </h2>
-            <p className="mt-8 lead text-[var(--color-background)]/52 max-w-sm text-pretty" style={{ lineHeight: 1.65 }}>
+            <p className="mt-8 lead text-[var(--color-background)]/72 max-w-sm text-pretty" style={{ lineHeight: 1.65 }}>
               Berätta var ni är. Vi berättar hur vi kan hjälpa. Vi återkommer inom 24 timmar.
             </p>
 
@@ -34,16 +34,16 @@ export function Contact() {
             <div className="mt-12 space-y-3">
               <a
                 href="mailto:hej@care-er.se"
-                className="block text-sm text-[var(--color-background)]/60 hover:text-[var(--color-background)]/90 transition-colors duration-200"
+                className="block text-sm text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
               >
                 hej@care-er.se
               </a>
-              <p className="text-sm text-[var(--color-background)]/40">Stockholm, Sverige</p>
+              <p className="text-sm text-[var(--color-background)]/65">Stockholm, Sverige</p>
             </div>
 
             {/* Context nudges */}
             <div className="mt-14 space-y-3">
-              <p className="text-[0.65rem] text-[var(--color-background)]/45 tracking-[0.20em] uppercase mb-5">
+              <p className="text-[0.65rem] text-[var(--color-background)]/65 tracking-[0.20em] uppercase mb-5">
                 Vanliga startpunkter
               </p>
               {[
@@ -54,7 +54,7 @@ export function Contact() {
               ].map((nudge) => (
                 <p
                   key={nudge}
-                  className="text-sm text-[var(--color-background)]/50 pl-3 border-l border-[var(--color-background)]/[0.14]"
+                  className="text-sm text-[var(--color-background)]/70 pl-3 border-l border-[var(--color-background)]/[0.25]"
                   style={{ fontWeight: 300, lineHeight: 1.55 }}
                 >
                   {nudge}
@@ -123,7 +123,7 @@ function ContactForm({
         <div key={f.name} className="group/field">
           <label
             htmlFor={f.name}
-            className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/55 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/80"
+            className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/72 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/95"
           >
             {f.label}
           </label>
@@ -141,7 +141,7 @@ function ContactForm({
       <div className="group/field">
         <label
           htmlFor="meddelande"
-          className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/55 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/80"
+          className="block text-[0.65rem] tracking-[0.20em] uppercase font-medium text-[var(--color-background)]/72 mb-3 transition-colors duration-200 group-focus-within/field:text-[var(--color-background)]/95"
         >
           Vad vill ni åstadkomma?
         </label>
@@ -157,11 +157,11 @@ function ContactForm({
 
       <div className="pt-3">
         {sent ? (
-          <div className="animate-fade-in">
-            <p className="text-lg text-[var(--color-background)]/85" style={{ fontWeight: 300 }}>
+          <div role="status" className="animate-fade-in">
+            <p className="text-lg text-[var(--color-background)]" style={{ fontWeight: 300 }}>
               Tack — vi hör av oss.
             </p>
-            <p className="mt-2 text-sm text-[var(--color-background)]/42">
+            <p className="mt-2 text-sm text-[var(--color-background)]/65">
               Inom 24 timmar.
             </p>
           </div>
@@ -170,7 +170,7 @@ function ContactForm({
             <button
               type="submit"
               disabled={loading}
-              className="group/btn flex items-center gap-3 text-sm text-[var(--color-background)]/48 hover:text-[var(--color-background)] transition-colors duration-250 disabled:opacity-35 disabled:cursor-not-allowed"
+              className="group/btn flex items-center gap-3 text-sm text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-250 disabled:opacity-35 disabled:cursor-not-allowed min-h-[44px]"
             >
               <span className="relative tracking-[0.10em] uppercase">
                 {loading ? "Skickar…" : "Skicka"}
@@ -183,7 +183,7 @@ function ContactForm({
               )}
             </button>
             {error && (
-              <p className="mt-5 text-sm text-red-400/80">
+              <p role="alert" className="mt-5 text-sm text-red-400">
                 Något gick fel — mejla oss på{" "}
                 <a href="mailto:hej@care-er.se" className="underline underline-offset-2">
                   hej@care-er.se

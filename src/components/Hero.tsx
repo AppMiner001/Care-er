@@ -148,7 +148,7 @@ export function Hero() {
 
         {/* Value proposition */}
         <p
-          className="lead text-[var(--color-background)]/65 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
+          className="lead text-[var(--color-background)]/80 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
           style={{ animationDelay: "500ms", lineHeight: 1.65 }}
         >
           Varje kundmöte stärker eller försvagar relationen till ett varumärke.
@@ -219,10 +219,10 @@ export function Hero() {
           <Link
             to="/"
             hash="tjanster"
-            className="group text-[var(--color-background)]/52 text-sm font-medium hover:text-[var(--color-background)]/90 transition-colors duration-200 flex items-center gap-2"
+            className="group text-[var(--color-background)]/72 text-sm font-medium hover:text-[var(--color-background)] transition-colors duration-200 flex items-center gap-2 min-h-[44px]"
           >
             Se tjänster
-            <span className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5">
+            <span aria-hidden className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5">
               ↓
             </span>
           </Link>
