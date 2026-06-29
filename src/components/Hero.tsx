@@ -91,17 +91,10 @@ export function Hero() {
       {/* ── Main content ─────────────────────────────────────────────────── */}
       <div className="container-care relative z-10 flex-1">
 
-        <p
-          className="eyebrow text-[var(--color-background)]/48 mb-10 animate-fade-in"
-          style={{ animationDelay: "80ms" }}
-        >
-          Nordiskt kompetenshus · Stockholm
-        </p>
-
         {/* Staircase headline — white on dark video */}
         <h1
           className="text-[var(--color-background)]"
-          aria-label="Service är strategi. Vi bygger den."
+          aria-label="Vi bygger det som händer i mötet mellan människa och varumärke."
         >
           <span
             className="block animate-fade-up"
@@ -113,7 +106,7 @@ export function Hero() {
               animationDelay: "120ms",
             }}
           >
-            Service
+            Vi bygger det som
           </span>
 
           <span
@@ -126,7 +119,7 @@ export function Hero() {
               animationDelay: "200ms",
             }}
           >
-            är strategi.
+            händer i mötet
           </span>
 
           <span
@@ -139,7 +132,7 @@ export function Hero() {
               animationDelay: "310ms",
             }}
           >
-            Vi bygger den.
+            mellan människa och varumärke.
           </span>
         </h1>
 
@@ -158,8 +151,9 @@ export function Hero() {
           className="lead text-[var(--color-background)]/65 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
           style={{ animationDelay: "500ms", lineHeight: 1.65 }}
         >
-          Kompetensen, beteendena och strukturerna som gör varje kundmöte
-          till en konkurrensfördel — inte en slump.
+          Varje kundmöte stärker eller försvagar relationen till ett varumärke.
+          Därför utvecklar care-er människor, beteenden och arbetssätt som får
+          kunder att komma tillbaka.
         </p>
 
         {/* Disciplines */}

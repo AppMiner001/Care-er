@@ -6,29 +6,29 @@ const services = [
   {
     to: "/tjanster/bemanning" as const,
     title: "Bemanning",
-    outcome: "Konsulter som beter sig som era egna — dag ett.",
-    body: "Vi bemannar för kundmötet, inte för skiftet. Varje person briefas mot ert varumärke och er servicestandard innan de möter en enda kund.",
+    outcome: "Rätt människor när behov uppstår.",
+    body: "Kompetens som fungerar från dag ett.",
     index: "01",
   },
   {
     to: "/tjanster/rekrytering" as const,
     title: "Rekrytering",
-    outcome: "Vi rekryterar inte för intervjun.",
-    body: "Rätt person syns sex månader in — i det kundmöte ingen av er ser. Det är det vi väljer för.",
+    outcome: "Människor som passar kulturen, rollen och framtiden.",
+    body: "Vi rekryterar för långsiktig effekt – inte bara rätt CV.",
     index: "02",
   },
   {
     to: "/tjanster/utbildning" as const,
     title: "Utbildning",
-    outcome: "Träning som håller när ingen tittar.",
-    body: "De flesta program förbereder för kursdagen. Vi tränar för vardagen efteråt — när situationerna är oförutsedda och chefen inte är i rummet.",
+    outcome: "Service och beteenden som stärker varje kundmöte.",
+    body: "Praktisk träning som märks i nästa kundkontakt.",
     index: "03",
   },
   {
     to: "/tjanster/change" as const,
     title: "Transformation",
-    outcome: "Kultur är vad folk gör när chefen inte ser.",
-    body: "Vi bygger strukturer och beteenden som håller när projektet är slut och vi har lämnat. Det är det enda som räknas.",
+    outcome: "Förändring som fungerar i vardagen.",
+    body: "Vi bygger strukturer och beteenden som består när projektet är slut.",
     index: "04",
   },
 ] as const;
@@ -47,7 +47,7 @@ export function Services() {
             <span style={{ fontWeight: 700 }}>Fyra discipliner.</span>
             <br />
             <span className="text-[var(--color-ink)]/32" style={{ fontWeight: 300 }}>
-              En gemensam modell.
+              Ett syfte.
             </span>
           </h2>
         </div>

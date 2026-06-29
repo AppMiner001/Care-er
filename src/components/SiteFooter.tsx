@@ -15,9 +15,9 @@ export function SiteFooter() {
               className="mt-6 text-sm text-[var(--color-background)]/42 max-w-xs leading-relaxed"
               style={{ fontWeight: 300, lineHeight: 1.7 }}
             >
-              Nordiskt kompetenshus inom bemanning, rekrytering, utbildning
-              och förändring — för serviceorganisationer som vet att kundmötet
-              är deras viktigaste tillgång.
+              Vi utvecklar människor, beteenden och arbetssätt inom bemanning,
+              rekrytering, utbildning och förändring — för organisationer som
+              vet att kundmötet är deras viktigaste tillgång.
             </p>
             <p className="mt-8 text-[0.65rem] text-[var(--color-background)]/22 tracking-[0.08em]">
               care-er AB · Stockholm, Sverige

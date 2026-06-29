@@ -5,28 +5,28 @@ const steps = [
     num: "01",
     word: "Beteende",
     line1: "Det vi gör i varje möte.",
-    line2: "Alltid mätbart. Alltid lärbart.",
+    line2: "Det är där allt börjar.",
     emergeDelay: undefined,
   },
   {
     num: "02",
     word: "Känsla",
-    line1: "Kunden minns inte vad du sa.",
-    line2: "De minns hur de kände sig.",
+    line1: "Det är inte mötet kunden minns.",
+    line2: "Det är känslan mötet lämnar efter sig.",
     emergeDelay: "120",
   },
   {
     num: "03",
     word: "Förtroende",
-    line1: "Byggs i ett möte.",
-    line2: "Kan rivas i nästa.",
+    line1: "Byggs i varje möte.",
+    line2: "Kan raseras i nästa.",
     emergeDelay: "240",
   },
   {
     num: "04",
     word: "Lojalitet",
-    line1: "De väljer er igen — utan att jämföra.",
-    line2: "Det är vad ett kundmöte kan bli.",
+    line1: "De väljer dig igen – utan att jämföra.",
+    line2: "Det är ett starkt varumärkes största tillgång.",
     emergeDelay: "360",
   },
 ] as const;
@@ -61,27 +61,13 @@ export function ModelSection() {
                   letterSpacing: "-0.038em",
                 }}
               >
-                En linje
-              </h2>
-              <h2
-                className="text-[var(--color-background)]/38 text-balance"
-                style={{
-                  fontSize: "clamp(2.5rem, 5.5vw, 5rem)",
-                  fontWeight: 300,
-                  lineHeight: 1.0,
-                  letterSpacing: "-0.038em",
-                }}
-              >
-                från handling
-                <br />
-                till lojalitet.
+                Så byggs kundlojalitet.
               </h2>
               <p
                 className="mt-12 text-[var(--color-background)]/40 leading-relaxed max-w-[22ch] text-pretty"
                 style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)", fontWeight: 300, lineHeight: 1.7 }}
               >
-                Alla fyra tjänster är byggda kring samma modell — det är det
-                som gör dem till ett system, inte en meny.
+                Beteenden skapar känslor. Känslor bygger förtroende. Förtroende skapar lojalitet.
               </p>
             </div>
           </div>
@@ -91,7 +77,6 @@ export function ModelSection() {
             {steps.map((step, i) => (
               <StepRow key={step.word} step={step} index={i} />
             ))}
-            <ClosingStatement />
           </div>
 
         </div>
@@ -153,14 +138,14 @@ function StepRow({
             {step.word}
           </h3>
           <p
-            className="mt-6 text-[var(--color-background)]/58 leading-snug"
-            style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", fontWeight: 300 }}
+            className="mt-6 text-[var(--color-background)]/72 leading-snug"
+            style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.25rem)", fontWeight: 300 }}
           >
             {step.line1}
           </p>
           <p
-            className="mt-1.5 text-[var(--color-background)]/30"
-            style={{ fontSize: "clamp(0.85rem, 1.2vw, 0.95rem)", fontWeight: 300 }}
+            className="mt-2 text-[var(--color-background)]/44"
+            style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", fontWeight: 300 }}
           >
             {step.line2}
           </p>
@@ -170,21 +155,3 @@ function StepRow({
   );
 }
 
-function ClosingStatement() {
-  const ref = useReveal<HTMLDivElement>();
-  return (
-    <div
-      ref={ref}
-      data-reveal
-      className="mt-10 pt-10 border-t border-[var(--color-background)]/[0.07]"
-    >
-      <p
-        className="text-[var(--color-background)]/52 text-pretty"
-        style={{ fontSize: "clamp(1rem, 1.6vw, 1.15rem)", fontWeight: 300, maxWidth: "36ch", lineHeight: 1.7 }}
-      >
-        care-er är det enda kompetenshuset som bygger hela kedjan — inte bara
-        rekryteringen, inte bara träningen, utan hur allt hänger ihop.
-      </p>
-    </div>
-  );
-}
