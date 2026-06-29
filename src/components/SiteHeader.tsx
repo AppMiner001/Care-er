@@ -30,26 +30,28 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
   }, [open]);
 
   const useDark = forceDark && !scrolled;
+  // Hide nav items when header has no background (transparent) and not on dark hero
+  const navVisible = scrolled || forceDark;
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 border-b ${
         scrolled
-          ? "backdrop-blur-xl bg-[var(--color-background)]/88 border-b border-[var(--color-ink)]/[0.06]"
-          : "bg-transparent"
+          ? "backdrop-blur-xl bg-[var(--color-background)]/88 border-[var(--color-ink)]/[0.06]"
+          : "bg-transparent border-transparent"
       }`}
     >
       <div className="container-care flex items-center justify-between h-[4.25rem]">
         <Logo
-          className={
-            useDark
+          className={`[&_img]:transition-[filter] [&_img]:duration-500 ${
+            useDark || !navVisible
               ? "[&_img]:brightness-0 [&_img]:invert"
               : ""
-          }
+          }`}
         />
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className={`hidden md:flex items-center gap-7 transition-opacity duration-300 ${navVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -120,7 +122,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
 
         {/* Mobile toggle — min 44×44px touch target */}
         <button
-          className="md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center transition-opacity hover:opacity-70"
+          className={`md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300 ${navVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           style={{
             color: useDark
               ? "oklch(0.982 0.003 82 / 0.80)"

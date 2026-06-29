@@ -23,7 +23,7 @@ export const Route = createFileRoute("/tjanster/bemanning")({
       eyebrow="Tjänst 01"
       title="Bemanning som syns i kundmötet — från dag ett."
       lede="Rätt människor när behovet uppstår. Vi bemannar med människor vars beteenden stärker kundmötet redan från första dagen."
-      intro="Vi ser bemanning som en del av kundupplevelsen, inte en bemanningsrad i ett schema. Varje person vi placerar är förberedd, briefad och tränad för att skapa kundmöten som stärker ett varumärke – så att fler kunder vill komma tillbaka."
+      intro="Vi ser bemanning som en del av kundupplevelsen, inte en bemanningsrad i ett schema. Varje person vi placerar är förberedd, briefad och tränad för att skapa kundmöten som stärker ert varumärke – så att fler kunder vill komma tillbaka."
       pillars={[
         { title: "Snabb tillgång", body: "Kvalificerade konsulter på plats när behovet uppstår — utan att tumma på matchningen." },
         { title: "Förberedda från dag ett", body: "Varje konsult kommer briefad om er kultur, tonalitet och servicestandard." },

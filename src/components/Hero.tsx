@@ -35,7 +35,6 @@ export function Hero() {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
         autoPlay
         muted
-        loop
         playsInline
         preload="metadata"
         poster="/hero-poster.svg"
