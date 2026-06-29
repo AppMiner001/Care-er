@@ -64,7 +64,7 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="text-[var(--color-background)]/60" style={{ fontWeight: 300 }}>
-                Föreningsgatan 14, 411 27 Göteborg
+                Föreningsgatan 14<br />411 27 Göteborg
               </li>
               <li>
                 <a

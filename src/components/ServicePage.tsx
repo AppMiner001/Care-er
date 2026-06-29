@@ -177,7 +177,7 @@ function IntroSection({ intro }: { intro: string }) {
   const ref = useReveal<HTMLParagraphElement>(0.18);
 
   return (
-    <section className="py-28 md:py-48">
+    <section className="py-20 md:py-28">
       <div className="container-care">
         <p
           className="eyebrow text-[var(--color-ink)]/58 mb-16"
@@ -211,7 +211,7 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-28 md:py-44 border-t border-[var(--color-ink)]/[0.07]">
+    <section className="py-20 md:py-28 bg-[var(--color-surface)] border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
         <div ref={headingRef} data-reveal className="mb-20 md:mb-32">
           <p className="eyebrow text-[var(--color-ink)]/58 mb-6">Vad du får</p>
@@ -329,9 +329,9 @@ function ApproachSection({
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-28 md:py-52 border-t border-[var(--color-ink)]/[0.07]">
+    <section className="py-20 md:py-28 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-36">
+        <div ref={headingRef} data-reveal className="mb-14 md:mb-20">
           <p className="eyebrow text-[var(--color-ink)]/58 mb-7">
             Så arbetar vi
           </p>

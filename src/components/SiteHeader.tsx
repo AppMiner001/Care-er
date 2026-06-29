@@ -62,11 +62,14 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
                   : "text-[var(--color-ink)]/65 hover:text-[var(--color-ink)]"
               }`}
               activeProps={{
-                className: `text-sm tracking-[0.01em] font-bold underline underline-offset-4 decoration-[0.5px] ${
-                  useDark
-                    ? "text-white decoration-white/50"
-                    : "text-[var(--color-ink)] decoration-[var(--color-ink)]/40"
-                }`,
+                className: `font-bold ${useDark ? "!text-white" : "!text-[var(--color-ink)]"}`,
+                style: {
+                  textDecoration: "underline",
+                  textUnderlineOffset: "4px",
+                  textDecorationColor: useDark
+                    ? "oklch(0.982 0.003 82 / 0.50)"
+                    : "oklch(0.13 0.04 271 / 0.40)",
+                },
               }}
             >
               {n.label}

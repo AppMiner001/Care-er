@@ -46,7 +46,9 @@ export function Contact() {
               >
                 hej@care-er.se
               </a>
-              <p className="text-sm text-[var(--color-background)]/65">Föreningsgatan 14, 411 27 Göteborg</p>
+              <p className="text-sm text-[var(--color-background)]/65">
+                Föreningsgatan 14<br />411 27 Göteborg
+              </p>
               <a
                 href="tel:+46317610800"
                 className="block text-sm text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
