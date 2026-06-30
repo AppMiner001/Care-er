@@ -11,18 +11,27 @@ export function Hero() {
     const vid = videoRef.current;
     if (!vid) return;
 
-    const apply = (reduced: boolean) => {
-      if (reduced) {
-        vid.pause();
-      } else {
+    const tryPlay = () => {
+      if (!mq.matches) {
         vid.play().catch(() => {});
       }
     };
 
-    apply(mq.matches);
-    const handler = (e: MediaQueryListEvent) => apply(e.matches);
+    // Try immediately (desktop, already buffered)
+    tryPlay();
+
+    // Fallback for mobile: retry when the browser has enough data to start playback
+    vid.addEventListener("canplay", tryPlay, { once: true });
+
+    const handler = (e: MediaQueryListEvent) => {
+      e.matches ? vid.pause() : vid.play().catch(() => {});
+    };
     mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
+
+    return () => {
+      mq.removeEventListener("change", handler);
+      vid.removeEventListener("canplay", tryPlay);
+    };
   }, []);
 
   return (
@@ -36,7 +45,7 @@ export function Hero() {
         autoPlay
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         poster="/hero-poster.svg"
         aria-hidden
       >
@@ -138,7 +147,7 @@ export function Hero() {
         {/* Divider */}
         <div
           aria-hidden
-          className="mt-10 md:mt-12 h-px max-w-2xl"
+          className="mt-7 md:mt-12 h-px max-w-2xl"
           style={{
             background: "oklch(0.982 0.003 82 / 0.18)",
             animation: "draw-line 900ms cubic-bezier(0.16, 1, 0.3, 1) 650ms both",
@@ -147,7 +156,7 @@ export function Hero() {
 
         {/* Value proposition */}
         <p
-          className="lead text-[var(--color-background)]/80 mt-8 md:mt-10 max-w-lg text-pretty animate-fade-up"
+          className="lead text-[var(--color-background)]/80 mt-6 md:mt-10 max-w-lg text-pretty animate-fade-up"
           style={{ animationDelay: "500ms", lineHeight: 1.65 }}
         >
           Varje kundmöte stärker eller försvagar relationen till ett varumärke.
@@ -165,7 +174,7 @@ export function Hero() {
 
         {/* CTAs */}
         <div
-          className="mt-10 flex flex-wrap items-center gap-7 animate-fade-in"
+          className="mt-8 md:mt-10 flex flex-wrap items-center gap-5 md:gap-7 animate-fade-in"
           style={{ animationDelay: "750ms" }}
         >
           {/* Primary CTA — light button on dark video */}
@@ -254,7 +263,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="pb-20 md:pb-28" />
+      <div className="pb-14 md:pb-28" />
 
     </section>
   );

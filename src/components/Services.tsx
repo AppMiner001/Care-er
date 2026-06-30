@@ -38,10 +38,10 @@ export function Services() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="tjanster" className="py-28 md:py-44 scroll-mt-24">
+    <section id="tjanster" className="py-16 md:py-44 scroll-mt-24">
       <div className="container-care">
 
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-32 max-w-2xl">
+        <div ref={headingRef} data-reveal className="mb-12 md:mb-32 max-w-2xl">
           <p className="eyebrow text-[var(--color-ink)]/60 mb-7">Tjänster</p>
           <h2 className="display-xl text-[var(--color-ink)]">
             <span style={{ fontWeight: 700 }}>Fyra discipliner.</span>
@@ -102,7 +102,7 @@ function ServiceRow({
       to={service.to}
       data-reveal
       data-delay={delay > 0 ? (String(delay) as "100" | "200" | "300") : undefined}
-      className="service-row group grid md:grid-cols-[5rem_1fr_auto] items-start gap-x-8 md:gap-x-14 py-12 md:py-16 border-t border-[var(--color-ink)]/[0.07] last:border-b last:border-[var(--color-ink)]/[0.07]"
+      className="service-row group grid grid-cols-[1fr_auto] md:grid-cols-[5rem_1fr_auto] items-start gap-x-6 md:gap-x-14 py-9 md:py-16 border-t border-[var(--color-ink)]/[0.07] last:border-b last:border-[var(--color-ink)]/[0.07]"
       style={{
         opacity: dimmed ? 0.32 : 1,
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",

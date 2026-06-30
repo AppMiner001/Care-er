@@ -41,13 +41,13 @@ export function StatementSection() {
         />
       </div>
 
-      <div className="container-care relative z-10 py-32 text-center">
+      <div className="container-care relative z-10 py-20 md:py-32 text-center">
 
         {/* Line 1 — wipes from left */}
         <p
           className="text-[var(--color-background)]/42 leading-[0.91] tracking-[-0.042em]"
           style={{
-            fontSize: "clamp(3.25rem, 9.5vw, 8.5rem)",
+            fontSize: "clamp(2rem, 7.5vw, 8.5rem)",
             fontWeight: 300,
             clipPath: visible ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
             transition: visible
@@ -62,7 +62,7 @@ export function StatementSection() {
         <p
           className="text-[var(--color-background)] leading-[0.91] tracking-[-0.042em]"
           style={{
-            fontSize: "clamp(3.25rem, 9.5vw, 8.5rem)",
+            fontSize: "clamp(2rem, 7.5vw, 8.5rem)",
             fontWeight: 700,
             clipPath: visible ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
             transition: visible

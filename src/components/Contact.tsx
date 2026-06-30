@@ -20,7 +20,7 @@ export function Contact() {
       id="kontakt"
       className="scroll-mt-24 bg-[var(--color-ink)] text-[var(--color-background)]"
     >
-      <div className="container-care py-28 md:py-48">
+      <div className="container-care py-16 md:py-48">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-36 items-start">
 
           {/* Left — framing */}
@@ -39,7 +39,7 @@ export function Contact() {
             </p>
 
             {/* Direct contact */}
-            <div className="mt-12 space-y-3">
+            <div className="mt-8 md:mt-12 space-y-3">
               <a
                 href="mailto:hej@care-er.se"
                 className="block text-sm text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200"
@@ -58,7 +58,7 @@ export function Contact() {
             </div>
 
             {/* Context nudges */}
-            <div className="mt-14 space-y-3">
+            <div className="mt-10 md:mt-14 space-y-3">
               <p className="text-[0.65rem] text-[var(--color-background)]/65 tracking-[0.20em] uppercase mb-5">
                 Vanliga startpunkter
               </p>

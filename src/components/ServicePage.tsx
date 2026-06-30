@@ -177,10 +177,10 @@ function IntroSection({ intro }: { intro: string }) {
   const ref = useReveal<HTMLParagraphElement>(0.18);
 
   return (
-    <section className="py-20 md:py-28">
+    <section className="py-12 md:py-28">
       <div className="container-care">
         <p
-          className="eyebrow text-[var(--color-ink)]/58 mb-16"
+          className="eyebrow text-[var(--color-ink)]/58 mb-10 md:mb-16"
           style={{ letterSpacing: "0.24em" }}
         >
           Vad vi gör
@@ -211,9 +211,9 @@ function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-20 md:py-28 bg-[var(--color-surface)] border-t border-[var(--color-ink)]/[0.07]">
+    <section className="py-12 md:py-28 bg-[var(--color-surface)] border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="mb-20 md:mb-32">
+        <div ref={headingRef} data-reveal className="mb-12 md:mb-32">
           <p className="eyebrow text-[var(--color-ink)]/58 mb-6">Vad du får</p>
           <h2
             className="text-[var(--color-ink)]"
@@ -281,7 +281,7 @@ function PillarRow({
           ? (String(index * 100) as "100" | "200" | "300")
           : undefined
       }
-      className="group grid md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-10 md:gap-x-16 py-10 md:py-14 border-t border-[var(--color-ink)]/[0.07]"
+      className="group grid md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-10 md:gap-x-16 py-8 md:py-14 border-t border-[var(--color-ink)]/[0.07]"
       style={{
         opacity: dimmed ? 0.30 : 1,
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -329,9 +329,9 @@ function ApproachSection({
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="py-20 md:py-28 border-t border-[var(--color-ink)]/[0.07]">
+    <section className="py-12 md:py-28 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="mb-14 md:mb-20">
+        <div ref={headingRef} data-reveal className="mb-10 md:mb-20">
           <p className="eyebrow text-[var(--color-ink)]/58 mb-7">
             Så arbetar vi
           </p>
@@ -385,7 +385,7 @@ function ApproachStep({
           ? (String(index * 100) as "100" | "200" | "300")
           : undefined
       }
-      className="relative py-10 md:py-14 border-t border-[var(--color-ink)]/[0.06] overflow-hidden"
+      className="relative py-8 md:py-14 border-t border-[var(--color-ink)]/[0.06] overflow-hidden"
     >
       {/* Ghost step number — aligned left so 0 sits above small 0 */}
       <span

@@ -36,7 +36,7 @@ export function ModelSection() {
 
   return (
     <section className="bg-[var(--color-surface)] text-[var(--color-ink)]">
-      <div className="container-care py-28 md:py-52">
+      <div className="container-care py-16 md:py-52">
 
         <div className="grid lg:grid-cols-[1fr_1.7fr] gap-16 lg:gap-36 items-start">
 
@@ -94,7 +94,7 @@ function StepRow({
       ref={ref}
       data-reveal
       data-delay={delay > 0 ? String(delay) : undefined}
-      className="relative py-10 md:py-14 border-t border-[var(--color-ink)]/[0.08] first:border-t-0 overflow-hidden"
+      className="relative py-8 md:py-14 border-t border-[var(--color-ink)]/[0.08] first:border-t-0 overflow-hidden"
     >
       {/* Ghost number */}
       <span
