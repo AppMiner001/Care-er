@@ -85,7 +85,6 @@ export function Hero() {
         ref={videoRef}
         data-hero-video
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-        autoPlay
         muted
         loop
         playsInline
