@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Only apply hover styles on devices with a real pointer (mouse/trackpad).
+   Prevents hover states from "sticking" after tap on iOS/Android. */
+@custom-variant hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
 @theme inline {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
@@ -233,10 +243,15 @@
       background-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .service-row:hover {
-    --service-wght: 750;
-    background-color: oklch(0.13 0.04 271 / 0.038);
-    box-shadow: inset 2px 0 0 oklch(0.13 0.04 271 / 0.45);
+  @media (hover: hover) and (pointer: fine) {
+    .service-row:hover {
+      --service-wght: 750;
+      background-color: oklch(0.13 0.04 271 / 0.038);
+      box-shadow: inset 2px 0 0 oklch(0.13 0.04 271 / 0.45);
+    }
+    .service-row:hover .service-outcome {
+      color: oklch(0.13 0.04 271 / 0.92);
+    }
   }
   .service-name {
     font-variation-settings: "wght" var(--service-wght);
@@ -245,9 +260,6 @@
   .service-outcome {
     color: oklch(0.13 0.04 271 / 0.72);
     transition: color 350ms ease;
-  }
-  .service-row:hover .service-outcome {
-    color: oklch(0.13 0.04 271 / 0.92);
   }
 
   /* ── ModelSection word crystallisation ──────────── */
@@ -264,7 +276,9 @@
     width: max-content;
     animation: marquee 36s linear infinite;
   }
-  .marquee-track:hover { animation-play-state: paused; }
+  @media (hover: hover) and (pointer: fine) {
+    .marquee-track:hover { animation-play-state: paused; }
+  }
 
   /* Fade edges of the marquee */
   .marquee-wrap {
@@ -347,10 +361,12 @@
       transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
       box-shadow 320ms ease;
   }
-  .btn-primary:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
-    box-shadow: 0 8px 28px oklch(0.13 0.04 271 / 0.22);
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px oklch(0.13 0.04 271 / 0.22);
+    }
   }
   .btn-primary:active {
     transform: translateY(0px);
@@ -370,5 +386,7 @@
     border-bottom: 1px solid oklch(0.13 0.04 271 / 0.18);
     transition: border-color 250ms ease, opacity 250ms ease;
   }
-  .btn-ghost:hover { border-color: oklch(0.13 0.04 271 / 0.7); }
+  @media (hover: hover) and (pointer: fine) {
+    .btn-ghost:hover { border-color: oklch(0.13 0.04 271 / 0.7); }
+  }
 }
