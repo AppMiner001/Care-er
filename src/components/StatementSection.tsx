@@ -60,7 +60,7 @@ export function StatementSection() {
 
         {/* Line 2 — wipes 480ms after line 1 */}
         <p
-          className="text-[var(--color-background)] leading-[0.91] tracking-[-0.042em]"
+          className="mt-3 md:mt-5 text-[var(--color-background)] leading-[0.91] tracking-[-0.042em]"
           style={{
             fontSize: "clamp(2rem, 7.5vw, 8.5rem)",
             fontWeight: 700,
