@@ -7,34 +7,73 @@ export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const vid = videoRef.current;
     if (!vid) return;
 
-    // Required for older iOS Safari
+    // React known bug: `muted` prop is not always set as a DOM property.
+    // Browsers block autoplay if the property (not just attribute) isn't true.
+    vid.muted = true;
+    vid.setAttribute("playsinline", "");
     vid.setAttribute("webkit-playsinline", "");
 
-    const tryPlay = () => void vid.play().catch(() => {});
-
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (mq.matches) {
       vid.pause();
-    } else {
-      // load() resets the media element — critical for iOS autoplay
-      vid.load();
-      tryPlay();
-      vid.addEventListener("canplay",    tryPlay, { once: true });
-      vid.addEventListener("loadeddata", tryPlay, { once: true });
+      const h = (e: MediaQueryListEvent) => { if (!e.matches) attempt(); };
+      mq.addEventListener("change", h);
+      return () => mq.removeEventListener("change", h);
     }
 
-    const handler = (e: MediaQueryListEvent) => {
-      e.matches ? vid.pause() : tryPlay();
+    let stopped = false;
+
+    const attempt = () => {
+      if (stopped || !vid.paused) return;
+      vid.muted = true;
+      void vid.play().catch(() => {});
     };
-    mq.addEventListener("change", handler);
+
+    // Start loading and make first attempt
+    vid.load();
+    attempt();
+
+    // Retry on video data events
+    vid.addEventListener("canplay",    attempt, { once: true });
+    vid.addEventListener("loadeddata", attempt, { once: true });
+
+    // Retry every 500 ms for 6 s — handles slow mobile networks
+    let retries = 0;
+    const interval = setInterval(() => {
+      if (!vid.paused || retries++ > 12) { clearInterval(interval); return; }
+      attempt();
+    }, 500);
+
+    // Retry when page becomes visible (e.g. switching tabs on mobile)
+    const onVisible = () => { if (document.visibilityState === "visible") attempt(); };
+    document.addEventListener("visibilitychange", onVisible);
+
+    // Guaranteed fallback: any user touch/click unlocks autoplay policy
+    const onGesture = () => attempt();
+    document.addEventListener("touchstart",  onGesture, { passive: true, once: true });
+    document.addEventListener("pointerdown", onGesture, { once: true });
+    document.addEventListener("click",       onGesture, { once: true });
+    document.addEventListener("scroll",      onGesture, { passive: true, once: true });
+
+    const mqHandler = (e: MediaQueryListEvent) => {
+      e.matches ? vid.pause() : attempt();
+    };
+    mq.addEventListener("change", mqHandler);
 
     return () => {
-      mq.removeEventListener("change", handler);
-      vid.removeEventListener("canplay",    tryPlay);
-      vid.removeEventListener("loadeddata", tryPlay);
+      stopped = true;
+      clearInterval(interval);
+      mq.removeEventListener("change", mqHandler);
+      document.removeEventListener("visibilitychange", onVisible);
+      vid.removeEventListener("canplay",    attempt);
+      vid.removeEventListener("loadeddata", attempt);
+      document.removeEventListener("touchstart",  onGesture);
+      document.removeEventListener("pointerdown", onGesture);
+      document.removeEventListener("click",       onGesture);
+      document.removeEventListener("scroll",      onGesture);
     };
   }, []);
 
@@ -54,6 +93,9 @@ export function Hero() {
         poster="/hero-poster.svg"
         aria-hidden
       >
+        {/* Mobile: 1.6 MB optimerad version — avgörande för autoplay på mobil */}
+        <source src="/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+        {/* Desktop: full kvalitet */}
         <source src="/hero.mp4" type="video/mp4" />
       </video>
 
