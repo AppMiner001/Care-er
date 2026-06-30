@@ -11,26 +11,30 @@ export function Hero() {
     const vid = videoRef.current;
     if (!vid) return;
 
-    const tryPlay = () => {
-      if (!mq.matches) {
-        vid.play().catch(() => {});
-      }
-    };
+    // Required for older iOS Safari
+    vid.setAttribute("webkit-playsinline", "");
 
-    // Try immediately (desktop, already buffered)
-    tryPlay();
+    const tryPlay = () => void vid.play().catch(() => {});
 
-    // Fallback for mobile: retry when the browser has enough data to start playback
-    vid.addEventListener("canplay", tryPlay, { once: true });
+    if (mq.matches) {
+      vid.pause();
+    } else {
+      // load() resets the media element — critical for iOS autoplay
+      vid.load();
+      tryPlay();
+      vid.addEventListener("canplay",    tryPlay, { once: true });
+      vid.addEventListener("loadeddata", tryPlay, { once: true });
+    }
 
     const handler = (e: MediaQueryListEvent) => {
-      e.matches ? vid.pause() : vid.play().catch(() => {});
+      e.matches ? vid.pause() : tryPlay();
     };
     mq.addEventListener("change", handler);
 
     return () => {
       mq.removeEventListener("change", handler);
-      vid.removeEventListener("canplay", tryPlay);
+      vid.removeEventListener("canplay",    tryPlay);
+      vid.removeEventListener("loadeddata", tryPlay);
     };
   }, []);
 
@@ -44,6 +48,7 @@ export function Hero() {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
         autoPlay
         muted
+        loop
         playsInline
         preload="auto"
         poster="/hero-poster.svg"

@@ -322,9 +322,9 @@
       animation: none !important;
       white-space: nowrap;
     }
-    /* Hide hero video; poster + overlay remain visible */
+    /* Pause hero video — poster + overlay remain visible */
     video[data-hero-video] {
-      display: none !important;
+      animation-play-state: paused !important;
     }
     html { scroll-behavior: auto !important; }
   }
