@@ -81,6 +81,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary" },
     ],
     links: [
+      { rel: "preload", href: "/hero-mobile.mp4", as: "video", type: "video/mp4", media: "(max-width: 767px)" } as never,
+      { rel: "preload", href: "/hero.mp4", as: "video", type: "video/mp4", media: "(min-width: 768px)" } as never,
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" },

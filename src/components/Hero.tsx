@@ -32,8 +32,8 @@ export function Hero() {
       void vid.play().catch(() => {});
     };
 
-    // Start loading and make first attempt
-    vid.load();
+    // Don't call vid.load() — browser already started preloading from HTML.
+    // load() would restart the download from scratch and delay playback.
     attempt();
 
     // Retry on video data events
