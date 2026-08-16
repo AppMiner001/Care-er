@@ -281,7 +281,7 @@ function PillarRow({
           ? (String(index * 100) as "100" | "200" | "300")
           : undefined
       }
-      className="group grid md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-10 md:gap-x-16 py-8 md:py-14 border-t border-[var(--color-ink)]/[0.07]"
+      className="group relative grid grid-cols-[3rem_1fr] md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-6 md:gap-x-16 py-8 md:py-14 border-t border-[var(--color-ink)]/[0.07] overflow-hidden"
       style={{
         opacity: dimmed ? 0.30 : 1,
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -290,7 +290,8 @@ function PillarRow({
       onMouseLeave={onLeave}
     >
       <span
-        className="hidden md:block font-bold leading-none pt-1.5 text-[var(--color-ink)]/[0.07] group-hover:text-[var(--color-ink)]/[0.22] transition-colors duration-500 tabular-nums"
+        aria-hidden
+        className="font-bold leading-none pt-1.5 text-[var(--color-ink)]/[0.16] md:text-[var(--color-ink)]/[0.07] group-hover:text-[var(--color-ink)]/[0.22] transition-colors duration-500 tabular-nums"
         style={{
           fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
           letterSpacing: "-0.04em",
@@ -310,7 +311,7 @@ function PillarRow({
         {pillar.title}
       </h3>
       <p
-        className="mt-4 md:mt-0 leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
+        className="col-start-2 md:col-start-3 mt-4 md:mt-0 leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
         style={{ fontSize: "clamp(1.35rem, 2.2vw, 2rem)", fontWeight: 300 }}
       >
         {pillar.body}
@@ -466,11 +467,11 @@ function NextService({
           <p className="eyebrow text-[var(--color-ink)]/58 mb-7 group-hover:text-[var(--color-ink)]/75 transition-colors duration-300">
             Nästa tjänst
           </p>
-          <div className="flex items-end justify-between gap-6">
+          <div className="flex items-end justify-between gap-3 md:gap-6 min-w-0">
             <span
-              className="text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)] transition-colors duration-400 leading-none"
+              className="min-w-0 text-[var(--color-ink)]/65 group-hover:text-[var(--color-ink)] transition-colors duration-400 leading-none"
               style={{
-                fontSize: "clamp(3rem, 10vw, 9rem)",
+                fontSize: "clamp(2.25rem, 10vw, 9rem)",
                 fontWeight: 700,
                 letterSpacing: "-0.042em",
               }}
@@ -478,7 +479,7 @@ function NextService({
               {label}
             </span>
             <span
-              className="text-4xl md:text-6xl shrink-0 mb-2 text-[var(--color-ink)]/16 group-hover:text-[var(--color-ink)]/65 inline-block transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 group-hover:-translate-y-1.5"
+              className="text-3xl md:text-6xl shrink-0 mb-1 md:mb-2 text-[var(--color-ink)]/16 group-hover:text-[var(--color-ink)]/65 inline-block transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 group-hover:-translate-y-1.5"
             >
               →
             </span>

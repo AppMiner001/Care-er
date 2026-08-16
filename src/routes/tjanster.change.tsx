@@ -36,7 +36,7 @@ export const Route = createFileRoute("/tjanster/change")({
         { step: "Steg 03", title: "Bygga", body: "Vi sjösätter tillsammans, lär längs vägen och justerar löpande." },
         { step: "Steg 04", title: "Släppa", body: "Vi lämnar över först när förändringen fungerar utan oss." },
       ]}
-      next={{ label: "Bemanning", to: "/tjanster/bemanning" }}
+      next={{ label: "Rekrytering", to: "/tjanster/rekrytering" }}
     />
   ),
 });

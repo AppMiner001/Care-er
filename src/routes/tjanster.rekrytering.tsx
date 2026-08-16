@@ -20,7 +20,7 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
   }),
   component: () => (
     <ServicePage
-      eyebrow="Tjänst 02"
+      eyebrow="Tjänst 01"
       title="Rekrytering för det som finns kvar om tre år."
       lede="Vi rekryterar inte bara för att fylla en roll. Vi rekryterar människor som stärker kundmötet – så att fler kunder vill komma tillbaka."
       intro="Vår rekryteringsprocess är byggd för att hitta människor som inte bara klarar rollen, utan stärker kundmötet. Därför väger vi beteende, värderingar och utvecklingspotential lika tungt som erfarenhet."
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
         { step: "Steg 03", title: "Välja", body: "Strukturerade intervjuer, relevanta case och noggrann referenstagning." },
         { step: "Steg 04", title: "Lyckas", body: "Vi följer onboarding och check-ins under första halvåret." },
       ]}
-      next={{ label: "Utbildning", to: "/tjanster/utbildning" }}
+      next={{ label: "Bemanning", to: "/tjanster/bemanning" }}
     />
   ),
 });

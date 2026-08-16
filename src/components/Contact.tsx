@@ -57,23 +57,6 @@ export function Contact() {
               </a>
             </div>
 
-            {/* Context nudges */}
-            <div className="mt-10 md:mt-14 space-y-3">
-              <p className="text-[0.65rem] text-[var(--color-background)]/65 tracking-[0.20em] uppercase mb-5">
-                Vanliga startpunkter
-              </p>
-              {NUDGES.map((nudge) => (
-                <button
-                  key={nudge}
-                  type="button"
-                  onClick={() => setMessage((prev) => prev ? prev + "\n" + nudge : nudge)}
-                  className="block w-full text-left text-sm text-[var(--color-background)]/70 hover:text-[var(--color-background)] pl-3 border-l border-[var(--color-background)]/[0.25] hover:border-[var(--color-background)]/60 transition-all duration-200 min-h-[44px] flex items-center"
-                  style={{ fontWeight: 300, lineHeight: 1.55 }}
-                >
-                  {nudge}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Right — form */}
@@ -172,6 +155,25 @@ function ContactForm({
           placeholder="Beskriv utmaningen eller behovet…"
           className="w-full bg-transparent border-b border-white/[0.18] focus:border-white/55 pb-3 text-[var(--color-background)] text-lg outline-none resize-none transition-all duration-300 placeholder:text-white/[0.25] placeholder:font-light"
         />
+      </div>
+
+      <div className="pt-1">
+        <p className="text-[0.65rem] text-[var(--color-background)]/65 tracking-[0.20em] uppercase mb-3">
+          Vanliga startpunkter
+        </p>
+        <div className="grid sm:grid-cols-2 gap-x-5 gap-y-1">
+          {NUDGES.map((nudge) => (
+            <button
+              key={nudge}
+              type="button"
+              onClick={() => setMessage(message ? `${message}\n${nudge}` : nudge)}
+              className="w-full text-left text-xs text-[var(--color-background)]/65 hover:text-[var(--color-background)] pl-3 border-l border-[var(--color-background)]/[0.22] hover:border-[var(--color-background)]/60 transition-all duration-200 min-h-[38px] flex items-center"
+              style={{ fontWeight: 300, lineHeight: 1.4 }}
+            >
+              {nudge}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="pt-3">

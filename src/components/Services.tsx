@@ -4,17 +4,17 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const services = [
   {
+    to: "/tjanster/rekrytering" as const,
+    title: "Rekrytering",
+    outcome: "Människor som passar kulturen, rollen och framtiden.",
+    body: "Vi rekryterar för långsiktig effekt – inte bara efter rätt CV.",
+    index: "01",
+  },
+  {
     to: "/tjanster/bemanning" as const,
     title: "Bemanning",
     outcome: "Rätt människor när behov uppstår.",
     body: "Kompetens som fungerar från dag ett.",
-    index: "01",
-  },
-  {
-    to: "/tjanster/rekrytering" as const,
-    title: "Rekrytering",
-    outcome: "Människor som passar kulturen, rollen och framtiden.",
-    body: "Vi rekryterar för långsiktig effekt – inte bara rätt CV.",
     index: "02",
   },
   {
@@ -50,6 +50,10 @@ export function Services() {
               Ett syfte.
             </span>
           </h2>
+          <p className="mt-7 md:mt-9 max-w-xl text-lg md:text-xl leading-relaxed text-[var(--color-ink)]/65" style={{ fontWeight: 300 }}>
+            Vi stärker kundmötet genom att hitta rätt människor, förbereda dem
+            för uppgiften och utveckla beteenden som håller över tid.
+          </p>
         </div>
 
         <div className="relative">

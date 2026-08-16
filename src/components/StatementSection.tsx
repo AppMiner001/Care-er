@@ -73,18 +73,6 @@ export function StatementSection() {
           avgörs allt.
         </p>
 
-        {/* Brand signature */}
-        <p
-          className="mt-16 eyebrow text-[var(--color-background)]/16"
-          style={{
-            opacity: visible ? 1 : 0,
-            transition: visible ? "opacity 800ms ease 1400ms" : "none",
-            letterSpacing: "0.28em",
-          }}
-        >
-          care-er
-        </p>
-
       </div>
     </section>
   );

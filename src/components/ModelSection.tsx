@@ -5,7 +5,7 @@ const steps = [
     num: "01",
     word: "Beteende",
     line1: "Det vi gör i varje möte.",
-    line2: "Det är där allt börjar.",
+    line2: "Det är här vi lever vårt varumärke.",
     emergeDelay: undefined,
   },
   {

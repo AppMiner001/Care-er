@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { Logo } from "./Logo";
 
 const nav = [
-  { to: "/tjanster/bemanning",   label: "Bemanning"   },
   { to: "/tjanster/rekrytering", label: "Rekrytering" },
+  { to: "/tjanster/bemanning",   label: "Bemanning"   },
   { to: "/tjanster/utbildning",  label: "Utbildning"  },
   { to: "/tjanster/change",      label: "Transformation" },
 ] as const;
@@ -125,9 +125,9 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
 
         {/* Mobile toggle — min 44×44px touch target */}
         <button
-          className={`md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300 ${navVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          className="md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300"
           style={{
-            color: useDark
+            color: useDark || !navVisible
               ? "oklch(0.982 0.003 82 / 0.80)"
               : "oklch(0.13 0.04 271)",
           }}

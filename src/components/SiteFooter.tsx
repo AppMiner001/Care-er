@@ -1,11 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import logoSrc from "@/assets/care-er-logo.png";
 
 export function SiteFooter() {
   return (
     <footer className="bg-[var(--color-ink)] text-[var(--color-background)]">
-      <div className="container-care py-12 md:py-24">
+      <div className="container-care py-10 md:py-16">
 
         <div className="grid md:grid-cols-[1.8fr_1fr_1fr] gap-14 md:gap-12">
 
@@ -32,8 +31,8 @@ export function SiteFooter() {
             <p className="eyebrow text-[var(--color-background)]/55 mb-6">Tjänster</p>
             <ul className="space-y-3.5 text-sm">
               {[
-                { to: "/tjanster/bemanning",   label: "Bemanning"   },
                 { to: "/tjanster/rekrytering", label: "Rekrytering" },
+                { to: "/tjanster/bemanning",   label: "Bemanning"   },
                 { to: "/tjanster/utbildning",  label: "Utbildning"  },
                 { to: "/tjanster/change",      label: "Transformation" },
               ].map((item) => (
@@ -93,34 +92,13 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 md:mt-16 pt-8 border-t border-white/[0.07] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.65rem] text-[var(--color-background)]/24 tracking-[0.04em]">
+        <div className="mt-10 md:mt-12 pt-7 border-t border-white/[0.07] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.65rem] text-[var(--color-background)]/24 tracking-[0.04em]">
           <p className="text-[var(--color-background)]/50">© {new Date().getFullYear()} Care-er AB · Alla rättigheter förbehållna.</p>
           <p className="font-medium tracking-[0.10em] text-[var(--color-background)]/60 uppercase" style={{ fontSize: "0.65rem" }}>
             Vi bygger kundlojalitet.
           </p>
         </div>
 
-      </div>
-
-      {/* Ghost wordmark — same logo image as header, scaled up */}
-      <div
-        aria-hidden
-        className="w-full overflow-hidden border-t border-white/[0.035] select-none"
-      >
-        <img
-          src={logoSrc}
-          alt=""
-          draggable={false}
-          style={{
-            height: "clamp(5rem, 22vw, 20rem)",
-            width: "auto",
-            opacity: 0.055,
-            filter: "brightness(0) invert(1)",
-            paddingLeft: "clamp(1.5rem, 3rem, 5rem)",
-            lineHeight: 0.80,
-            display: "block",
-          }}
-        />
       </div>
 
     </footer>
