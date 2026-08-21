@@ -108,15 +108,7 @@ function StepRow({
         {step.num}
       </span>
 
-      <div className="relative grid grid-cols-[3rem_1fr] gap-x-8 items-start">
-        {/* Step number */}
-        <span
-          className="text-[var(--color-ink)]/30 font-semibold leading-none mt-2 tabular-nums"
-          style={{ fontSize: "clamp(0.75rem, 1.2vw, 0.9rem)", letterSpacing: "0.06em" }}
-        >
-          {step.num}
-        </span>
-
+      <div className="relative">
         {/* Word — blur→sharp crystallise */}
         <div>
           <h3

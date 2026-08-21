@@ -13,8 +13,7 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
       { property: "og:title", content: "Rekrytering — care-er" },
       {
         property: "og:description",
-        content:
-          "Långsiktig rekrytering byggd på kultur, beteende och varumärkesfit.",
+        content: "Långsiktig rekrytering byggd på kultur, beteende och varumärkesfit.",
       },
     ],
   }),
@@ -22,19 +21,56 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
     <ServicePage
       eyebrow="Tjänst 01"
       title="Rekrytering för det som finns kvar om tre år."
-      lede="Vi rekryterar inte bara för att fylla en roll. Vi rekryterar människor som stärker kundmötet – så att fler kunder vill komma tillbaka."
-      intro="Vår rekryteringsprocess är byggd för att hitta människor som inte bara klarar rollen, utan stärker kundmötet. Därför väger vi beteende, värderingar och utvecklingspotential lika tungt som erfarenhet."
+      lede="En rekrytering handlar om mer än vem som klarar jobbet idag. Den handlar om vilken kultur, vilka beteenden och vilka kundmöten ni vill bygga för imorgon."
+      intro="Vi börjar inte med CV:t. Vi börjar i verksamheten. Vilka människor behöver ni för att stärka kulturen, kundmötet och det företag ni vill vara om tre år? Först därefter börjar vi leta."
+      insight={{
+        title: "Kundmötesbaserad rekrytering™",
+        lede: "Vi utgår från kompetensbaserad rekrytering — men börjar ett steg tidigare: i kundmötet.",
+        paragraphs: [
+          "Först definierar vi vilket kundmöte ni vill skapa och vilka beteenden det kräver. Därefter vilka kompetenser som behövs och hur de ska bedömas.",
+          "Varje kandidat bedöms mot samma kravprofil — inte mot de andra kandidaterna.",
+        ],
+        sequence: ["Kundmötet", "Beteenden", "Kompetenser", "Kandidat"],
+      }}
       pillars={[
-        { title: "Kulturmatch", body: "Vi förstår er kultur i grunden — och söker personer som faktiskt stärker den." },
-        { title: "Beteende före CV", body: "Strukturerade intervjuer som ser hur kandidaten faktiskt agerar i mötet." },
-        { title: "Rätt även om tre år.", body: "Vi rekryterar för det företag ni vill bli, inte bara det ni är idag." },
-        { title: "Trygga beslut", body: "Tydliga steg, tydliga besked — för både kandidat och uppdragsgivare." },
+        {
+          title: "Kulturmatch",
+          body: "Vi söker inte bara någon som passar in — utan någon som stärker kulturen och bidrar till vart ni är på väg.",
+        },
+        {
+          title: "Beteende före CV",
+          body: "Vi bedömer hur kandidaten faktiskt agerar — inte bara hur erfarenheten ser ut på papper.",
+        },
+        {
+          title: "Rätt även om tre år.",
+          body: "Vi rekryterar för det företag ni vill bli — inte bara för rollen ni behöver fylla idag.",
+        },
+        {
+          title: "Trygga beslut",
+          body: "Ni vet vad vi ser, hur vi bedömer och varför vi rekommenderar — hela vägen fram till beslut.",
+        },
       ]}
       approach={[
-        { step: "Steg 01", title: "Förstå", body: "Vi sätter rollprofilen tillsammans — krav, kontext och kultur." },
-        { step: "Steg 02", title: "Hitta", body: "Vi söker aktivt i rätt nätverk och kanaler — inte bara via bred annonsering." },
-        { step: "Steg 03", title: "Välja", body: "Strukturerade intervjuer, relevanta case och noggrann referenstagning." },
-        { step: "Steg 04", title: "Lyckas", body: "Vi följer onboarding och check-ins under första halvåret." },
+        {
+          step: "Steg 01",
+          title: "Förstå",
+          body: "Vi börjar i verksamheten — med rollen, kulturen och det ni vill åstadkomma.",
+        },
+        {
+          step: "Steg 02",
+          title: "Hitta",
+          body: "Vi söker där rätt människor finns — inte bara där kandidater råkar söka jobb.",
+        },
+        {
+          step: "Steg 03",
+          title: "Välja",
+          body: "Vi prövar det som faktiskt avgör om kandidaten kommer lyckas — beteenden, förmåga och potential.",
+        },
+        {
+          step: "Steg 04",
+          title: "Lyckas",
+          body: "Vi utvecklar medarbetaren och verksamheten genom en trygg onboarding och täta check-ins under det första halvåret.",
+        },
       ]}
       next={{ label: "Bemanning", to: "/tjanster/bemanning" }}
     />

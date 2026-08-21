@@ -106,7 +106,7 @@ function ServiceRow({
       to={service.to}
       data-reveal
       data-delay={delay > 0 ? (String(delay) as "100" | "200" | "300") : undefined}
-      className="service-row group grid grid-cols-[1fr_auto] md:grid-cols-[5rem_1fr_auto] items-start gap-x-6 md:gap-x-14 py-9 md:py-16 border-t border-[var(--color-ink)]/[0.07] last:border-b last:border-[var(--color-ink)]/[0.07]"
+      className="service-row group relative grid grid-cols-[1fr_auto] items-start gap-x-6 py-9 md:py-16 md:pl-12 border-t border-[var(--color-ink)]/[0.07] last:border-b last:border-[var(--color-ink)]/[0.07] overflow-hidden"
       style={{
         opacity: dimmed ? 0.32 : 1,
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
@@ -114,17 +114,17 @@ function ServiceRow({
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      {/* Index number */}
+      {/* Ghost index number */}
       <span
         aria-hidden
-        className="hidden md:block font-semibold leading-none text-[var(--color-ink)]/[0.09] group-hover:text-[var(--color-ink)]/[0.28] transition-colors duration-500 pt-1"
-        style={{ fontSize: "clamp(1.75rem, 3vw, 2.75rem)", letterSpacing: "-0.04em" }}
+        className="absolute right-8 md:right-16 top-1/2 -translate-y-1/2 font-bold leading-none text-[var(--color-ink)]/[0.05] group-hover:text-[var(--color-ink)]/[0.09] transition-colors duration-500 pointer-events-none select-none"
+        style={{ fontSize: "clamp(6rem, 18vw, 16rem)", letterSpacing: "-0.05em" }}
       >
         {service.index}
       </span>
 
       {/* Content */}
-      <div>
+      <div className="relative z-10">
         <h3 className="service-name display-md text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)] transition-all duration-300 group-hover:translate-x-0.5">
           {service.title}
         </h3>
@@ -145,7 +145,7 @@ function ServiceRow({
       {/* Arrow */}
       <span
         aria-hidden
-        className="self-start pt-1.5 text-lg text-[var(--color-ink)]/[0.18] group-hover:text-[var(--color-ink)]/60 group-hover:translate-x-1.5 group-hover:-translate-y-0.5 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="relative z-10 self-start pt-1.5 text-lg text-[var(--color-ink)]/[0.18] group-hover:text-[var(--color-ink)]/60 group-hover:translate-x-1.5 group-hover:-translate-y-0.5 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"
       >
         →
       </span>

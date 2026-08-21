@@ -10,6 +10,12 @@ export interface ServicePageProps {
   title: string;
   lede: string;
   intro: string;
+  insight?: {
+    title: string;
+    lede: string;
+    paragraphs: string[];
+    sequence: string[];
+  };
   pillars: { title: string; body: string }[];
   approach: { step: string; title: string; body: string }[];
   next?: {
@@ -31,6 +37,7 @@ export function ServicePage(p: ServicePageProps) {
       <main>
         <ServiceHero eyebrow={p.eyebrow} title={p.title} lede={p.lede} />
         <IntroSection intro={p.intro} />
+        {p.insight && <InsightSection insight={p.insight} />}
         <PillarsSection pillars={p.pillars} />
         <ApproachSection approach={p.approach} />
         {p.next && <NextService label={p.next.label} to={p.next.to} />}
@@ -107,7 +114,12 @@ function ServiceHero({
             animationDelay: "80ms",
           }}
         >
-          <span aria-hidden className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-1">←</span>
+          <span
+            aria-hidden
+            className="transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-x-1"
+          >
+            ←
+          </span>
           <span>Hem</span>
         </Link>
 
@@ -133,9 +145,7 @@ function ServiceHero({
             letterSpacing: "-0.042em",
             color: "oklch(0.982 0.003 82)",
             clipPath: ready ? "inset(0 -16px -24px 0)" : "inset(0 100% 0 0)",
-            transition: ready
-              ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 320ms"
-              : "none",
+            transition: ready ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 320ms" : "none",
           }}
         >
           {title}
@@ -204,7 +214,78 @@ function IntroSection({ intro }: { intro: string }) {
   );
 }
 
-/* ── 3. Pillars ───────────────────────────────────────────────────────────── */
+/* ── 3. Service-specific insight ──────────────────────────────────────────── */
+
+function InsightSection({ insight }: { insight: NonNullable<ServicePageProps["insight"]> }) {
+  const ref = useReveal<HTMLDivElement>(0.18);
+  const hasTrademark = insight.title.endsWith("™");
+  const title = hasTrademark ? insight.title.slice(0, -1) : insight.title;
+
+  return (
+    <section className="py-12 md:py-28 border-t border-[var(--color-ink)]/[0.07]">
+      <div className="container-care">
+        <div ref={ref} data-reveal className="max-w-6xl">
+          <h2
+            data-emerge
+            className="text-[var(--color-ink)] text-balance"
+            style={{
+              fontSize: "clamp(2.4rem, 5vw, 5.25rem)",
+              fontWeight: 700,
+              lineHeight: 0.98,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {title}
+            {hasTrademark && (
+              <sup
+                className="ml-1.5 align-super text-[var(--color-ink)]/60"
+                style={{ fontSize: "0.28em", fontWeight: 700, letterSpacing: "0.02em" }}
+              >
+                TM
+              </sup>
+            )}
+          </h2>
+
+          <div className="mt-9 md:mt-14 max-w-5xl space-y-5 md:space-y-6">
+            <p
+              className="text-xl md:text-3xl leading-snug text-[var(--color-ink)]/85 text-pretty"
+              style={{ fontWeight: 400, letterSpacing: "-0.02em" }}
+            >
+              {insight.lede}
+            </p>
+            {insight.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph}
+                className="text-base md:text-xl leading-relaxed text-[var(--color-ink)]/65 text-pretty"
+                style={{ fontWeight: 300 }}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <p
+            className="mt-10 md:mt-14 text-lg md:text-2xl text-[var(--color-ink)]/80 flex flex-wrap items-center gap-x-3 gap-y-2"
+            style={{ fontWeight: 600, letterSpacing: "-0.015em" }}
+          >
+            {insight.sequence.map((item, index) => (
+              <span key={item} className="inline-flex items-center gap-x-3">
+                {index > 0 && (
+                  <span aria-hidden className="text-[var(--color-ink)]/30">
+                    →
+                  </span>
+                )}
+                <span>{item}</span>
+              </span>
+            ))}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ── 4. Pillars ───────────────────────────────────────────────────────────── */
 
 function PillarsSection({ pillars }: { pillars: ServicePageProps["pillars"] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -276,14 +357,10 @@ function PillarRow({
     <div
       ref={ref}
       data-reveal
-      data-delay={
-        index > 0
-          ? (String(index * 100) as "100" | "200" | "300")
-          : undefined
-      }
-      className="group relative grid grid-cols-[3rem_1fr] md:grid-cols-[4.5rem_1fr_1.5fr] items-start gap-x-6 md:gap-x-16 py-8 md:py-14 border-t border-[var(--color-ink)]/[0.07] overflow-hidden"
+      data-delay={index > 0 ? (String(index * 100) as "100" | "200" | "300") : undefined}
+      className="group relative grid md:grid-cols-[1fr_1.5fr] items-start gap-x-10 md:gap-x-16 gap-y-4 py-8 md:py-14 border-t border-[var(--color-ink)]/[0.07] overflow-hidden"
       style={{
-        opacity: dimmed ? 0.30 : 1,
+        opacity: dimmed ? 0.3 : 1,
         transition: "opacity 400ms cubic-bezier(0.16, 1, 0.3, 1)",
       }}
       onMouseEnter={onHover}
@@ -291,16 +368,13 @@ function PillarRow({
     >
       <span
         aria-hidden
-        className="font-bold leading-none pt-1.5 text-[var(--color-ink)]/[0.16] md:text-[var(--color-ink)]/[0.07] group-hover:text-[var(--color-ink)]/[0.22] transition-colors duration-500 tabular-nums"
-        style={{
-          fontSize: "clamp(1.5rem, 2.5vw, 2.25rem)",
-          letterSpacing: "-0.04em",
-        }}
+        className="absolute right-0 top-1/2 -translate-y-1/2 font-bold leading-none text-[var(--color-ink)]/[0.05] group-hover:text-[var(--color-ink)]/[0.09] transition-colors duration-500 pointer-events-none select-none"
+        style={{ fontSize: "clamp(6rem, 18vw, 16rem)", letterSpacing: "-0.05em" }}
       >
         0{index + 1}
       </span>
       <h3
-        className="text-[var(--color-ink)]/80 group-hover:text-[var(--color-ink)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
+        className="relative z-10 text-[var(--color-ink)]/80 group-hover:text-[var(--color-ink)] transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5"
         style={{
           fontSize: "clamp(1.5rem, 2.8vw, 2.5rem)",
           fontWeight: 600,
@@ -311,7 +385,7 @@ function PillarRow({
         {pillar.title}
       </h3>
       <p
-        className="col-start-2 md:col-start-3 mt-4 md:mt-0 leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
+        className="relative z-10 md:mt-0 leading-relaxed text-pretty text-[var(--color-ink)]/72 group-hover:text-[var(--color-ink)]/90 transition-colors duration-350"
         style={{ fontSize: "clamp(1.35rem, 2.2vw, 2rem)", fontWeight: 300 }}
       >
         {pillar.body}
@@ -322,20 +396,14 @@ function PillarRow({
 
 /* ── 4. Approach ─────────────────────────────────────────────────────────── */
 
-function ApproachSection({
-  approach,
-}: {
-  approach: ServicePageProps["approach"];
-}) {
+function ApproachSection({ approach }: { approach: ServicePageProps["approach"] }) {
   const headingRef = useReveal<HTMLDivElement>();
 
   return (
     <section className="py-12 md:py-28 border-t border-[var(--color-ink)]/[0.07]">
       <div className="container-care">
         <div ref={headingRef} data-reveal className="mb-10 md:mb-20">
-          <p className="eyebrow text-[var(--color-ink)]/58 mb-7">
-            Så arbetar vi
-          </p>
+          <p className="eyebrow text-[var(--color-ink)]/58 mb-7">Så arbetar vi</p>
           <h2
             className="text-[var(--color-ink)]"
             style={{
@@ -381,41 +449,28 @@ function ApproachStep({
     <div
       ref={ref}
       data-reveal
-      data-delay={
-        index > 0
-          ? (String(index * 100) as "100" | "200" | "300")
-          : undefined
-      }
+      data-delay={index > 0 ? (String(index * 100) as "100" | "200" | "300") : undefined}
       className="relative py-8 md:py-14 border-t border-[var(--color-ink)]/[0.06] overflow-hidden"
     >
-      {/* Ghost step number — aligned left so 0 sits above small 0 */}
+      {/* Ghost step number */}
       <span
         aria-hidden
-        className="absolute left-0 top-1/2 -translate-y-1/2 font-bold leading-none pointer-events-none select-none"
+        className="absolute right-0 top-1/2 -translate-y-1/2 font-bold leading-none pointer-events-none select-none"
         style={{
           fontSize: "clamp(6rem, 18vw, 16rem)",
           letterSpacing: "-0.05em",
-          color: "oklch(0.13 0.04 271 / 0.035)",
+          color: "oklch(0.13 0.04 271 / 0.05)",
         }}
       >
         0{index + 1}
       </span>
 
-      <div className="relative grid grid-cols-[3rem_1fr] gap-x-8 md:gap-x-12 items-start">
-        <span
-          aria-hidden
-          className="text-[var(--color-ink)]/35 font-semibold leading-none mt-2 tabular-nums"
-          style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
-        >
-          0{index + 1}
-        </span>
+      <div className="relative z-10">
         <div>
           <h3
             data-emerge
             data-emerge-delay={
-              index > 0
-                ? (String(index * 120) as "120" | "240" | "360")
-                : undefined
+              index > 0 ? (String(index * 120) as "120" | "240" | "360") : undefined
             }
             className="text-[var(--color-ink)] leading-none"
             style={{
@@ -449,21 +504,14 @@ function NextService({
   to,
 }: {
   label: string;
-  to:
-    | "/tjanster/bemanning"
-    | "/tjanster/rekrytering"
-    | "/tjanster/utbildning"
-    | "/tjanster/change";
+  to: "/tjanster/bemanning" | "/tjanster/rekrytering" | "/tjanster/utbildning" | "/tjanster/change";
 }) {
   const ref = useReveal<HTMLDivElement>();
 
   return (
     <section className="border-t border-[var(--color-ink)]/[0.07]">
       <div ref={ref} data-reveal>
-        <Link
-          to={to}
-          className="group block container-care py-16 md:py-24"
-        >
+        <Link to={to} className="group block container-care py-16 md:py-24">
           <p className="eyebrow text-[var(--color-ink)]/58 mb-7 group-hover:text-[var(--color-ink)]/75 transition-colors duration-300">
             Nästa tjänst
           </p>
@@ -478,9 +526,7 @@ function NextService({
             >
               {label}
             </span>
-            <span
-              className="text-3xl md:text-6xl shrink-0 mb-1 md:mb-2 text-[var(--color-ink)]/16 group-hover:text-[var(--color-ink)]/65 inline-block transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 group-hover:-translate-y-1.5"
-            >
+            <span className="text-3xl md:text-6xl shrink-0 mb-1 md:mb-2 text-[var(--color-ink)]/16 group-hover:text-[var(--color-ink)]/65 inline-block transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-2 group-hover:-translate-y-1.5">
               →
             </span>
           </div>

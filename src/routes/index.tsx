@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Hero } from "@/components/Hero";
+import { BeliefsSection } from "@/components/BeliefsSection";
 import { Services } from "@/components/Services";
 import { ModelSection } from "@/components/ModelSection";
 import { StatementSection } from "@/components/StatementSection";
@@ -35,16 +36,19 @@ function Index() {
         {/* 1. Immediate clarity: what they do and why it matters */}
         <Hero />
 
-        {/* 2. What they sell — early, outcome-framed */}
+        {/* 2. The shared beliefs required for a meaningful partnership */}
+        <BeliefsSection />
+
+        {/* 3. What they sell — early, outcome-framed */}
         <Services />
 
-        {/* 3. Why it works — the behavioral model */}
+        {/* 4. Why it works — the behavioral model */}
         <ModelSection />
 
-        {/* 4. The statement — the moment that makes the site unforgettable */}
+        {/* 5. The statement — the moment that makes the site unforgettable */}
         <StatementSection />
 
-        {/* 5. Invitation */}
+        {/* 6. Invitation */}
         <Contact />
       </main>
       <SiteFooter />
