@@ -10,15 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as KarriarRouteImport } from './routes/karriar'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TjansterUtbildningRouteImport } from './routes/tjanster.utbildning'
 import { Route as TjansterRekryteringRouteImport } from './routes/tjanster.rekrytering'
 import { Route as TjansterChangeRouteImport } from './routes/tjanster.change'
 import { Route as TjansterBemanningRouteImport } from './routes/tjanster.bemanning'
+import { Route as ApiCareerJoinRouteImport } from './routes/api.career-join'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KarriarRoute = KarriarRouteImport.update({
+  id: '/karriar',
+  path: '/karriar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -46,10 +53,17 @@ const TjansterBemanningRoute = TjansterBemanningRouteImport.update({
   path: '/tjanster/bemanning',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiCareerJoinRoute = ApiCareerJoinRouteImport.update({
+  id: '/api/career-join',
+  path: '/api/career-join',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/karriar': typeof KarriarRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/career-join': typeof ApiCareerJoinRoute
   '/tjanster/bemanning': typeof TjansterBemanningRoute
   '/tjanster/change': typeof TjansterChangeRoute
   '/tjanster/rekrytering': typeof TjansterRekryteringRoute
@@ -57,7 +71,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/karriar': typeof KarriarRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/career-join': typeof ApiCareerJoinRoute
   '/tjanster/bemanning': typeof TjansterBemanningRoute
   '/tjanster/change': typeof TjansterChangeRoute
   '/tjanster/rekrytering': typeof TjansterRekryteringRoute
@@ -66,7 +82,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/karriar': typeof KarriarRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/career-join': typeof ApiCareerJoinRoute
   '/tjanster/bemanning': typeof TjansterBemanningRoute
   '/tjanster/change': typeof TjansterChangeRoute
   '/tjanster/rekrytering': typeof TjansterRekryteringRoute
@@ -76,7 +94,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/karriar'
     | '/sitemap.xml'
+    | '/api/career-join'
     | '/tjanster/bemanning'
     | '/tjanster/change'
     | '/tjanster/rekrytering'
@@ -84,7 +104,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/karriar'
     | '/sitemap.xml'
+    | '/api/career-join'
     | '/tjanster/bemanning'
     | '/tjanster/change'
     | '/tjanster/rekrytering'
@@ -92,7 +114,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/karriar'
     | '/sitemap.xml'
+    | '/api/career-join'
     | '/tjanster/bemanning'
     | '/tjanster/change'
     | '/tjanster/rekrytering'
@@ -101,7 +125,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KarriarRoute: typeof KarriarRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiCareerJoinRoute: typeof ApiCareerJoinRoute
   TjansterBemanningRoute: typeof TjansterBemanningRoute
   TjansterChangeRoute: typeof TjansterChangeRoute
   TjansterRekryteringRoute: typeof TjansterRekryteringRoute
@@ -115,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/karriar': {
+      id: '/karriar'
+      path: '/karriar'
+      fullPath: '/karriar'
+      preLoaderRoute: typeof KarriarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -152,12 +185,21 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TjansterBemanningRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/career-join': {
+      id: '/api/career-join'
+      path: '/api/career-join'
+      fullPath: '/api/career-join'
+      preLoaderRoute: typeof ApiCareerJoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KarriarRoute: KarriarRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiCareerJoinRoute: ApiCareerJoinRoute,
   TjansterBemanningRoute: TjansterBemanningRoute,
   TjansterChangeRoute: TjansterChangeRoute,
   TjansterRekryteringRoute: TjansterRekryteringRoute,

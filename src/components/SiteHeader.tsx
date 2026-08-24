@@ -4,9 +4,10 @@ import { Logo } from "./Logo";
 
 const nav = [
   { to: "/tjanster/rekrytering", label: "Rekrytering" },
-  { to: "/tjanster/bemanning",   label: "Bemanning"   },
-  { to: "/tjanster/utbildning",  label: "Utbildning"  },
-  { to: "/tjanster/change",      label: "Transformation" },
+  { to: "/tjanster/bemanning", label: "Bemanning" },
+  { to: "/tjanster/utbildning", label: "Utbildning" },
+  { to: "/tjanster/change", label: "Transformation" },
+  { to: "/karriar", label: "Karriär" },
 ] as const;
 
 export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
@@ -23,7 +24,9 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
   // Close mobile menu on route change / resize
   useEffect(() => {
     if (open) {
-      const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setOpen(false);
+      };
       window.addEventListener("keydown", onKey);
       return () => window.removeEventListener("keydown", onKey);
     }
@@ -44,14 +47,14 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
       <div className="container-care flex items-center justify-between h-[4.25rem]">
         <Logo
           className={`[&_img]:transition-[filter] [&_img]:duration-500 ${
-            useDark || !navVisible
-              ? "[&_img]:brightness-0 [&_img]:invert"
-              : ""
+            useDark || !navVisible ? "[&_img]:brightness-0 [&_img]:invert" : ""
           }`}
         />
 
         {/* Desktop nav */}
-        <nav className={`hidden md:flex items-center gap-7 transition-opacity duration-300 ${navVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+        <nav
+          className={`hidden lg:flex items-center gap-7 transition-opacity duration-300 ${navVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        >
           {nav.map((n) => (
             <Link
               key={n.to}
@@ -87,13 +90,10 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
               fontSize: "0.875rem",
               letterSpacing: "-0.01em",
               willChange: "transform",
-              transition: "opacity 250ms ease, transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms ease",
-              background: useDark
-                ? "oklch(0.982 0.003 82)"
-                : "oklch(0.13 0.04 271)",
-              color: useDark
-                ? "oklch(0.13 0.04 271)"
-                : "oklch(0.982 0.003 82)",
+              transition:
+                "opacity 250ms ease, transform 320ms cubic-bezier(0.16,1,0.3,1), box-shadow 320ms ease",
+              background: useDark ? "oklch(0.982 0.003 82)" : "oklch(0.13 0.04 271)",
+              color: useDark ? "oklch(0.13 0.04 271)" : "oklch(0.982 0.003 82)",
               padding: "0.6rem 1.25rem",
             }}
             onMouseEnter={(e) => {
@@ -125,11 +125,9 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
 
         {/* Mobile toggle — min 44×44px touch target */}
         <button
-          className="md:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300"
+          className="lg:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300"
           style={{
-            color: useDark || !navVisible
-              ? "oklch(0.982 0.003 82 / 0.80)"
-              : "oklch(0.13 0.04 271)",
+            color: useDark || !navVisible ? "oklch(0.982 0.003 82 / 0.80)" : "oklch(0.13 0.04 271)",
           }}
           aria-label={open ? "Stäng meny" : "Öppna meny"}
           aria-expanded={open}
@@ -150,7 +148,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
 
       {/* Mobile drawer — always rendered, animated with max-height + opacity */}
       <div
-        className="md:hidden overflow-hidden bg-[var(--color-background)] border-b border-[var(--color-ink)]/[0.06]"
+        className="lg:hidden overflow-hidden bg-[var(--color-background)] border-b border-[var(--color-ink)]/[0.06]"
         style={{
           maxHeight: open ? "480px" : "0",
           opacity: open ? 1 : 0,

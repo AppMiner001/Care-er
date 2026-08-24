@@ -13,6 +13,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/tjanster/rekrytering", priority: "0.8", changefreq: "monthly" as const },
           { path: "/tjanster/utbildning", priority: "0.8", changefreq: "monthly" as const },
           { path: "/tjanster/change", priority: "0.8", changefreq: "monthly" as const },
+          { path: "/karriar", priority: "0.9", changefreq: "monthly" as const },
         ];
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
