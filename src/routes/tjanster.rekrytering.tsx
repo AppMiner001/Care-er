@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage } from "@/components/ServicePage";
+import { absoluteUrl } from "@/lib/site-config";
 
 export const Route = createFileRoute("/tjanster/rekrytering")({
   head: () => ({
@@ -15,7 +16,9 @@ export const Route = createFileRoute("/tjanster/rekrytering")({
         property: "og:description",
         content: "Långsiktig rekrytering byggd på kultur, beteende och varumärkesfit.",
       },
+      { property: "og:url", content: absoluteUrl("/tjanster/rekrytering") },
     ],
+    links: [{ rel: "canonical", href: absoluteUrl("/tjanster/rekrytering") }],
   }),
   component: () => (
     <ServicePage

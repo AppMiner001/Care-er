@@ -5,9 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="bg-[var(--color-ink)] text-[var(--color-background)]">
       <div className="container-care py-10 md:py-16">
-
         <div className="grid md:grid-cols-[1.8fr_1fr_1fr] gap-14 md:gap-12">
-
           {/* Brand */}
           <div>
             <Logo className="!text-[var(--color-background)] [&_img]:brightness-0 [&_img]:invert" />
@@ -15,10 +13,13 @@ export function SiteFooter() {
               className="mt-6 text-sm text-[var(--color-background)]/42 max-w-xs leading-relaxed"
               style={{ fontWeight: 300, lineHeight: 1.7 }}
             >
-              <span className="text-[var(--color-background)]/65 leading-relaxed block" style={{ fontWeight: 300, lineHeight: 1.7 }}>
-                Vi utvecklar människor, beteenden och arbetssätt inom bemanning,
-                rekrytering, utbildning och förändring — för organisationer som
-                vet att kundmötet är deras viktigaste tillgång.
+              <span
+                className="text-[var(--color-background)]/65 leading-relaxed block"
+                style={{ fontWeight: 300, lineHeight: 1.7 }}
+              >
+                Vi utvecklar människor, beteenden och arbetssätt inom Rekrytering, Bemanning,
+                Utbildning och Transformation — för organisationer som vet att kundmötet är deras
+                viktigaste tillgång.
               </span>
             </p>
             <p className="mt-8 text-[0.65rem] text-[var(--color-background)]/22 tracking-[0.08em]">
@@ -32,9 +33,9 @@ export function SiteFooter() {
             <ul className="space-y-3.5 text-sm">
               {[
                 { to: "/tjanster/rekrytering", label: "Rekrytering" },
-                { to: "/tjanster/bemanning",   label: "Bemanning"   },
-                { to: "/tjanster/utbildning",  label: "Utbildning"  },
-                { to: "/tjanster/change",      label: "Transformation" },
+                { to: "/tjanster/bemanning", label: "Bemanning" },
+                { to: "/tjanster/utbildning", label: "Utbildning" },
+                { to: "/tjanster/change", label: "Transformation" },
               ].map((item) => (
                 <li key={item.to}>
                   <Link
@@ -63,7 +64,9 @@ export function SiteFooter() {
                 </a>
               </li>
               <li className="text-[var(--color-background)]/60" style={{ fontWeight: 300 }}>
-                Föreningsgatan 14<br />411 27 Göteborg
+                Föreningsgatan 14
+                <br />
+                411 27 Göteborg
               </li>
               <li>
                 <a
@@ -76,31 +79,47 @@ export function SiteFooter() {
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/company/115801362/admin/dashboard/"
+                  href="https://www.linkedin.com/company/115801362/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--color-background)]/75 hover:text-[var(--color-background)] transition-colors duration-200 inline-flex items-center gap-1.5 group"
                   style={{ fontWeight: 300 }}
                 >
                   LinkedIn
-                  <span className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-xs">↗</span>
+                  <span
+                    aria-hidden
+                    className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-xs"
+                  >
+                    ↗
+                  </span>
                 </a>
+              </li>
+              <li>
+                <Link
+                  to="/integritet"
+                  className="text-[var(--color-background)]/75 transition-colors duration-200 hover:text-[var(--color-background)]"
+                  style={{ fontWeight: 300 }}
+                >
+                  Integritet
+                </Link>
               </li>
             </ul>
           </div>
-
         </div>
 
         {/* Bottom bar */}
         <div className="mt-10 md:mt-12 pt-7 border-t border-white/[0.07] flex flex-col md:flex-row md:items-center justify-between gap-4 text-[0.65rem] text-[var(--color-background)]/24 tracking-[0.04em]">
-          <p className="text-[var(--color-background)]/50">© {new Date().getFullYear()} Care-er AB · Alla rättigheter förbehållna.</p>
-          <p className="font-medium tracking-[0.10em] text-[var(--color-background)]/60 uppercase" style={{ fontSize: "0.65rem" }}>
+          <p className="text-[var(--color-background)]/50">
+            © {new Date().getFullYear()} Care-er AB · Alla rättigheter förbehållna.
+          </p>
+          <p
+            className="font-medium tracking-[0.10em] text-[var(--color-background)]/60 uppercase"
+            style={{ fontSize: "0.65rem" }}
+          >
             Vi bygger kundlojalitet.
           </p>
         </div>
-
       </div>
-
     </footer>
   );
 }

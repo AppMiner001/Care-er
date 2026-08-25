@@ -39,9 +39,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Något gick fel
-        </h1>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">Något gick fel</h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Ett oväntat fel uppstod. Prova att ladda om sidan eller gå tillbaka till startsidan.
         </p>
@@ -73,19 +71,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "care-er — Människor, beteenden och strukturer i kundmötet" },
-      { name: "description", content: "Bemanning, rekrytering, utbildning och transformation — byggt för det ögonblick där ett varumärke förtjänas eller förloras." },
+      {
+        name: "description",
+        content:
+          "Bemanning, rekrytering, utbildning och transformation — byggt för det ögonblick där ett varumärke förtjänas eller förloras.",
+      },
       { name: "author", content: "care-er" },
       { property: "og:title", content: "care-er" },
-      { property: "og:description", content: "Vi bygger det som händer i mötet mellan människa och varumärke." },
+      {
+        property: "og:description",
+        content: "Vi bygger det som händer i mötet mellan människa och varumärke.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "care-er" },
+      { property: "og:locale", content: "sv_SE" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
       { name: "twitter:card", content: "summary" },
     ],
     links: [
-      { rel: "preload", href: "/hero-mobile.mp4", as: "video", type: "video/mp4", media: "(max-width: 767px)" } as never,
-      { rel: "preload", href: "/hero.mp4", as: "video", type: "video/mp4", media: "(min-width: 768px)" } as never,
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],

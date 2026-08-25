@@ -7,6 +7,7 @@ import { Services } from "@/components/Services";
 import { ModelSection } from "@/components/ModelSection";
 import { StatementSection } from "@/components/StatementSection";
 import { Contact } from "@/components/Contact";
+import { absoluteUrl } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,7 +24,9 @@ export const Route = createFileRoute("/")({
         content:
           "Kompetensen, beteendena och strukturerna som gör varje kundmöte till en konkurrensfördel — inte en slump.",
       },
+      { property: "og:url", content: absoluteUrl("/") },
     ],
+    links: [{ rel: "canonical", href: absoluteUrl("/") }],
   }),
   component: Index,
 });

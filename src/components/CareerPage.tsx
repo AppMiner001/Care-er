@@ -61,43 +61,38 @@ function CareerHero({ onJoin }: { onJoin: () => void }) {
     >
       <AmbientBackground />
       <div className="container-care relative z-10">
-        <div className="max-w-6xl">
-          <p
-            className="eyebrow text-[var(--color-background)]/55"
-            style={{ opacity: ready ? 1 : 0, transition: "opacity 700ms ease 120ms" }}
-          >
-            Karriär
-          </p>
+        <div>
           <h1
-            className="mt-4 max-w-[11ch] text-balance md:mt-5"
+            className="max-w-[12ch]"
             style={{
-              fontSize: "clamp(2.85rem, 6.2vw, 6.5rem)",
+              fontSize: "clamp(3rem, 7.8vw, 9.4rem)",
               fontWeight: 700,
-              lineHeight: 0.92,
+              lineHeight: 0.88,
               letterSpacing: "-0.045em",
               clipPath: ready ? "inset(0 -20px -30px 0)" : "inset(0 100% 0 0)",
-              transition: ready ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 240ms" : "none",
+              transition: ready ? "clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms" : "none",
             }}
           >
-            Ett jobb ska leda någonstans.
+            <span className="block">Ett jobb ska leda</span>
+            <span className="block">dig framåt.</span>
           </h1>
 
           <div
-            className="mt-5 max-w-3xl md:mt-6"
+            className="mt-6 md:mt-8"
             style={{
               opacity: ready ? 1 : 0,
               transform: ready ? "translateY(0)" : "translateY(12px)",
               transition:
-                "opacity 850ms ease 820ms, transform 850ms cubic-bezier(0.16, 1, 0.3, 1) 820ms",
+                "opacity 850ms ease 620ms, transform 850ms cubic-bezier(0.16, 1, 0.3, 1) 620ms",
             }}
           >
             <p
-              className="text-balance text-[var(--color-background)]/80"
+              className="text-[var(--color-background)]/78"
               style={{
-                fontSize: "clamp(1.15rem, 2vw, 1.8rem)",
+                fontSize: "clamp(1.45rem, 3.2vw, 3.75rem)",
                 fontWeight: 300,
-                lineHeight: 1.28,
-                letterSpacing: "-0.02em",
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
               }}
             >
               Inte bara till nästa lön.
@@ -105,16 +100,17 @@ function CareerHero({ onJoin }: { onJoin: () => void }) {
               Utan till nästa version av dig.
             </p>
             <div
-              className="mt-5 max-w-[68ch] space-y-2 text-[var(--color-background)]/64 md:space-y-3"
+              className="mt-10 max-w-[74rem] space-y-4 text-[var(--color-background)]/72 md:mt-14 md:space-y-6"
               style={{
-                fontSize: "clamp(0.9rem, 1.15vw, 1.08rem)",
+                fontSize: "clamp(1rem, 1.8vw, 2rem)",
                 fontWeight: 300,
-                lineHeight: 1.5,
+                lineHeight: 1.2,
+                letterSpacing: "-0.025em",
               }}
             >
               <p>
-                Vi arbetar med företag som vet hur mycket som avgörs i kundmötet — och som
-                investerar i människorna som möter kunderna.
+                Vi arbetar med företag som vet att deras varumärke byggs i kundmötet — och
+                investerar i människorna som vill få kunderna att längta tillbaka.
               </p>
               <p>Därför letar vi inte bara efter människor som kan göra jobbet.</p>
               <p className="font-semibold text-[var(--color-background)]/92">
@@ -122,7 +118,7 @@ function CareerHero({ onJoin }: { onJoin: () => void }) {
                 känner för ett helt företag.
               </p>
             </div>
-            <div className="mt-5 md:mt-6">
+            <div className="mt-6 md:mt-8">
               <CareerCTA onClick={onJoin} light />
             </div>
           </div>
@@ -136,16 +132,36 @@ function CustomerMeetingSection() {
   const ref = useReveal<HTMLDivElement>(0.12);
 
   return (
-    <section className="py-16 md:py-36">
+    <section className="py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
       <div className="container-care">
-        <div ref={ref} data-reveal className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-24">
-          <h2 className="display-lg max-w-[12ch] text-balance text-[var(--color-ink)]">
-            Kundmötet kan ta dig långt.
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-10 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
+          <h2
+            className="max-w-[12ch] text-balance text-[var(--color-ink)]"
+            style={{
+              fontSize: "clamp(2.4rem, 4vw, 4rem)",
+              fontWeight: 700,
+              lineHeight: 1.02,
+              letterSpacing: "-0.035em",
+            }}
+          >
+            Kundmötet bygger karriärer.
           </h2>
-          <div className="max-w-[68ch] space-y-5 text-base leading-[1.75] text-[var(--color-ink)]/67 md:text-lg">
+          <div
+            className="space-y-3 text-[var(--color-ink)]/72 md:space-y-4"
+            style={{
+              fontSize: "clamp(1.05rem, 1.8vw, 1.75rem)",
+              fontWeight: 300,
+              lineHeight: 1.22,
+              letterSpacing: "-0.025em",
+            }}
+          >
             <p>
-              Att förstå människor. Lösa problem. Skapa förtroende. Sälja. Förklara. Hantera
-              missnöje. Ta ansvar. Få någon att vilja komma tillbaka.
+              Att förstå människor. Välkomna. Lösa problem. Skapa förtroende. Sälja. Förklara.
+              Hantera missnöje. Ta ansvar. Få någon att vilja komma tillbaka.
             </p>
             <p>Det är inte ”bara kundservice”.</p>
             <p className="font-semibold text-[var(--color-ink)]">
@@ -160,7 +176,6 @@ function CustomerMeetingSection() {
               I telefon och digitalt. I butik, reception och kundmottagning. Vid en leverans, ett
               problem, ett köp eller ett ögonblick kunden kommer att minnas.
             </p>
-            <p>Och företag som förstår värdet av människorna som gör jobbet.</p>
           </div>
         </div>
       </div>
@@ -173,7 +188,7 @@ function BrandSection() {
 
   return (
     <section
-      className="relative overflow-hidden py-20 text-[var(--color-background)] md:py-40"
+      className="relative min-h-[calc(100svh-4.25rem)] overflow-hidden py-24 text-[var(--color-background)] lg:py-28"
       style={{ background: DARK_BACKGROUND }}
     >
       <AmbientBackground />
@@ -182,7 +197,7 @@ function BrandSection() {
           <p
             className="text-[var(--color-background)]/42"
             style={{
-              fontSize: "clamp(2.3rem, 6.2vw, 6.5rem)",
+              fontSize: "clamp(2.3rem, 5vw, 5.5rem)",
               fontWeight: 300,
               lineHeight: 0.98,
               letterSpacing: "-0.04em",
@@ -191,9 +206,9 @@ function BrandSection() {
             Du representerar inte bara ett företag.
           </p>
           <h2
-            className="mt-3 text-[var(--color-background)]"
+            className="mt-2 text-[var(--color-background)]"
             style={{
-              fontSize: "clamp(3.5rem, 10vw, 10rem)",
+              fontSize: "clamp(3.5rem, 8vw, 8rem)",
               fontWeight: 700,
               lineHeight: 0.88,
               letterSpacing: "-0.05em",
@@ -202,36 +217,44 @@ function BrandSection() {
             Du bygger det.
           </h2>
 
-          <div className="mt-16 grid gap-12 lg:mt-28 lg:grid-cols-2 lg:gap-24">
-            <div className="max-w-[62ch] space-y-5 text-base leading-[1.75] text-[var(--color-background)]/66 md:text-lg">
-              <p className="font-semibold text-[var(--color-background)]/92">
-                Du har fått förtroendet att arbeta med något av det mest värdefulla företaget har:
-                sina kunder.
-              </p>
-              <p>
-                Varje gång du möter en kund. Välkomnar. Hjälper. Säljer. Förklarar. Löser ett
-                problem. Lämnar över något kunden längtat efter. Eller bara lyssnar.
-              </p>
-              <p>Eller möter någon som är riktigt förbannad.</p>
-              <p>Då händer något med kundens bild av företaget.</p>
-              <p className="font-semibold text-[var(--color-background)]/92">
-                Varumärken byggs inte bara genom det företag säger.
-                <br />
-                De byggs genom det människor upplever.
-              </p>
-            </div>
-            <div className="max-w-[62ch] space-y-5 text-base leading-[1.75] text-[var(--color-background)]/66 md:text-lg lg:pt-16">
-              <p>Och ofta är det en människa i ett kundmöte som skapar den upplevelsen.</p>
-              <p>Därför ser vi arbetet med kunderna som ett av företagets viktigaste jobb.</p>
-              <p className="font-semibold text-[var(--color-background)]/92">
-                Och människorna som gör det som företagets viktigaste varumärkesbyggare.
-              </p>
-              <p>Ditt viktigaste uppdrag är därför större än själva arbetsuppgiften.</p>
-              <p className="font-semibold text-[var(--color-background)]/92">
-                Att lämna kunden med en känsla som gör att de vill välja företaget igen — utan att
-                jämföra.
-              </p>
-            </div>
+          <div
+            className="mt-12 max-w-[50rem] space-y-5 text-[var(--color-background)]/72 md:mt-16 md:space-y-6"
+            style={{
+              fontSize: "clamp(1rem, 1.35vw, 1.5rem)",
+              fontWeight: 300,
+              lineHeight: 1.5,
+              letterSpacing: "-0.022em",
+            }}
+          >
+            <p className="font-semibold text-[var(--color-background)]/94">
+              Du har fått förtroendet att arbeta med något av det mest värdefulla företaget har:
+              sina kunder.
+            </p>
+            <p>
+              Varje gång du möter en kund. Välkomnar. Hjälper. Säljer. Förklarar. Löser ett problem.
+              Lämnar över något kunden längtat efter. Eller bara lyssnar. Eller möter någon som är
+              riktigt förbannad. Då händer något med kundens bild av företaget.
+            </p>
+            <p className="font-semibold text-[var(--color-background)]/94">
+              Varumärken byggs inte bara genom vad företag säger.
+              <br />
+              De byggs genom det människor upplever.
+            </p>
+            <p>
+              Och ofta är det en människa i ett kundmöte som skapar den upplevelsen. Därför ser vi
+              arbetet med kunderna som ett av företagets viktigaste jobb.
+            </p>
+            <p className="font-semibold text-[var(--color-background)]/94">
+              Och människorna som gör det är företagens viktigaste varumärkesbyggare.
+            </p>
+            <p>Ditt viktigaste uppdrag är därför större än själva arbetsuppgiften.</p>
+            <p
+              className="pt-4 font-semibold text-[var(--color-background)]/96 md:pt-6"
+              style={{ fontSize: "clamp(1.2rem, 1.7vw, 1.9rem)", lineHeight: 1.3 }}
+            >
+              Att lämna kunden med en känsla som gör att kunden vill välja företaget igen — utan att
+              jämföra.
+            </p>
           </div>
         </div>
       </div>
@@ -240,39 +263,59 @@ function BrandSection() {
 }
 
 function WhatWeSeeSection() {
-  const headingRef = useReveal<HTMLDivElement>(0.12);
-  const endingRef = useReveal<HTMLDivElement>(0.12);
+  const ref = useReveal<HTMLDivElement>(0.12);
 
   return (
-    <section className="bg-[var(--color-surface)] py-16 md:py-36">
-      <div className="container-care">
-        <div ref={headingRef} data-reveal className="max-w-4xl">
-          <h2 className="display-lg text-balance text-[var(--color-ink)]">
-            Vi vill veta mer än vad du har gjort.
-          </h2>
-          <div className="mt-8 max-w-[66ch] space-y-3 text-base leading-relaxed text-[var(--color-ink)]/65 md:text-lg">
-            <p>Ett CV berättar en del.</p>
-            <p>Vi vill förstå mer.</p>
+    <section className="bg-[var(--color-background)] py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
+      <div className="container-care lg:-translate-y-8">
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
+          <div>
+            <p
+              className="text-[var(--color-ink)]"
+              style={{
+                fontSize: "clamp(2.3rem, 4vw, 4rem)",
+                fontWeight: 300,
+                lineHeight: 1.42,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              Vi vill veta mer än vad du har gjort.
+            </p>
+            <h2
+              className="mt-1 text-[var(--color-ink)]"
+              style={{
+                fontSize: "clamp(2.3rem, 4vw, 4rem)",
+                fontWeight: 700,
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              Vi vill förstå vem du är.
+            </h2>
           </div>
-        </div>
-
-        <NumberedCardGrid items={perspectiveCards} className="mt-12 md:mt-20" />
-
-        <div ref={endingRef} data-reveal className="mt-12 max-w-3xl md:mt-20">
-          <p className="text-xl font-light leading-relaxed text-[var(--color-ink)]/65 md:text-2xl">
-            Därför börjar vi inte bara i ditt CV.
-          </p>
-          <p
-            className="mt-2 text-[var(--color-ink)]"
+          <div
+            className="text-[var(--color-ink)]/76"
             style={{
-              fontSize: "clamp(2.5rem, 6vw, 5.5rem)",
-              fontWeight: 700,
-              lineHeight: 0.96,
-              letterSpacing: "-0.04em",
+              fontSize: "clamp(1.15rem, 2.1vw, 2rem)",
+              fontWeight: 300,
+              lineHeight: 1.36,
+              letterSpacing: "-0.025em",
             }}
           >
-            Vi börjar i dig.
-          </p>
+            <div className="space-y-5 md:space-y-7">
+              {perspectiveCards.map((item) => (
+                <p key={item}>{item}</p>
+              ))}
+            </div>
+            <div className="mt-10 md:mt-14">
+              <p>Därför börjar vi inte med ditt CV.</p>
+              <p className="mt-2 font-semibold text-[var(--color-ink)]">Vi börjar med dig.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -283,22 +326,34 @@ function LifeExperienceSection() {
   const ref = useReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="py-16 md:py-36">
+    <section className="bg-[var(--color-surface)] py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
       <div className="container-care">
-        <div ref={ref} data-reveal className="mx-auto max-w-6xl">
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
           <h2
-            className="max-w-[15ch] text-balance text-[var(--color-ink)]"
+            className="max-w-[12ch] text-balance text-[var(--color-ink)]"
             style={{
-              fontSize: "clamp(2.8rem, 7vw, 7.5rem)",
+              fontSize: "clamp(2.4rem, 4vw, 4rem)",
               fontWeight: 700,
-              lineHeight: 0.92,
-              letterSpacing: "-0.045em",
+              lineHeight: 1.02,
+              letterSpacing: "-0.035em",
             }}
           >
             All erfarenhet står inte i ett CV.
           </h2>
-          <div className="mt-12 grid gap-10 md:mt-20 lg:grid-cols-2 lg:gap-24">
-            <div className="max-w-[64ch] space-y-4 text-base leading-[1.75] text-[var(--color-ink)]/66 md:text-lg">
+          <div
+            className="text-[var(--color-ink)]/68"
+            style={{
+              fontSize: "clamp(1.05rem, 1.8vw, 1.75rem)",
+              fontWeight: 300,
+              lineHeight: 1.25,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            <div className="space-y-3 md:space-y-4">
               <p>Vissa saker lär man sig på en utbildning.</p>
               <p>Andra lär man sig genom att arbeta.</p>
               <p>Och en del lär man sig helt enkelt genom att ha levt.</p>
@@ -314,14 +369,20 @@ function LifeExperienceSection() {
                 Hantera konflikter utan att själv bli en del av dem.
               </p>
             </div>
-            <div className="max-w-[56ch] self-end lg:pb-2">
-              <p className="text-xl font-semibold leading-snug text-[var(--color-ink)] md:text-3xl">
+            <div className="mt-10 md:mt-14">
+              <p
+                className="text-[var(--color-ink)]"
+                style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+              >
                 I ett kundmöte kan livserfarenhet vara yrkeskompetens.
               </p>
-              <p className="mt-7 text-base leading-relaxed text-[var(--color-ink)]/65 md:text-lg">
+              <p className="mt-3 text-[var(--color-ink)]">
                 Hos oss ska erfarenhet inte räknas i år.
               </p>
-              <p className="mt-2 text-xl font-semibold leading-snug text-[var(--color-ink)] md:text-3xl">
+              <p
+                className="mt-3 font-semibold text-[var(--color-ink)]"
+                style={{ fontSize: "clamp(1.25rem, 2vw, 2.05rem)" }}
+              >
                 Den ska räknas i vad du kan göra med den.
               </p>
             </div>
@@ -336,17 +397,21 @@ function TwoChooseSection() {
   const ref = useReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="border-y border-[var(--color-ink)]/[0.07] bg-[var(--color-surface)] py-16 md:py-36">
+    <section className="border-y border-[var(--color-ink)]/[0.07] py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
       <div className="container-care">
-        <div ref={ref} data-reveal className="grid gap-12 lg:grid-cols-2 lg:gap-28">
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
           <div>
             <p
               className="text-[var(--color-ink)]/45"
               style={{
-                fontSize: "clamp(2.5rem, 5vw, 5rem)",
+                fontSize: "clamp(2.35rem, 4vw, 4rem)",
                 fontWeight: 300,
-                lineHeight: 0.98,
-                letterSpacing: "-0.04em",
+                lineHeight: 1.32,
+                letterSpacing: "-0.035em",
               }}
             >
               Du söker inte bara ett jobb.
@@ -354,23 +419,34 @@ function TwoChooseSection() {
             <h2
               className="mt-3 text-[var(--color-ink)]"
               style={{
-                fontSize: "clamp(2.5rem, 5vw, 5rem)",
+                fontSize: "clamp(2.35rem, 4vw, 4rem)",
                 fontWeight: 700,
-                lineHeight: 0.98,
-                letterSpacing: "-0.04em",
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
               }}
             >
               Du väljer också ett företag.
             </h2>
           </div>
-          <div className="max-w-[66ch] space-y-5 self-end text-base leading-[1.75] text-[var(--color-ink)]/66 md:text-lg">
-            <p>En rekrytering är inte ett företag som väljer en människa.</p>
-            <p className="text-xl font-semibold text-[var(--color-ink)] md:text-2xl">
-              Två parter väljer varandra.
+          <div
+            className="space-y-4 text-[var(--color-ink)]/68"
+            style={{
+              fontSize: "clamp(1.05rem, 1.8vw, 1.75rem)",
+              fontWeight: 300,
+              lineHeight: 1.25,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            <p className="font-semibold text-[var(--color-ink)]">
+              En rekrytering är inte ett företag som väljer en människa.
             </p>
+            <p className="font-semibold text-[var(--color-ink)]">Två parter väljer varandra.</p>
             <p>Du ska förstå jobbet, förväntningarna, kulturen och möjligheterna att utvecklas.</p>
             <p>Företaget ska förstå vem du är, vad du kan bidra med och vart du vill.</p>
-            <p className="font-semibold text-[var(--color-ink)]">
+            <p
+              className="pt-6 font-semibold text-[var(--color-ink)]"
+              style={{ fontSize: "clamp(1.25rem, 2vw, 2.05rem)" }}
+            >
               Det ska kännas rätt från båda håll.
             </p>
           </div>
@@ -384,29 +460,52 @@ function CareerHubSection() {
   const ref = useReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="py-16 md:py-36">
+    <section className="bg-[var(--color-surface)] py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
       <div className="container-care">
-        <div ref={ref} data-reveal className="mx-auto max-w-5xl">
-          <h2 className="display-lg max-w-[15ch] text-balance text-[var(--color-ink)]">
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
+          <h2
+            className="max-w-[14ch] text-balance text-[var(--color-ink)]"
+            style={{
+              fontSize: "clamp(2.4rem, 4vw, 4rem)",
+              fontWeight: 700,
+              lineHeight: 1.08,
+              letterSpacing: "-0.035em",
+            }}
+          >
             Din karriär behöver inte ske på samma plats.
           </h2>
-          <div className="mt-10 grid gap-8 md:mt-16 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
-            <div className="space-y-2 text-xl font-light leading-relaxed text-[var(--color-ink)]/62 md:text-2xl">
+          <div
+            className="text-[var(--color-ink)]/68"
+            style={{
+              fontSize: "clamp(1.05rem, 1.8vw, 1.75rem)",
+              fontWeight: 300,
+              lineHeight: 1.25,
+              letterSpacing: "-0.025em",
+            }}
+          >
+            <div className="space-y-3 md:space-y-4">
               <p>Ibland är nästa steg ett större ansvar.</p>
               <p>Ibland en ny roll.</p>
               <p>Ibland ett nytt företag.</p>
               <p>Och ibland trivs man precis där man är.</p>
             </div>
-            <div className="max-w-[66ch] space-y-5 text-base leading-[1.75] text-[var(--color-ink)]/66 md:text-lg">
-              <p className="font-semibold text-[var(--color-ink)]">
-                En bra arbetsgivare ska ge plats för din ambition — vilken den än är.
-              </p>
+            <div className="mt-5 space-y-4 md:mt-6">
+              <p>En bra arbetsgivare ska ge plats för din ambition — vilken den än är.</p>
               <p>
-                Därför arbetar vi med företag som vill vara en karriär-hubb för sina människor —
+                Därför arbetar vi med företag som vill vara en karriärhubb för sina medarbetare —
                 oavsett om nästa steg sker inom företaget eller utanför det.
               </p>
-              <p className="text-xl font-semibold text-[var(--color-ink)] md:text-2xl">
-                Du behöver inte vilja vidare. Men du ska ha möjligheten.
+              <p
+                className="pt-5 text-[var(--color-ink)]"
+                style={{ fontSize: "clamp(1.2rem, 2vw, 2rem)" }}
+              >
+                Du behöver inte vilja vidare.
+                <br />
+                <span className="font-semibold">Men du ska ha möjligheten.</span>
               </p>
             </div>
           </div>
@@ -417,36 +516,54 @@ function CareerHubSection() {
 }
 
 function PromisesSection() {
-  const headingRef = useReveal<HTMLDivElement>(0.1);
+  const ref = useReveal<HTMLDivElement>(0.1);
 
   return (
-    <section className="bg-[var(--color-surface)] py-16 md:py-36">
+    <section className="py-16 lg:flex lg:min-h-[calc(100svh-4.25rem)] lg:items-center lg:py-20">
       <div className="container-care">
-        <div ref={headingRef} data-reveal className="max-w-5xl">
-          <p
-            className="text-[var(--color-ink)]/45"
+        <div
+          ref={ref}
+          data-reveal
+          className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16 xl:gap-24"
+        >
+          <div>
+            <p
+              className="text-[var(--color-ink)]"
+              style={{
+                fontSize: "clamp(2.35rem, 4vw, 4rem)",
+                fontWeight: 300,
+                lineHeight: 1.3,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              Vi lovar inte att du får jobbet.
+            </p>
+            <h2
+              className="mt-2 text-[var(--color-ink)]"
+              style={{
+                fontSize: "clamp(2.35rem, 4vw, 4rem)",
+                fontWeight: 700,
+                lineHeight: 1.08,
+                letterSpacing: "-0.035em",
+              }}
+            >
+              Men vi kan lova hur du blir behandlad.
+            </h2>
+          </div>
+          <div
+            className="space-y-4 text-[var(--color-ink)]/68 md:space-y-5"
             style={{
-              fontSize: "clamp(2.5rem, 5vw, 5rem)",
+              fontSize: "clamp(1.05rem, 1.8vw, 1.75rem)",
               fontWeight: 300,
-              lineHeight: 0.98,
-              letterSpacing: "-0.04em",
+              lineHeight: 1.25,
+              letterSpacing: "-0.025em",
             }}
           >
-            Vi lovar inte att du får jobbet.
-          </p>
-          <h2
-            className="mt-3 text-[var(--color-ink)]"
-            style={{
-              fontSize: "clamp(2.5rem, 5vw, 5rem)",
-              fontWeight: 700,
-              lineHeight: 0.98,
-              letterSpacing: "-0.04em",
-            }}
-          >
-            Men vi kan lova hur du blir behandlad.
-          </h2>
+            {promises.map((item) => (
+              <p key={item}>{item}</p>
+            ))}
+          </div>
         </div>
-        <NumberedCardGrid items={promises} className="mt-12 md:mt-24" />
       </div>
     </section>
   );
@@ -457,16 +574,16 @@ function RelationshipSection({ onJoin }: { onJoin: () => void }) {
 
   return (
     <section
-      className="relative overflow-hidden py-20 text-[var(--color-background)] md:py-40"
+      className="relative min-h-[calc(100svh-4.25rem)] overflow-hidden py-20 text-[var(--color-background)] lg:py-24"
       style={{ background: DARK_BACKGROUND }}
     >
       <AmbientBackground />
       <div className="container-care relative z-10">
         <div ref={ref} data-reveal>
           <p
-            className="max-w-[19ch] text-balance text-[var(--color-background)]/42"
+            className="max-w-[22ch] text-balance text-[var(--color-background)]/72"
             style={{
-              fontSize: "clamp(2.4rem, 6vw, 6rem)",
+              fontSize: "clamp(2.6rem, 5.2vw, 6.2rem)",
               fontWeight: 300,
               lineHeight: 0.98,
               letterSpacing: "-0.04em",
@@ -477,16 +594,24 @@ function RelationshipSection({ onJoin }: { onJoin: () => void }) {
           <h2
             className="mt-3 text-[var(--color-background)]"
             style={{
-              fontSize: "clamp(4rem, 12vw, 12rem)",
+              fontSize: "clamp(4rem, 8vw, 9.5rem)",
               fontWeight: 700,
-              lineHeight: 0.86,
+              lineHeight: 0.9,
               letterSpacing: "-0.055em",
             }}
           >
             Den börjar.
           </h2>
 
-          <div className="mt-14 max-w-[68ch] space-y-5 text-base leading-[1.75] text-[var(--color-background)]/66 md:mt-24 md:text-lg">
+          <div
+            className="mt-10 max-w-[56rem] space-y-5 text-[var(--color-background)]/72 md:mt-14 md:space-y-6"
+            style={{
+              fontSize: "clamp(1rem, 1.55vw, 1.7rem)",
+              fontWeight: 300,
+              lineHeight: 1.45,
+              letterSpacing: "-0.022em",
+            }}
+          >
             <p className="font-semibold text-[var(--color-background)]/92">
               Vi vill gärna finnas kvar även efter att jobbet är ditt.
             </p>
@@ -518,103 +643,32 @@ function CareerFinale() {
   const ref = useReveal<HTMLDivElement>(0.15);
 
   return (
-    <section className="flex min-h-[82svh] items-center py-20 md:py-32">
+    <section className="flex min-h-[78svh] items-center bg-[var(--color-background)] py-20 md:min-h-[calc(100svh-4.25rem)] md:py-24">
       <div className="container-care">
-        <div ref={ref} data-reveal className="max-w-6xl">
+        <div ref={ref} data-reveal className="text-center">
           <p
-            className="text-[var(--color-ink)]/42"
+            className="text-[clamp(2.5rem,5.3vw,6.4rem)] text-[var(--color-ink)]/62 lg:text-[clamp(3rem,4.6vw,5.5rem)]"
             style={{
-              fontSize: "clamp(2.5rem, 6.4vw, 6.5rem)",
               fontWeight: 300,
-              lineHeight: 0.98,
-              letterSpacing: "-0.045em",
-            }}
-          >
-            Du är mer än ditt CV.
-            <br />
-            Mer än din erfarenhet.
-          </p>
-          <h2
-            className="mt-8 max-w-[18ch] text-balance text-[var(--color-ink)]"
-            style={{
-              fontSize: "clamp(2.5rem, 6.4vw, 6.5rem)",
-              fontWeight: 700,
-              lineHeight: 0.98,
+              lineHeight: 1,
               letterSpacing: "-0.045em",
             }}
           >
             Din care-er börjar med vem du är.
-          </h2>
-          <p
-            className="mt-3 max-w-[18ch] text-balance text-[var(--color-ink)]"
+          </p>
+          <h2
+            className="mt-8 text-balance text-[clamp(2.5rem,5.3vw,6.4rem)] text-[var(--color-ink)] lg:whitespace-nowrap lg:text-[clamp(3rem,4.6vw,5.5rem)]"
             style={{
-              fontSize: "clamp(2.5rem, 6.4vw, 6.5rem)",
               fontWeight: 700,
-              lineHeight: 0.98,
+              lineHeight: 1,
               letterSpacing: "-0.045em",
             }}
           >
             Och fortsätter med vem du vill bli.
-          </p>
-          <p className="mt-12 text-lg font-semibold tracking-[-0.02em] text-[var(--color-ink)] md:mt-16 md:text-2xl">
-            Care and career. care-er.
-          </p>
+          </h2>
         </div>
       </div>
     </section>
-  );
-}
-
-function NumberedCardGrid({
-  items,
-  className = "",
-}: {
-  items: readonly string[];
-  className?: string;
-}) {
-  return (
-    <div
-      className={`grid gap-px overflow-hidden border border-[var(--color-ink)]/[0.08] bg-[var(--color-ink)]/[0.08] md:grid-cols-2 ${className}`}
-    >
-      {items.map((item, index) => (
-        <NumberedCard key={item} item={item} index={index} />
-      ))}
-    </div>
-  );
-}
-
-function NumberedCard({ item, index }: { item: string; index: number }) {
-  const ref = useReveal<HTMLDivElement>(0.14);
-  const delay = Math.min(index * 100, 400);
-
-  return (
-    <div
-      ref={ref}
-      data-reveal
-      data-delay={delay > 0 ? String(delay) : undefined}
-      className={`relative min-h-56 overflow-hidden bg-[var(--color-background)] p-7 md:min-h-72 md:p-10 ${
-        index === 4 ? "md:col-span-2" : ""
-      }`}
-    >
-      <span
-        aria-hidden
-        className="absolute -bottom-8 right-1 select-none font-bold leading-none text-[var(--color-ink)]/[0.045] md:-bottom-12"
-        style={{ fontSize: "clamp(7rem, 18vw, 15rem)", letterSpacing: "-0.06em" }}
-      >
-        0{index + 1}
-      </span>
-      <p
-        className="relative z-10 max-w-[22ch] text-balance text-[var(--color-ink)]"
-        style={{
-          fontSize: "clamp(1.5rem, 2.7vw, 2.5rem)",
-          fontWeight: 600,
-          lineHeight: 1.12,
-          letterSpacing: "-0.025em",
-        }}
-      >
-        {item}
-      </p>
-    </div>
   );
 }
 

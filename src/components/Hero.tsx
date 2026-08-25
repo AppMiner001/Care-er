@@ -59,7 +59,11 @@ export function Hero() {
     document.addEventListener("scroll",      onGesture, { passive: true, once: true });
 
     const mqHandler = (e: MediaQueryListEvent) => {
-      e.matches ? vid.pause() : attempt();
+      if (e.matches) {
+        vid.pause();
+      } else {
+        attempt();
+      }
     };
     mq.addEventListener("change", mqHandler);
 
@@ -85,6 +89,7 @@ export function Hero() {
         ref={videoRef}
         data-hero-video
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        autoPlay
         muted
         loop
         playsInline
