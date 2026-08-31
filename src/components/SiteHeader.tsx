@@ -1,5 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import {
+  preloadCompanyContactDialog,
+  useCompanyContactDialog,
+} from "@/context/company-contact-dialog";
 import { Logo } from "./Logo";
 
 const loadCareerJoinDialog = () =>
@@ -17,6 +21,7 @@ const primaryNav = [
 const careerNav = { to: "/karriar", label: "Karriär" } as const;
 
 export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
+  const showCompanyContactDialog = useCompanyContactDialog();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [contactMenuOpen, setContactMenuOpen] = useState(false);
@@ -24,6 +29,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
   const [joinOpen, setJoinOpen] = useState(false);
   const contactMenuRef = useRef<HTMLDivElement>(null);
   const contactButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -86,13 +92,27 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
     setJoinOpen(true);
   };
 
+  const openCompanyDialog = (returnFocus: HTMLElement | null) => {
+    setContactMenuOpen(false);
+    setMobileContactOpen(false);
+    setOpen(false);
+    setJoinOpen(false);
+    showCompanyContactDialog(returnFocus);
+  };
+
   const toggleContactMenu = () => {
-    if (!contactMenuOpen) void loadCareerJoinDialog();
+    if (!contactMenuOpen) {
+      void loadCareerJoinDialog();
+      preloadCompanyContactDialog();
+    }
     setContactMenuOpen((current) => !current);
   };
 
   const toggleMobileContactMenu = () => {
-    if (!mobileContactOpen) void loadCareerJoinDialog();
+    if (!mobileContactOpen) {
+      void loadCareerJoinDialog();
+      preloadCompanyContactDialog();
+    }
     setMobileContactOpen((current) => !current);
   };
 
@@ -194,12 +214,12 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
                   }}
                 >
                   <div className="mx-2 border-t border-current/15 pb-1.5 pt-1">
-                    <Link
-                      to="/"
-                      hash="kontakt"
+                    <button
+                      type="button"
+                      data-company-contact-trigger="desktop"
                       tabIndex={contactMenuOpen ? 0 : -1}
-                      onClick={() => setContactMenuOpen(false)}
-                      className="group flex min-h-11 items-center justify-between gap-5 rounded-[0.8rem] px-3 text-sm font-medium transition-colors hover:bg-current/10 focus-visible:bg-current/10 focus-visible:outline-none"
+                      onClick={() => openCompanyDialog(contactButtonRef.current)}
+                      className="group flex min-h-11 w-full items-center justify-between gap-5 rounded-[0.8rem] px-3 text-left text-sm font-medium transition-colors hover:bg-current/10 focus-visible:bg-current/10 focus-visible:outline-none"
                     >
                       <span>Företag</span>
                       <span
@@ -208,7 +228,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
                       >
                         →
                       </span>
-                    </Link>
+                    </button>
                     <button
                       type="button"
                       tabIndex={contactMenuOpen ? 0 : -1}
@@ -252,6 +272,7 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
 
           {/* Mobile toggle — min 44×44px touch target */}
           <button
+            ref={mobileMenuButtonRef}
             className="lg:hidden p-3 -mr-3 min-w-[44px] min-h-[44px] flex flex-col justify-center items-center hover:opacity-70 transition-opacity duration-300"
             style={{
               color:
@@ -340,18 +361,18 @@ export function SiteHeader({ forceDark = false }: { forceDark?: boolean }) {
                   }}
                 >
                   <div className="mx-2 border-t border-current/15 pb-1.5 pt-1">
-                    <Link
-                      to="/"
-                      hash="kontakt"
+                    <button
+                      type="button"
+                      data-company-contact-trigger="mobile"
                       tabIndex={open && mobileContactOpen ? 0 : -1}
-                      onClick={closeMobileNavigation}
-                      className="flex min-h-11 items-center justify-between gap-5 rounded-[0.75rem] px-3 text-sm font-medium transition-colors hover:bg-current/10 focus-visible:bg-current/10 focus-visible:outline-none"
+                      onClick={() => openCompanyDialog(mobileMenuButtonRef.current)}
+                      className="flex min-h-11 w-full items-center justify-between gap-5 rounded-[0.75rem] px-3 text-left text-sm font-medium transition-colors hover:bg-current/10 focus-visible:bg-current/10 focus-visible:outline-none"
                     >
                       <span>Företag</span>
                       <span aria-hidden className="opacity-45">
                         →
                       </span>
-                    </Link>
+                    </button>
                     <button
                       type="button"
                       tabIndex={open && mobileContactOpen ? 0 : -1}

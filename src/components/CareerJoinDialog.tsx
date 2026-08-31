@@ -77,7 +77,12 @@ export function CareerJoinDialog({
         />
       </button>
 
-      <JoinCareErForm idPrefix={idPrefix} titleId={titleId} descriptionId={descriptionId} />
+      <JoinCareErForm
+        idPrefix={idPrefix}
+        titleId={titleId}
+        descriptionId={descriptionId}
+        onNavigateAway={() => dialogRef.current?.close()}
+      />
     </dialog>
   );
 }
@@ -86,10 +91,12 @@ function JoinCareErForm({
   idPrefix,
   titleId,
   descriptionId,
+  onNavigateAway,
 }: {
   idPrefix: string;
   titleId: string;
   descriptionId: string;
+  onNavigateAway: () => void;
 }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [draftHref, setDraftHref] = useState<string | null>(null);
@@ -253,12 +260,16 @@ function JoinCareErForm({
               className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--color-ink)] md:mt-1"
             />
             <span id={`${idPrefix}-privacy-note`}>
-              Jag har tagit del av att uppgifterna används för att care-er ska kunna kontakta mig om
-              karriärmöjligheter enligt vår{" "}
-              <Link className="underline underline-offset-2" to="/integritet">
-                integritetsinformation
+              När du skickar formuläret behandlar vi dina uppgifter för att kunna kontakta dig. Läs
+              mer i vår{" "}
+              <Link
+                className="underline underline-offset-2"
+                to="/integritet"
+                onClick={onNavigateAway}
+              >
+                integritetspolicy
               </Link>
-              . Marknadsföring kräver ett separat medgivande.
+              .
             </span>
           </label>
           {errors.privacy && (

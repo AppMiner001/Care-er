@@ -24,23 +24,23 @@ export function BeliefsSection() {
   return (
     <section className="bg-[var(--color-surface)] text-[var(--color-ink)] py-12 md:py-16">
       <div className="container-care">
-        <div className="max-w-6xl">
+        <div className="max-w-5xl">
           <div ref={headingRef} data-reveal>
             <p className="eyebrow text-[var(--color-ink)]/55 mb-4">Gemensam övertygelse</p>
             <h2
               data-emerge
               className="text-balance"
               style={{
-                fontSize: "clamp(2.4rem, 4.5vw, 4.5rem)",
+                fontSize: "clamp(2.25rem, 4vw, 4rem)",
                 fontWeight: 700,
-                lineHeight: 0.98,
+                lineHeight: 1,
                 letterSpacing: "-0.038em",
               }}
             >
               Vi behöver tro på samma saker
             </h2>
             <p
-              className="mt-4 md:mt-5 text-base md:text-lg leading-relaxed text-[var(--color-ink)]/65"
+              className="mt-4 md:mt-5 max-w-3xl text-[1.0625rem] leading-[1.65] text-[var(--color-ink)]/70 md:text-xl"
               style={{ fontWeight: 300 }}
             >
               För att göra verklig skillnad behöver vi vara överens om två saker.
@@ -62,8 +62,8 @@ export function BeliefsSection() {
             <p
               data-emerge
               data-emerge-delay="360"
-              className="text-lg md:text-2xl leading-snug text-[var(--color-ink)] text-balance"
-              style={{ fontWeight: 650, letterSpacing: "-0.02em" }}
+              className="text-lg md:text-xl leading-[1.45] text-[var(--color-ink)] text-balance"
+              style={{ fontWeight: 600, letterSpacing: "-0.02em" }}
             >
               Omtanke om kunden.
               <br />
@@ -72,10 +72,10 @@ export function BeliefsSection() {
               Care and career.
             </p>
             <p
-              className="mt-1 text-lg md:text-2xl leading-snug text-balance"
+              className="mt-1 text-lg md:text-xl leading-[1.45] text-balance"
               style={{ fontWeight: 300, letterSpacing: "-0.02em" }}
             >
-              Därför heter vi <strong style={{ fontWeight: 650 }}>care-er.</strong>
+              Därför heter vi <strong style={{ fontWeight: 600 }}>care-er.</strong>
             </p>
           </div>
         </div>
@@ -101,9 +101,9 @@ function BeliefRow({
         <h3
           data-emerge
           data-emerge-delay={emergeDelay}
-          className="text-[var(--color-ink)] leading-[1.05] text-balance"
+          className="text-[var(--color-ink)] leading-[1.12] text-balance"
           style={{
-            fontSize: "clamp(1.45rem, 2.2vw, 2rem)",
+            fontSize: "clamp(1.35rem, 1.8vw, 1.75rem)",
             fontWeight: 450,
             letterSpacing: "-0.02em",
           }}
@@ -114,7 +114,7 @@ function BeliefRow({
           {belief.paragraphs.map((paragraph) => (
             <p
               key={paragraph}
-              className="text-sm md:text-base leading-relaxed text-[var(--color-ink)]/65 text-pretty"
+              className="max-w-[50rem] text-base leading-[1.65] text-[var(--color-ink)]/70 text-pretty md:text-[1.0625rem]"
               style={{ fontWeight: 300 }}
             >
               {paragraph}

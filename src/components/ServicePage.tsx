@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
-import { Contact } from "./Contact";
 import { useReveal } from "@/hooks/use-reveal";
 
 export interface ServicePageProps {
@@ -41,7 +40,6 @@ export function ServicePage(p: ServicePageProps) {
         <PillarsSection pillars={p.pillars} />
         <ApproachSection approach={p.approach} />
         {p.next && <NextService label={p.next.label} to={p.next.to} />}
-        <Contact />
       </main>
       <SiteFooter />
     </>

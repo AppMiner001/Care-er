@@ -2,11 +2,11 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Hero } from "@/components/Hero";
+import { IntroSection } from "@/components/IntroSection";
 import { BeliefsSection } from "@/components/BeliefsSection";
 import { Services } from "@/components/Services";
 import { ModelSection } from "@/components/ModelSection";
 import { StatementSection } from "@/components/StatementSection";
-import { Contact } from "@/components/Contact";
 import { absoluteUrl } from "@/lib/site-config";
 
 export const Route = createFileRoute("/")({
@@ -39,20 +39,20 @@ function Index() {
         {/* 1. Immediate clarity: what they do and why it matters */}
         <Hero />
 
-        {/* 2. The shared beliefs required for a meaningful partnership */}
+        {/* 2. What care-er develops and how */}
+        <IntroSection />
+
+        {/* 3. The shared beliefs required for a meaningful partnership */}
         <BeliefsSection />
 
-        {/* 3. What they sell — early, outcome-framed */}
+        {/* 4. What they sell — early, outcome-framed */}
         <Services />
 
-        {/* 4. Why it works — the behavioral model */}
+        {/* 5. Why it works — the behavioral model */}
         <ModelSection />
 
-        {/* 5. The statement — the moment that makes the site unforgettable */}
+        {/* 6. The statement — the moment that makes the site unforgettable */}
         <StatementSection />
-
-        {/* 6. Invitation */}
-        <Contact />
       </main>
       <SiteFooter />
     </>

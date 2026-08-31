@@ -1,62 +1,81 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
+import { useCompanyContactDialog } from "@/context/company-contact-dialog";
 import { useMagnetic } from "@/hooks/use-magnetic";
 
+function prepareForAutoplay(video: HTMLVideoElement) {
+  video.autoplay = true;
+  video.defaultMuted = true;
+  video.muted = true;
+  video.playsInline = true;
+  video.controls = false;
+  video.setAttribute("autoplay", "");
+  video.setAttribute("muted", "");
+  video.setAttribute("playsinline", "");
+  video.setAttribute("webkit-playsinline", "");
+}
+
 export function Hero() {
+  const openCompanyContactDialog = useCompanyContactDialog();
   const magneticRef = useMagnetic<HTMLDivElement>();
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const setVideoRef = useCallback((video: HTMLVideoElement | null) => {
+    videoRef.current = video;
+    if (video) prepareForAutoplay(video);
+  }, []);
 
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
 
-    // React known bug: `muted` prop is not always set as a DOM property.
-    // Browsers block autoplay if the property (not just attribute) isn't true.
-    vid.muted = true;
-    vid.setAttribute("playsinline", "");
-    vid.setAttribute("webkit-playsinline", "");
-
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) {
-      vid.pause();
-      const h = (e: MediaQueryListEvent) => { if (!e.matches) attempt(); };
-      mq.addEventListener("change", h);
-      return () => mq.removeEventListener("change", h);
-    }
-
     let stopped = false;
 
     const attempt = () => {
-      if (stopped || !vid.paused) return;
-      vid.muted = true;
+      if (stopped || mq.matches || document.visibilityState !== "visible" || !vid.paused) {
+        return;
+      }
+
+      prepareForAutoplay(vid);
       void vid.play().catch(() => {});
     };
 
-    // Don't call vid.load() — browser already started preloading from HTML.
-    // load() would restart the download from scratch and delay playback.
-    attempt();
+    if (mq.matches) {
+      vid.pause();
+    } else {
+      attempt();
+    }
 
-    // Retry on video data events
-    vid.addEventListener("canplay",    attempt, { once: true });
-    vid.addEventListener("loadeddata", attempt, { once: true });
+    const mediaEvents: Array<keyof HTMLMediaElementEventMap> = [
+      "loadedmetadata",
+      "loadeddata",
+      "canplay",
+      "canplaythrough",
+    ];
+    mediaEvents.forEach((eventName) => vid.addEventListener(eventName, attempt));
 
-    // Retry every 500 ms for 6 s — handles slow mobile networks
     let retries = 0;
     const interval = setInterval(() => {
-      if (!vid.paused || retries++ > 12) { clearInterval(interval); return; }
+      if (!vid.paused || retries++ > 12) {
+        clearInterval(interval);
+        return;
+      }
       attempt();
     }, 500);
 
-    // Retry when page becomes visible (e.g. switching tabs on mobile)
-    const onVisible = () => { if (document.visibilityState === "visible") attempt(); };
+    const onVisible = () => {
+      if (document.visibilityState === "visible") attempt();
+    };
     document.addEventListener("visibilitychange", onVisible);
+    window.addEventListener("pageshow", attempt);
+    window.addEventListener("focus", attempt);
 
-    // Guaranteed fallback: any user touch/click unlocks autoplay policy
     const onGesture = () => attempt();
-    document.addEventListener("touchstart",  onGesture, { passive: true, once: true });
+    document.addEventListener("touchstart", onGesture, { passive: true, once: true });
     document.addEventListener("pointerdown", onGesture, { once: true });
-    document.addEventListener("click",       onGesture, { once: true });
-    document.addEventListener("scroll",      onGesture, { passive: true, once: true });
+    document.addEventListener("click", onGesture, { once: true });
+    document.addEventListener("scroll", onGesture, { passive: true, once: true });
 
     const mqHandler = (e: MediaQueryListEvent) => {
       if (e.matches) {
@@ -72,25 +91,27 @@ export function Hero() {
       clearInterval(interval);
       mq.removeEventListener("change", mqHandler);
       document.removeEventListener("visibilitychange", onVisible);
-      vid.removeEventListener("canplay",    attempt);
-      vid.removeEventListener("loadeddata", attempt);
-      document.removeEventListener("touchstart",  onGesture);
+      window.removeEventListener("pageshow", attempt);
+      window.removeEventListener("focus", attempt);
+      mediaEvents.forEach((eventName) => vid.removeEventListener(eventName, attempt));
+      document.removeEventListener("touchstart", onGesture);
       document.removeEventListener("pointerdown", onGesture);
-      document.removeEventListener("click",       onGesture);
-      document.removeEventListener("scroll",      onGesture);
+      document.removeEventListener("click", onGesture);
+      document.removeEventListener("scroll", onGesture);
     };
   }, []);
 
   return (
     <section className="relative min-h-[100svh] flex flex-col justify-between pt-20 md:pt-24 pb-0 overflow-hidden">
-
       {/* ── Video background ─────────────────────────────────────────────── */}
       <video
-        ref={videoRef}
+        ref={setVideoRef}
         data-hero-video
         className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
         autoPlay
         muted
+        controls={false}
+        disablePictureInPicture
         loop
         playsInline
         preload="auto"
@@ -106,10 +127,7 @@ export function Hero() {
       {/* ── Gradient overlays (layered for full readability) ─────────────── */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         {/* Base dark veil — ensures minimum contrast everywhere */}
-        <div
-          className="absolute inset-0"
-          style={{ background: "oklch(0.08 0.028 271 / 0.58)" }}
-        />
+        <div className="absolute inset-0" style={{ background: "oklch(0.08 0.028 271 / 0.58)" }} />
         {/* Left column accent — reinforces text area */}
         <div
           className="absolute inset-0"
@@ -130,8 +148,7 @@ export function Hero() {
         <div
           className="absolute inset-0"
           style={{
-            background:
-              "linear-gradient(to top, oklch(0.07 0.025 271 / 0.55) 0%, transparent 35%)",
+            background: "linear-gradient(to top, oklch(0.07 0.025 271 / 0.55) 0%, transparent 35%)",
           }}
         />
       </div>
@@ -141,15 +158,13 @@ export function Hero() {
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage:
-            "radial-gradient(oklch(0.982 0.003 82 / 0.04) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(oklch(0.982 0.003 82 / 0.04) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
         }}
       />
 
       {/* ── Main content ─────────────────────────────────────────────────── */}
       <div className="container-care relative z-10 flex-1">
-
         {/* Staircase headline — white on dark video */}
         <h1
           className="text-[var(--color-background)]"
@@ -210,9 +225,8 @@ export function Hero() {
           className="lead text-[var(--color-background)]/80 mt-6 md:mt-10 max-w-lg text-pretty animate-fade-up"
           style={{ animationDelay: "500ms", lineHeight: 1.65 }}
         >
-          Varje kundmöte stärker eller försvagar relationen till ett varumärke.
-          Därför utvecklar care-er människor, beteenden och arbetssätt som får
-          kunder att komma tillbaka.
+          Varje kundmöte stärker eller försvagar relationen till ett varumärke. Därför utvecklar
+          care-er människor, beteenden och arbetssätt som får kunder att komma tillbaka.
         </p>
 
         {/* Disciplines */}
@@ -230,9 +244,10 @@ export function Hero() {
         >
           {/* Primary CTA — light button on dark video */}
           <div ref={magneticRef} style={{ display: "inline-flex" }}>
-            <Link
-              to="/"
-              hash="kontakt"
+            <button
+              type="button"
+              data-company-contact-trigger="hero"
+              onClick={(event) => openCompanyContactDialog(event.currentTarget)}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -266,12 +281,11 @@ export function Hero() {
               }}
               onMouseUp={(e) => {
                 e.currentTarget.style.transform = "translateY(-1px)";
-                e.currentTarget.style.transition =
-                  "transform 320ms cubic-bezier(0.16,1,0.3,1)";
+                e.currentTarget.style.transition = "transform 320ms cubic-bezier(0.16,1,0.3,1)";
               }}
             >
               Prata med oss
-            </Link>
+            </button>
           </div>
 
           {/* Secondary CTA */}
@@ -281,7 +295,10 @@ export function Hero() {
             className="group text-[var(--color-background)] text-sm font-medium hover:bg-[var(--color-background)] hover:text-[var(--color-ink)] transition-colors duration-200 inline-flex items-center justify-center gap-2 h-[50px] w-[151px] rounded-full border border-[var(--color-background)]/65"
           >
             Se tjänster
-            <span aria-hidden className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5">
+            <span
+              aria-hidden
+              className="transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0.5"
+            >
               ↓
             </span>
           </Link>
@@ -315,7 +332,6 @@ export function Hero() {
       </div>
 
       <div className="pb-14 md:pb-28" />
-
     </section>
   );
 }
